@@ -1,5 +1,6 @@
 # PRCO304-DWWebsite
 Dog Walking Website (Official name TBC)
+
 FYP Supervisor - Paul Watson
 
 Recently new dog owners are exposed to a range of circumstances where some can be planned, others are unpredictable. To prepare for a new arrival it would be best to learn the basics, this consists of food, water, training and exercise. Information you can find quite easily across many resources, although the most troublesome is locating places to exercise a dog. 
