@@ -11,7 +11,7 @@ namespace DogWalking.User_Side
 {
 
 
-    public partial class UserSettings
+    public partial class UserChangeEmail
     {
 
         /// <summary>

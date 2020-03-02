@@ -159,8 +159,11 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="User Side\UserChangeEmail.aspx" />
+    <Content Include="User Side\UserChangePassword.aspx" />
+    <Content Include="User Side\UserCreateAccount.aspx" />
     <Content Include="User Side\UserProfile.aspx" />
-    <Content Include="User Side\UserSettings.aspx" />
+    <Content Include="User Side\UserEditSettings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +190,27 @@
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Side\UserChangeEmail.aspx.cs">
+      <DependentUpon>UserChangeEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\UserChangeEmail.aspx.designer.cs">
+      <DependentUpon>UserChangeEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\UserChangePassword.aspx.cs">
+      <DependentUpon>UserChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\UserChangePassword.aspx.designer.cs">
+      <DependentUpon>UserChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\UserCreateAccount.aspx.cs">
+      <DependentUpon>UserCreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\UserCreateAccount.aspx.designer.cs">
+      <DependentUpon>UserCreateAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User Side\UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,12 +218,12 @@
     <Compile Include="User Side\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User Side\UserSettings.aspx.cs">
-      <DependentUpon>UserSettings.aspx</DependentUpon>
+    <Compile Include="User Side\UserEditSettings.aspx.cs">
+      <DependentUpon>UserEditSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User Side\UserSettings.aspx.designer.cs">
-      <DependentUpon>UserSettings.aspx</DependentUpon>
+    <Compile Include="User Side\UserEditSettings.aspx.designer.cs">
+      <DependentUpon>UserEditSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
