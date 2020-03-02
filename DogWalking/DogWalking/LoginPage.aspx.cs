@@ -42,7 +42,7 @@ namespace DogWalking
             else if (outputUserLogin == "1")
             {
                 Session["User"] = txtusernameInsert.Text;
-                Response.Redirect("~/UserProfile.aspx");
+                Response.Redirect("~/User Side/UserProfile.aspx");
             }
             else
             {

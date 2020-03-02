@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <h3>User Profile</h3>
+            <br />
+            <h4><a href="UserSettings.aspx"></a>Edit Profile</h4>
         </div>
     </form>
 </body>

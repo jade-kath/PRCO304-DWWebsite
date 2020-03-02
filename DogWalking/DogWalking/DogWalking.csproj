@@ -128,7 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="AdminProfile.aspx" />
+    <Content Include="Admin Side\AdminProfile.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -159,15 +159,16 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="UserProfile.aspx" />
+    <Content Include="User Side\UserProfile.aspx" />
+    <Content Include="User Side\UserSettings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminProfile.aspx.cs">
+    <Compile Include="Admin Side\AdminProfile.aspx.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminProfile.aspx.designer.cs">
+    <Compile Include="Admin Side\AdminProfile.aspx.designer.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
@@ -186,12 +187,19 @@
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserProfile.aspx.cs">
+    <Compile Include="User Side\UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserProfile.aspx.designer.cs">
+    <Compile Include="User Side\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\UserSettings.aspx.cs">
+      <DependentUpon>UserSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\UserSettings.aspx.designer.cs">
+      <DependentUpon>UserSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

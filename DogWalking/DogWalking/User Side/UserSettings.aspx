@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="DogWalking.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserSettings.aspx.cs" Inherits="DogWalking.User_Side.UserSettings" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p><a href="LoginPage.aspx">Log in</a></p>
         </div>
     </form>
 </body>
