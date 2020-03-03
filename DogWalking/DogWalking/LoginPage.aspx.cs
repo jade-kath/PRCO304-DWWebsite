@@ -20,7 +20,7 @@ namespace DogWalking
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             //SqlConnection con = new SqlConnection(@"Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Integrated Security=False;User ID=JMarshall;Password=********;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WalkDB"].ToString());
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
             
 
@@ -37,7 +37,7 @@ namespace DogWalking
             if (outputAdminLogin == "1")
             {
                 Session["Admin"] = txtusernameInsert.Text;
-                Response.Redirect("~/AdminProfile.aspx");
+                Response.Redirect("~/Admin Side/AdminProfile.aspx");
             }
             else if (outputUserLogin == "1")
             {
