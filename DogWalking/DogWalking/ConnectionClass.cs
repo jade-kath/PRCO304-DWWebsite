@@ -15,7 +15,7 @@ namespace DogWalking
 
         public ConnectionClass()
         {
-            SQLCon.ConnectionString = ConfigurationManager.ConnectionStrings["WalkDB"].ConnectionString;
+            SQLCon.ConnectionString = ConfigurationManager.ConnectionStrings["connect"].ConnectionString;
         }
 
         public void retrieveData(string command)

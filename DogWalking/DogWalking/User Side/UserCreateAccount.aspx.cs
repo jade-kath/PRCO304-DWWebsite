@@ -19,16 +19,17 @@ namespace DogWalking.User_Side
 
         private void CreateUser()
         {
-            
-        }
-
-        protected void btnCreateAccount_Click(object sender, EventArgs e)
-        {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             conn.Open();
             string UserQuery = "INSERT  INTO Users (FirstName, LastName, DateOfBirth, EmailAddress, Username, Password, LocationID, isAdmin) VALUES ('" + txtFirstName.Text + "', '" + txtLastName.Text + "', '" + txtDOB.Text + "', '" + txtUserEmail.Text + "', '" + txtUserUsername.Text + "', '" + txtUserPassword.Text + "', '" + drpLocation.SelectedValue + "', 'False')";
             SqlCommand cmd = new SqlCommand(UserQuery, conn);
             cmd.ExecuteScalar();
+        }
+
+        protected void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            CreateUser();
+            Response.Redirect("UserProfile.aspx");
         }
     }
 }

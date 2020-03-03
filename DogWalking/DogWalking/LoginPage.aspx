@@ -17,6 +17,8 @@
             <asp:TextBox ID="txtpasswordInsert" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox> <br />
 
             <asp:Button ID="btnLogin" runat="server" onclick="btnLogin_Click" Text="Login"></asp:Button>
+
+            <p><a href="User Side/UserCreateAccount.aspx">Don't  have an account? Click here</a></p>
         </div>
     </form>
 </body>
