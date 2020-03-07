@@ -14,7 +14,10 @@ namespace DogWalking.User_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            addUserData();
+            if (!IsPostBack)
+            {
+                addUserData();
+            }    
         }
 
         private void addUserData()
@@ -30,7 +33,7 @@ namespace DogWalking.User_Side
                 txtFirstName.Text = (string)dr[0];
                 txtLastName.Text = (string)dr[1];
                 txtUserUsername.Text = (string)dr[2];
-                drpLocation.SelectedIndex = (int)dr[3];
+                drpLocation.SelectedIndex = (int)dr[3]-1;                   
             }
         }
 
@@ -66,7 +69,13 @@ namespace DogWalking.User_Side
 
         protected void UserDeleteAccount_Click(object sender, EventArgs e)
         {
-            //popup message to confirm
+            string user = Session["User"].ToString();
+            string sqlDeleteQuery = @"DELETE FROM Users WHERE Username = '" + user + "'";
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlDeleteQuery);
+
+            Session.Remove("User");
+            Response.Redirect("~/index.aspx");
         }
     }
 }

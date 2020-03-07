@@ -29,6 +29,7 @@ namespace DogWalking.User_Side
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
             CreateUser();
+            Session["User"] = txtUserUsername.Text;
             Response.Redirect("UserProfile.aspx");
         }
     }
