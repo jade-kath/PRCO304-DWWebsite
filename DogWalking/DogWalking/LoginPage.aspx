@@ -11,11 +11,11 @@
         <div>
             <h2>Log In</h2>
             <asp:Label ID="lblUser" runat="server" Text="Username:"></asp:Label> <br />
-            <asp:TextBox ID="txtusernameInsert" runat="server" placeholder="Username"></asp:TextBox> <br />
-
+            <asp:TextBox ID="txtusernameInsert" runat="server" placeholder="Username"></asp:TextBox> 
+            <br />
             <asp:Label ID="lblPass" runat="server" Text="Password:"></asp:Label> <br />
-            <asp:TextBox ID="txtpasswordInsert" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox> <br />
-
+            <asp:TextBox ID="txtpasswordInsert" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox> 
+            <br />
             <asp:Button ID="btnLogin" runat="server" onclick="btnLogin_Click" Text="Login"></asp:Button>
 
             <p><a href="User Side/UserCreateAccount.aspx">Don't  have an account? Click here</a></p>

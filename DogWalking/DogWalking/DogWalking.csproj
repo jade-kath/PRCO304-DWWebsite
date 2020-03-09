@@ -55,6 +55,24 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -128,7 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Admin Side\AdminProfile.aspx" />
+    <Content Include="Admin Side\AdminIndex.aspx" />
+    <Content Include="Admin Side\createAccount.aspx" />
+    <Content Include="Admin Side\UserDetails.aspx" />
+    <Content Include="Admin Side\viewAdminUsers.aspx" />
+    <Content Include="Admin Side\viewUsers.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -167,12 +189,40 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin Side\AdminProfile.aspx.cs">
-      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    <Compile Include="Admin Side\AdminIndex.aspx.cs">
+      <DependentUpon>AdminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\AdminProfile.aspx.designer.cs">
-      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    <Compile Include="Admin Side\AdminIndex.aspx.designer.cs">
+      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\createAccount.aspx.cs">
+      <DependentUpon>createAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\createAccount.aspx.designer.cs">
+      <DependentUpon>createAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\UserDetails.aspx.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\UserDetails.aspx.designer.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\viewAdminUsers.aspx.cs">
+      <DependentUpon>viewAdminUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\viewAdminUsers.aspx.designer.cs">
+      <DependentUpon>viewAdminUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\viewUsers.aspx.cs">
+      <DependentUpon>viewUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\viewUsers.aspx.designer.cs">
+      <DependentUpon>viewUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">
@@ -226,7 +276,9 @@
       <DependentUpon>UserEditSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Style\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

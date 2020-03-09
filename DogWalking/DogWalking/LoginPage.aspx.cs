@@ -37,7 +37,7 @@ namespace DogWalking
             if (outputAdminLogin == "1")
             {
                 Session["Admin"] = txtusernameInsert.Text;
-                Response.Redirect("~/Admin Side/AdminProfile.aspx");
+                Response.Redirect("~/Admin Side/AdminIndex.aspx");
             }
             else if (outputUserLogin == "1")
             {
