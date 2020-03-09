@@ -10,7 +10,19 @@
     <form id="form1" runat="server">
         <div>
             <h2>Change Email</h2>
-        </div>
+
+            <label>Old Email Adress:-</label>
+            <asp:TextBox ID="txtOldEmail" runat="server"/>
+            <br />
+            <label>New Email Address:-</label>
+            <asp:TextBox ID="txtNewEmail" runat="server" Width="167px"/>
+            <br />
+            <label>Enter password to confirm change:-</label>
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
+            <br />
+            <asp:Button ID="SaveUserChanges" runat="server" OnClick="SvUserChanges_Click" Text="Save Changes" />
+
+         </div>
     </form>
 </body>
 </html>
