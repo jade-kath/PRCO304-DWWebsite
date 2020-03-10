@@ -14,10 +14,7 @@ namespace DogWalking.User_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (!IsPostBack)
-            {
-                saveChanges();
-            }*/
+            
         }
 
         private void saveChanges()
@@ -39,17 +36,16 @@ namespace DogWalking.User_Side
                 string UpdateUserQuery = @"UPDATE Users SET EmailAddress = '" + txtNewEmail.Text + "'WHERE Username = '" + user + "'";
                 SqlCommand cmd = new SqlCommand(UpdateUserQuery, connect);
                 cmd.ExecuteScalar();
-
                 connect.Close();
+                lblChangesSaved.Visible = true;
             }
             else
             {
                 Response.Write("These credentials do not match our records");
             }
-
-
-
-Response.Redirect("UserChangeEmail.aspx");
+            
+            txtOldEmail.Text = "";
+            txtNewEmail.Text = "";
         }
 
         protected void SvUserChanges_Click(object sender, EventArgs e)

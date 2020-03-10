@@ -12,7 +12,7 @@
             <h2>Edit Profile/Settings</h2>
 
             <label>Username:-</label>
-            <asp:TextBox ID="txtUserUsername" runat="server"/>
+            <asp:TextBox ID="txtUserUsername" runat="server" ReadOnly="true"/>
             <br />
             <label>First Name:-</label>
             <asp:TextBox ID="txtFirstName" runat="server" Width="167px"/>
@@ -27,6 +27,7 @@
             <br />
             <asp:Button ID="SaveUserChanges" runat="server" OnClick="SvUserChanges_Click" Text="Save Changes" />
             <br />
+            <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
             <br />
             <br />
             <asp:Button ID="UserChangeEmail" runat="server" Text="Change Email Address" OnClick="UserChangeEmail_Click" />

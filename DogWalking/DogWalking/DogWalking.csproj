@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Admin Side\AdminChangeEmailPassword.aspx" />
     <Content Include="Admin Side\AdminIndex.aspx" />
     <Content Include="Admin Side\createAccount.aspx" />
     <Content Include="Admin Side\UserDetails.aspx" />
@@ -189,6 +190,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin Side\AdminChangeEmailPassword.aspx.cs">
+      <DependentUpon>AdminChangeEmailPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\AdminChangeEmailPassword.aspx.designer.cs">
+      <DependentUpon>AdminChangeEmailPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\AdminIndex.aspx.cs">
       <DependentUpon>AdminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

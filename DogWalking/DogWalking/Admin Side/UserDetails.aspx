@@ -33,8 +33,7 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="ChangeEmail" runat="server" Text="Change Email Address" OnClick="ChangeEmail_Click" />
-            <asp:Button ID="ChangePassword" runat="server" Text="Change Password" OnClick="ChangePassword_Click" />
+            <asp:Button ID="ChangeEmail" runat="server" Text="Change Email Address/Password" OnClick="ChangeEmail_Click" />
             <asp:Button ID="DeleteAccount" runat="server" Text="Delete This Account" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;" OnClick="DeleteAccount_Click" />
         </div>
     </form>

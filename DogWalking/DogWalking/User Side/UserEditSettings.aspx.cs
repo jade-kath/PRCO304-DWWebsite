@@ -53,8 +53,8 @@ namespace DogWalking.User_Side
             cmd.ExecuteScalar();
 
             connect.Close();
-            
-            Response.Redirect("UserEditSettings.aspx");
+
+            lblChangesSaved.Visible = true;
         }
 
         protected void UserChangeEmail_Click(object sender, EventArgs e)

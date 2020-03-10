@@ -57,15 +57,6 @@ namespace DogWalking.Admin_Side
             Response.Redirect("UserDetails.aspx");
         }
 
-        protected void ChangeEmail_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void ChangePassword_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void DeleteAccount_Click(object sender, EventArgs e)
         {
@@ -76,6 +67,11 @@ namespace DogWalking.Admin_Side
 
             Session.Remove("updateUser");
             Response.Redirect("viewUsers.aspx");
+        }
+
+        protected void ChangeEmail_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminChangeEmailPassword.aspx");
         }
     }
 }
