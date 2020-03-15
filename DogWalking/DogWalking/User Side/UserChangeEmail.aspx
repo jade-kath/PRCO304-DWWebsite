@@ -12,10 +12,10 @@
             <h2>Change Email</h2>
 
             <label>Old Email Adress:-</label>
-            <asp:TextBox ID="txtOldEmail" runat="server"/>
+            <asp:TextBox ID="txtOldEmail" runat="server" TextMode="Email"/>
             <br />
             <label>New Email Address:-</label>
-            <asp:TextBox ID="txtNewEmail" runat="server" Width="167px"/>
+            <asp:TextBox ID="txtNewEmail" runat="server" TextMode="Email" Width="167px"/>
             <br />
             <label>Enter password to confirm change:-</label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>

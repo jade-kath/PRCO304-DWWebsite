@@ -22,15 +22,6 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtOldEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldEmail;
-        
-        /// <summary>
         /// txtNewEmail control.
         /// </summary>
         /// <remarks>
@@ -40,13 +31,13 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.WebControls.TextBox txtNewEmail;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtEmailPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailPassword;
         
         /// <summary>
         /// SaveEmailChanges control.
@@ -67,15 +58,6 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.WebControls.Label lblEmailSaved;
         
         /// <summary>
-        /// txtOldPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldPassword;
-        
-        /// <summary>
         /// txtNewPassword control.
         /// </summary>
         /// <remarks>
@@ -85,13 +67,13 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
         
         /// <summary>
-        /// txtEmailAddress control.
+        /// txtPassPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtPassPassword;
         
         /// <summary>
         /// SavePasswordChanges control.

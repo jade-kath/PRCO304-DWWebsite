@@ -10,33 +10,27 @@
     <form id="form1" runat="server">
         <div>
             <div id="changeEmail">
-                <h2>Change Email</h2>
-                  <label>Old Email Adress:-</label>
-                  <asp:TextBox ID="txtOldEmail" runat="server"/>
-                  <br />
+                <h2>Change Email</h2>                 
                   <label>New Email Address:-</label>
-                  <asp:TextBox ID="txtNewEmail" runat="server" Width="167px"/>
+                  <asp:TextBox ID="txtNewEmail" runat="server" TextMode="Email" Width="167px"/>
                   <br />
-                  <label>Enter password to confirm change:-</label>
-                  <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
+                  <label>Enter admin password to confirm change:-</label>
+                  <asp:TextBox ID="txtEmailPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                   <br />
                   <asp:Button ID="SaveEmailChanges" runat="server" Text="Save Email Changes" OnClick="SaveEmailChanges_Click" />
                   <br />
                   <asp:label ID="lblEmailSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
             </div>
-
+            <br />
             <div id="changePassword">
-                <h2>Change Password</h2>
-                     <label>Old password:-</label>
-                     <asp:TextBox ID="txtOldPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
-                     <br />            
+                <h2>Change Password</h2>                              
                      <label>New Password:-</label>
                      <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                      <br />
-                     <label>Enter your Email Address to confirm changes:-</label>
-                     <asp:TextBox ID="txtEmailAddress" runat="server" Width="167px"/>
+                     <label>Enter admin password to confirm changes:-</label>
+                     <asp:TextBox ID="txtPassPassword" runat="server" Width="167px"/>
                      <br />
-                     <asp:Button ID="SavePasswordChanges" runat="server" Text="Save Changes" OnClick="SavePasswordChanges_Click" />
+                     <asp:Button ID="SavePasswordChanges" runat="server" Text="Save Password Changes" OnClick="SavePasswordChanges_Click" />
                      <br />
                      <asp:label ID="lblPasswordSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
             </div>

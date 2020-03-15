@@ -26,7 +26,7 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
             <br />
             <label>Email Address:-</label>
-            <asp:TextBox ID="txtUserEmail" runat="server" Width="149px"/>
+            <asp:TextBox ID="txtUserEmail" runat="server" TextMode="Email" Width="149px"/>
             <br />
             <label>Create a Username:-</label>
             <asp:TextBox ID="txtUserUsername" runat="server"/>

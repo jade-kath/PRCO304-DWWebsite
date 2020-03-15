@@ -17,7 +17,7 @@
             <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
             <br />
             <label>Enter your Email Address to confirm changes:-</label>
-            <asp:TextBox ID="txtEmailAddress" runat="server" Width="167px"/>
+            <asp:TextBox ID="txtEmailAddress" runat="server" TextMode="Email" Width="167px"/>
             <br />
             <asp:Button ID="SaveUserChanges" runat="server" Text="Save Changes" OnClick="SaveUserChanges_Click" />
             <br />
