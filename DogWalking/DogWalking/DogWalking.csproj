@@ -146,12 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Admin Side\AdminChangeEmailPassword.aspx" />
-    <Content Include="Admin Side\AdminIndex.aspx" />
-    <Content Include="Admin Side\createAccount.aspx" />
-    <Content Include="Admin Side\UserDetails.aspx" />
-    <Content Include="Admin Side\viewAdminUsers.aspx" />
-    <Content Include="Admin Side\viewUsers.aspx" />
+    <Content Include="Admin Side\User\Users_ChangeEmailPassword.aspx" />
+    <Content Include="Admin Side\Walks\Walk_AllWalks.aspx" />
+    <Content Include="Admin Side\Walks\Walk_ReqWalks.aspx" />
+    <Content Include="Admin Side\User\Users_CreateAccount.aspx" />
+    <Content Include="Admin Side\User\Users_ChangeUserDetails.aspx" />
+    <Content Include="Admin Side\User\Users_ViewAdminUsers.aspx" />
+    <Content Include="Admin Side\User\Users_ViewUsers.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -182,55 +183,63 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="User Side\UserChangeEmail.aspx" />
-    <Content Include="User Side\UserChangePassword.aspx" />
+    <Content Include="Style\Admin_Navbar.css" />
+    <Content Include="User Side\CRUD User Settings\UserChangeEmail.aspx" />
+    <Content Include="User Side\CRUD User Settings\UserChangePassword.aspx" />
     <Content Include="User Side\UserCreateAccount.aspx" />
     <Content Include="User Side\UserProfile.aspx" />
-    <Content Include="User Side\UserEditSettings.aspx" />
+    <Content Include="User Side\CRUD User Settings\UserEditSettings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin Side\AdminChangeEmailPassword.aspx.cs">
-      <DependentUpon>AdminChangeEmailPassword.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ChangeEmailPassword.aspx.cs">
+      <DependentUpon>Users_ChangeEmailPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\AdminChangeEmailPassword.aspx.designer.cs">
-      <DependentUpon>AdminChangeEmailPassword.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ChangeEmailPassword.aspx.designer.cs">
+      <DependentUpon>Users_ChangeEmailPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\AdminIndex.aspx.cs">
-      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_AllWalks.aspx.cs">
+      <DependentUpon>Walk_AllWalks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\AdminIndex.aspx.designer.cs">
-      <DependentUpon>AdminIndex.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_AllWalks.aspx.designer.cs">
+      <DependentUpon>Walk_AllWalks.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\createAccount.aspx.cs">
-      <DependentUpon>createAccount.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_ReqWalks.aspx.cs">
+      <DependentUpon>Walk_ReqWalks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\createAccount.aspx.designer.cs">
-      <DependentUpon>createAccount.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_ReqWalks.aspx.designer.cs">
+      <DependentUpon>Walk_ReqWalks.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\UserDetails.aspx.cs">
-      <DependentUpon>UserDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_CreateAccount.aspx.cs">
+      <DependentUpon>Users_CreateAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\UserDetails.aspx.designer.cs">
-      <DependentUpon>UserDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_CreateAccount.aspx.designer.cs">
+      <DependentUpon>Users_CreateAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\viewAdminUsers.aspx.cs">
-      <DependentUpon>viewAdminUsers.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ChangeUserDetails.aspx.cs">
+      <DependentUpon>Users_ChangeUserDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\viewAdminUsers.aspx.designer.cs">
-      <DependentUpon>viewAdminUsers.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ChangeUserDetails.aspx.designer.cs">
+      <DependentUpon>Users_ChangeUserDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\viewUsers.aspx.cs">
-      <DependentUpon>viewUsers.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ViewAdminUsers.aspx.cs">
+      <DependentUpon>Users_ViewAdminUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\viewUsers.aspx.designer.cs">
-      <DependentUpon>viewUsers.aspx</DependentUpon>
+    <Compile Include="Admin Side\User\Users_ViewAdminUsers.aspx.designer.cs">
+      <DependentUpon>Users_ViewAdminUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\User\Users_ViewUsers.aspx.cs">
+      <DependentUpon>Users_ViewUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\User\Users_ViewUsers.aspx.designer.cs">
+      <DependentUpon>Users_ViewUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">
@@ -248,18 +257,18 @@
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Side\UserChangeEmail.aspx.cs">
+    <Compile Include="User Side\CRUD User Settings\UserChangeEmail.aspx.cs">
       <DependentUpon>UserChangeEmail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User Side\UserChangeEmail.aspx.designer.cs">
+    <Compile Include="User Side\CRUD User Settings\UserChangeEmail.aspx.designer.cs">
       <DependentUpon>UserChangeEmail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User Side\UserChangePassword.aspx.cs">
+    <Compile Include="User Side\CRUD User Settings\UserChangePassword.aspx.cs">
       <DependentUpon>UserChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User Side\UserChangePassword.aspx.designer.cs">
+    <Compile Include="User Side\CRUD User Settings\UserChangePassword.aspx.designer.cs">
       <DependentUpon>UserChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="User Side\UserCreateAccount.aspx.cs">
@@ -276,16 +285,16 @@
     <Compile Include="User Side\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User Side\UserEditSettings.aspx.cs">
+    <Compile Include="User Side\CRUD User Settings\UserEditSettings.aspx.cs">
       <DependentUpon>UserEditSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User Side\UserEditSettings.aspx.designer.cs">
+    <Compile Include="User Side\CRUD User Settings\UserEditSettings.aspx.designer.cs">
       <DependentUpon>UserEditSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Style\" />
+    <Folder Include="Admin Side\Outbreaks\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

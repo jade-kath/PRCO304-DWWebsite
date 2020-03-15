@@ -54,7 +54,7 @@ namespace DogWalking.Admin_Side
 
             connect.Close();
 
-            Response.Redirect("UserDetails.aspx");
+            lblChangesSaved.Visible = true;
         }
 
 
@@ -66,12 +66,12 @@ namespace DogWalking.Admin_Side
             conn.retrieveData(sqlDeleteQuery);
 
             Session.Remove("updateUser");
-            Response.Redirect("viewUsers.aspx");
+            Response.Redirect("Users_ViewUsers.aspx");
         }
 
         protected void ChangeEmail_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminChangeEmailPassword.aspx");
+            Response.Redirect("Users_ChangeEmailPassword.aspx");
         }
     }
 }

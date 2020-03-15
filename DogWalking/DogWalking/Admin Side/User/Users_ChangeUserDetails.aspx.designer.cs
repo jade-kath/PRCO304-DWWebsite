@@ -76,6 +76,15 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.WebControls.Button SaveChanges;
         
         /// <summary>
+        /// lblChangesSaved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChangesSaved;
+        
+        /// <summary>
         /// ChangeEmail control.
         /// </summary>
         /// <remarks>

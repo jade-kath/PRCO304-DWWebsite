@@ -1,18 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="DogWalking.Admin_Side.UserDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Users_ChangeUserDetails.aspx.cs" Inherits="DogWalking.Admin_Side.UserDetails" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
+    <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="sidenav">           
-                <a href="createAccount.aspx">Create New Account</a>
-                 <a href="viewUsers.aspx">Users</a>
-                 <a href="viewAdminUsers.aspx">Admin Users</a>
+             <div class="sidenav">
+                <a href="Walk_AllWalks.aspx">View All Walks</a>
+                <a href="Walk_ReqWalks.aspx">Requested Walks</a>
+                <a href="#">Oubreaks</a>
+                <a href="../User/Users_ViewUsers.aspx">View Users</a>
+                <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
+                <a href="../User/Users_CreateAccount.aspx">Create New User</a>                
             </div>
 
             <label>Username:-</label>
@@ -30,6 +36,8 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
             <br />
             <asp:Button ID="SaveChanges" runat="server" Text="Save Changes" OnClick="SaveChanges_Click" />
+            <br />
+            <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
             <br />
             <br />
             <br />

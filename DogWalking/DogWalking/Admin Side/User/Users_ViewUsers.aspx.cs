@@ -60,7 +60,7 @@ namespace DogWalking.Admin_Side
         protected void grdViewUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["updateUser"] = this.grdViewUsers.SelectedRow.Cells[1].Text;
-            Response.Redirect("UserDetails.aspx");
+            Response.Redirect("Users_ChangeUserDetails.aspx");
         }
     }
 }

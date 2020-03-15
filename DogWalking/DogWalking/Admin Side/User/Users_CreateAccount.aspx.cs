@@ -33,7 +33,7 @@ namespace DogWalking.Admin_Side
             CreateUser();
 
             // if rad == true = viewAdminUsers.aspx, else rad == false = viewUsers.aspx
-            Response.Redirect("viewUsers.aspx");
+            Response.Redirect("Users_ViewUsers.aspx");
         }
 
         protected void radIsAdmin_CheckedChanged(object sender, EventArgs e)
