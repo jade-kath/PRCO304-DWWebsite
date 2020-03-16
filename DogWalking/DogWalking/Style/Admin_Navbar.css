@@ -1,5 +1,10 @@
 ﻿body {
 }
+.main {
+    margin-left: 200px;
+    font-size: 20px; 
+    padding: 0px 10px;
+}
 .sidenav {
     height: 100%;
     width: 200px;
@@ -13,7 +18,7 @@
     display: inline-block;
 }
 
-.sidenav a {
+.sidenav a{
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 25px;
@@ -21,12 +26,19 @@
         display: block;
 }
 
-.sidenav a:hover {
+.sidenav a:hover{
             color: #f1f1f1;
 }
 
-/* Add an active class to the active dropdown button */
-.active {
-    background-color: green;
-    color: white;
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
 }
+.dropdown-menu{
+    position:relative !important;
+    transform:none !important;
+    top:0;
+    z-index:0;
+}
+

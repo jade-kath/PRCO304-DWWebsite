@@ -20,7 +20,7 @@ namespace DogWalking.Admin_Side.Walks
         private void bindToGrid()
         {
             string sqlQuery = @"SELECT Walk.WalkID, Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode FROM
-                                Walk JOIN Location ON Location.LocationID = Walk.LocationID";
+                                Walk JOIN Location ON Location.LocationID = Walk.LocationID WHERE NewWalk = 'False'";
 
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);
