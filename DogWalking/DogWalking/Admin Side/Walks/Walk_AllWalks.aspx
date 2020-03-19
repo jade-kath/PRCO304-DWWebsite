@@ -44,10 +44,9 @@
             </div>
 
         <div class="main">
-            
-            <h3>Posted Walks</h3>
+          Posted Walks</h3>
             <br />
-            <asp:GridView ID="grdViewWalks" runat="server">
+            <asp:GridView ID="grdViewWalks" runat="server" OnSelectedIndexChanged="grdViewWalks_SelectedIndexChanged">
                 <Columns>
                     <asp:ButtonField Text="Edit Walk" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>

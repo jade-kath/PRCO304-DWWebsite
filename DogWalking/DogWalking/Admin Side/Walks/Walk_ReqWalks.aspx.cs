@@ -51,6 +51,10 @@ namespace DogWalking
             this.grdViewWalks.DataBind();
         }
 
-
+        protected void grdViewWalks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["WalkID"] = this.grdViewWalks.SelectedRow.Cells[1].Text;
+            Response.Redirect("Walk_WalkDetails.aspx");
+        }
     }
 }
