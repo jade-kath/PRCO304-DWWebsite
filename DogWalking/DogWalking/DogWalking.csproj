@@ -153,7 +153,8 @@
     <Content Include="Admin Side\User\Users_ChangeUserDetails.aspx" />
     <Content Include="Admin Side\User\Users_ViewAdminUsers.aspx" />
     <Content Include="Admin Side\User\Users_ViewUsers.aspx" />
-    <Content Include="Admin Side\Walks\Walk_WalkDetails.aspx" />
+    <Content Include="Admin Side\Walks\Walk_WalkDetails_NamePhotos.aspx" />
+    <Content Include="Admin Side\Walks\Walk_WalkDetails_TerrainFacilities.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -242,12 +243,19 @@
     <Compile Include="Admin Side\User\Users_ViewUsers.aspx.designer.cs">
       <DependentUpon>Users_ViewUsers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.cs">
-      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails_NamePhotos.aspx.cs">
+      <DependentUpon>Walk_WalkDetails_NamePhotos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.designer.cs">
-      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails_NamePhotos.aspx.designer.cs">
+      <DependentUpon>Walk_WalkDetails_NamePhotos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails_TerrainFacilities.aspx.cs">
+      <DependentUpon>Walk_WalkDetails_TerrainFacilities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails_TerrainFacilities.aspx.designer.cs">
+      <DependentUpon>Walk_WalkDetails_TerrainFacilities.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">

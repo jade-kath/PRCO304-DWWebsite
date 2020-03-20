@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_WalkDetails.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_WalkDetails_NamePhotos.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails" %>
 
 <!DOCTYPE html>
 
@@ -44,11 +44,42 @@
             </div>
         
         <div class="main">
+
             <h2>Walk</h2>
 
-            <asp:RadioButton ID="radEntry" runat="server" Text="Has an e" OnCheckedChanged="radIsAdmin_CheckedChanged"/>
-        </div>
-        </div>
+                <div class="walkName">
+                    <label>Name of this walk/place:-</label>
+                        <asp:TextBox ID="txtPlaceName" runat="server" Width="167px"/>
+                             <br />
+                    <label>Address:-</label>
+                        <asp:TextBox ID="txtAddress" runat="server" Width="167px"/>
+                             <br />
+                    <label>Postcode:-</label>
+                        <asp:TextBox ID="txtPostcode" runat="server" Width="163px"/>
+                             <br /> 
+                    <label>Location:-</label>
+                        <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
+                             <br />
+                    <label>A Description of this walk:-</label>
+                        <asp:TextBox ID="txtDescript" runat="server" Width="163px"/>
+                             <br /> 
+                    <label>Typically how long would you spend walking at this location?-</label>
+                        <asp:TextBox ID="txtTimeLength" runat="server" Width="163px" placeholder="eg. 2 hours or 30 minutes"/>
+                             <br />
+                    <label>Distance/Size of the walk or area:-</label>
+                        <asp:TextBox ID="txtDuration" runat="server" Width="163px" placeholder="eg. 2km, 5 miles, 150 acres"/>
+                             <br />
+                </div>
+                <div class="gallery">
+                    <label>Upload an image to use as the cover photo:-</label>
+                    <asp:TextBox ID="txtCoverImg" runat="server" Width="163px"/>
+
+                </div>
+
+            <asp:Button ID="SaveChanges" runat="server" Text="Save Changes and Next Page" />
+
+           </div>
     </form>
 </body>
 </html>
