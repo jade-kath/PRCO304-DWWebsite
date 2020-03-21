@@ -36,9 +36,5 @@ namespace DogWalking.Admin_Side
             Response.Redirect("Users_ViewUsers.aspx");
         }
 
-        protected void radIsAdmin_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
