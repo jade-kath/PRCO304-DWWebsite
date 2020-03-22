@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DogWalking.Admin_Side.Walks
 {
@@ -14,18 +17,57 @@ namespace DogWalking.Admin_Side.Walks
             if (!IsPostBack)
             {
                 addWalkData();
+                testing();
+            }
+        }
+
+        private void testing()
+        {
+            string walking = Session["WalkID"].ToString();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string flatChk = "SELECT COUNT (*) FROM Walk JOIN WalksTerrain ON WalksTerrain.WalkID = Walk.WalkID" +
+                             " JOIN Terrain ON Terrain.TerrainID = WalksTerrain.TerrainID WHERE Walk.WalkID='" + walking + "' AND TerrainType = 'Flat'";
+            SqlCommand flat = new SqlCommand(flatChk, con);
+            string flatOutput = flat.ExecuteScalar().ToString();
+
+            string roughChk = "SELECT COUNT (*) FROM Walk JOIN WalksTerrain ON WalksTerrain.WalkID = Walk.WalkID" +
+                             " JOIN Terrain ON Terrain.TerrainID = WalksTerrain.TerrainID WHERE Walk.WalkID='" + walking + "' AND TerrainType = 'Rough'";
+            SqlCommand rough = new SqlCommand(roughChk, con);
+            string roughOutput = rough.ExecuteScalar().ToString();
+
+            if (flatOutput == "1")
+            {
+                radTerFlat.Checked = true;
+            }
+
+            if (roughOutput == "1")
+            {
+                radTerRough.Checked = true;
             }
         }
 
         private void addWalkData()
         {
-            
+            string walking = Session["WalkID"].ToString();
+
+        }
+
+        protected void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+
         }
 
         //TERRAINS
-        protected void radTerHill_CheckedChanged(object sender, EventArgs e)
+        protected void radTerFlat_CheckedChanged(object sender, EventArgs e)
         {
             string flat = "True";
+        }
+
+        protected void radTerHill_CheckedChanged(object sender, EventArgs e)
+        {
+            string hill = "True";
         }
 
         protected void radTerRough_CheckedChanged(object sender, EventArgs e)
@@ -127,11 +169,6 @@ namespace DogWalking.Admin_Side.Walks
         protected void radWheelFalse_CheckedChanged(object sender, EventArgs e)
         {
             string wheelFalse = "False";
-        }
-
-        protected void btnSaveChanges_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

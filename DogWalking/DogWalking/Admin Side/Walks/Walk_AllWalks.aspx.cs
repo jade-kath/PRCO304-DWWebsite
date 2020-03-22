@@ -53,7 +53,7 @@ namespace DogWalking.Admin_Side.Walks
         protected void grdViewWalks_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["WalkID"] = this.grdViewWalks.SelectedRow.Cells[1].Text;
-            Response.Redirect("Walk_WalkDetails.aspx");
+            Response.Redirect("Walk_WalkDetails_TerrainFacilities.aspx");
         }
     }
 }

@@ -19,9 +19,9 @@ namespace DogWalking
 
         private void bindToGrid()
         {
-            string sqlQuery = @"SELECT RequestNewWalk.WalkID, RequestNewWalk.WalkName, Location.Location, RequestNewWalk.WalkAddress, 
-                                RequestNewWalk.WalkPostcode FROM RequestNewWalk JOIN Location ON 
-                                Location.LocationID = RequestNewWalk.LocationID WHERE NewWalk = 'True'";
+            string sqlQuery = @"SELECT WalkID, WalkName, Location.Location, WalkAddress, 
+                                WalkPostcode FROM Walk JOIN Location ON 
+                                Location.LocationID = Walk.LocationID WHERE NewWalk = 'True'";
 
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);
