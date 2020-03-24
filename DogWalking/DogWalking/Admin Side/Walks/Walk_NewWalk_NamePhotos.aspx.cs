@@ -13,5 +13,10 @@ namespace DogWalking.Admin_Side.Walks
         {
 
         }
+
+        private void SaveNewWalk()
+        {
+
+        }
     }
 }

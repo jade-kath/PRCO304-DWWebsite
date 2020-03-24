@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_WalkDetails_TerrainFacilities.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails_TerrainFacilities" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_NewWalk_TerrainFacilities.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails_TerrainFacilities" %>
 
 <!DOCTYPE html>
 
@@ -47,7 +47,7 @@
 
         <div class="main">
             <div class="terrain">
-                    <label>Types of terrains on this walk:- (Select all that apply)-</label>
+                    <label>Types of terrains on this walk:- (Select all 
                         <br />
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged"/>
                         <br /> 
@@ -74,9 +74,9 @@
                 <div class="facilities">
 
                     <!--ENTRY FEE-->
-                    <label>Does this walk have an entry fee?k have an entry fee?</label>
+                    <label>Does this walk have an entry fee?k</label>
                             <br />
-                        <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" OnCheckedChanged="radEntryTrue_CheckedChanged"/>
+                        <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" AutoPostBack ="true"/>
                             <br /> 
                         <asp:RadioButton ID="radEntryFalse" runat="server" Text="No" OnCheckedChanged="radEntryFalse_CheckedChanged"/>
                             <br /> 
@@ -86,7 +86,7 @@
                     <asp:TextBox ID="txtEntryCost" runat="server" Width="167px" Visible="false" placeholder="Example £3 = 3.00"/>
                             <br /> 
                     <!--PARKING-->
-                    <label>Does this walk have free parking?-</label>
+                    <label>Does this walk have free parking?- have free parking?-</label>
                             <br />
                         <asp:RadioButton ID="radParkingTrue" runat="server" Text="Yes" OnCheckedChanged="radParkingTrue_CheckedChanged"/>
                             <br /> 
@@ -141,7 +141,7 @@
                     <asp:TextBox ID="txtLeadDetails" runat="server" Width="167px" placeholder=" eg. All dogs must be on leads on sports fields."/>
                             <br /> 
                     <!-- WHEELCHAIR ACCESSIBILITY -->
-                    <label>Is this walk Wheelchair accessible?-</label>
+                    <label>Is this walk Wheelchair 
                             <br />
                         <asp:RadioButton ID="radWheelTrue" runat="server" Text="Yes" OnCheckedChanged="radWheelTrue_CheckedChanged"/>
                             <br /> 
@@ -150,8 +150,8 @@
                             <br /> 
 
                 </div>
-
-            <asp:Button ID="btnSaveChanges" runat="server" Text="Save Changes" OnClick="btnSaveChanges_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="Previous Page" OnClick="btnBack_Click" />
+            <asp:Button ID="btnSave" runat="server" Text="Create Walk" OnClick="btnSaveChanges_Click" />
 
         </div>
     </form>

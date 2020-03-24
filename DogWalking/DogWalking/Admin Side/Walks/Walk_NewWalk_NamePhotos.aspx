@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_WalkDetails_NamePhotos.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_NewWalk_NamePhotos.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails" %>
 
 <!DOCTYPE html>
 
