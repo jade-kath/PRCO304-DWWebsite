@@ -26,6 +26,7 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="Walk_AllWalks.aspx">View All Walks</a>
                          <a href="Walk_ReqWalks.aspx">Requested Walks</a>
+                          <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
                       </div>
                  </div>
                 

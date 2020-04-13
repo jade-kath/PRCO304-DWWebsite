@@ -154,7 +154,6 @@
     <Content Include="Admin Side\User\Users_ViewAdminUsers.aspx" />
     <Content Include="Admin Side\User\Users_ViewUsers.aspx" />
     <Content Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx" />
-    <Content Include="Admin Side\Walks\Walk_NewWalk_TerrainFacilities.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -249,13 +248,6 @@
     </Compile>
     <Compile Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx.designer.cs">
       <DependentUpon>Walk_NewWalk_NamePhotos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin Side\Walks\Walk_NewWalk_TerrainFacilities.aspx.cs">
-      <DependentUpon>Walk_NewWalk_TerrainFacilities.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin Side\Walks\Walk_NewWalk_TerrainFacilities.aspx.designer.cs">
-      <DependentUpon>Walk_NewWalk_TerrainFacilities.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">
