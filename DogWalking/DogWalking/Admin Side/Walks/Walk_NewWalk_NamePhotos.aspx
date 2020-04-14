@@ -80,119 +80,18 @@
                     <br />
 
                 </div>
-
-             <div class="terrain">
-                 <h2>Terrain</h2>
-                   <p>Types of terrains on this walk:- (Select all that apply)</p>
-                    <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerHill" runat="server" Text="Hilly" OnCheckedChanged="radTerHill_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerRough" runat="server" Text="Rough" OnCheckedChanged="radTerRough_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerMud" runat="server" Text="Muddy" OnCheckedChanged="radTerMud_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerMount" runat="server" Text="Mountain" OnCheckedChanged="radTerMount_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerValley" runat="server" Text="Valley" OnCheckedChanged="radTerValley_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerForest" runat="server" Text="Forest" OnCheckedChanged="radTerForest_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerMarsh" runat="server" Text="Marsh" OnCheckedChanged="radTerMarsh_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerRiver" runat="server" Text="River" OnCheckedChanged="radTerRiver_CheckedChanged" />
-                        <br /> 
-                    <asp:RadioButton ID="radTerBeach" runat="server" Text="Beach" OnCheckedChanged="radTerBeach_CheckedChanged" />
-                        <br />
-                        <br /> 
-                </div>
-                
-                <div class="facilities">
-                    <h2>Facility Details</h2>
-                    <!--ENTRY FEE-->
-                    <p>Does this walk have an entry fee?</p>
-                        <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" OnCheckedChanged="radEntryTrue_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radEntryFalse" runat="server" Text="No" OnCheckedChanged="radEntryFalse_CheckedChanged" />
-                            <br /> 
-
-                    <asp:label ID="lblEntryTrue" runat="server" Visible="false">How much is the entry cost?</asp:label>
-                    <asp:label ID="lblEntryFormat" runat="server" Visible="false">Please give format 00.00. </asp:label>
-                    <asp:TextBox ID="txtEntryCost" runat="server" Width="167px" Visible="false" placeholder="Example £3 = 3.00"/>
-                            <br /> 
-                    <!--PARKING-->
-                    <p>Does this walk have free parking?- have free parking?-</p>
-                        <asp:RadioButton ID="radParkingTrue" runat="server" Text="Yes" OnCheckedChanged="radParkingTrue_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radParkingFalse" runat="server" Text="No" OnCheckedChanged="radParkingFalse_CheckedChanged" />
-                            <br /> 
-
-                    <asp:label ID="lblParkingTrue" runat="server" Visible="false">Further parking details?</asp:label>
-                    <asp:TextBox ID="txtParkDetails" runat="server" Width="167px" Visible="false" placeholder=" eg. Free with NT, Limited spaces."/>
-                            <br /> 
-                    <!-- LIVE STOCK -->
-                    <p>Is there any live stock on this walk?</p>
-                        <asp:RadioButton ID="radLiveTrue" runat="server" Text="Yes" OnCheckedChanged="radLiveTrue_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radLiveFalse" runat="server" Text="No" OnCheckedChanged="radLiveFalse_CheckedChanged" />
-                            <br /> 
-
-                    <asp:label ID="lblLiveTrue" runat="server" Visible="false">Further live stock details?</asp:label>
-                    <asp:TextBox ID="txtLiveDetails" runat="server" Width="167px" Visible="false" placeholder=" eg. Small gated area in the walk has live stock."/>
-                            <br /> 
-                    <!-- TOILETS -->
-                    <p>Is there any toilet facilities on this walk?</p>
-                        <asp:RadioButton ID="radToiletTrue" runat="server" Text="Yes" OnCheckedChanged="radToiletTrue_CheckedChanged"/>
-                            <br /> 
-                        <asp:RadioButton ID="radToiletFalse" runat="server" Text="No" OnCheckedChanged="radToiletFalse_CheckedChanged"/>
-                            <br /> 
-
-                    <asp:label ID="lblToiletTrue" runat="server" Visible="false">Further toilet facility details?</asp:label>
-                    <asp:TextBox ID="txtToiletDetails" runat="server" Width="167px" Visible="false" placeholder=" eg. Toilets cost 20p, Toilets are located in the car park."/>
-                            <br /> 
-                    <!-- REFRESHMENTS -->
-                    <p>Is there any refreshments available on this walk?-</p>
-                        <asp:RadioButton ID="radRefreshTrue" runat="server" Text="Yes" OnCheckedChanged="radRefreshTrue_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radRereshFalse" runat="server" Text="No" OnCheckedChanged="radRereshFalse_CheckedChanged" />
-                            <br /> 
-
-                    <asp:label ID="lblRefreshTrue" runat="server" Visible="false">Further refreshments details?</asp:label>
-                    <asp:TextBox ID="txtRefreshDetails" runat="server" Width="167px" Visible="false" placeholder=" eg. Cafe is open Monday to Friday 10am-6pm."/>
-                            <br /> 
-                    <!-- LEAD AREAS -->
-                    <p>Is this an on the lead, off the lead or both walk?-</p>
-                        <asp:RadioButton ID="radLeadOn" runat="server" Text="On the Lead" OnCheckedChanged="radLeadOn_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radLeadOff" runat="server" Text="Off the Lead" OnCheckedChanged="radLeadOff_CheckedChanged" />
-                            <br /> 
-
-                    <p>Further details on lead/off lead areas?lead/off lead areas?lead/off lead areas?</p>
-                    <asp:TextBox ID="txtLeadDetails" runat="server" Width="167px" placeholder=" eg. All dogs must be on leads on sports fields."/>
-                            <br /> 
-                    <!-- WHEELCHAIR ACCESSIBILITY -->
-                    <p>Is this walk Wheelchair friendly?</p>
-                        <asp:RadioButton ID="radWheelTrue" runat="server" Text="Yes" OnCheckedChanged="radWheelTrue_CheckedChanged" />
-                            <br /> 
-                        <asp:RadioButton ID="radWheelFalse" runat="server" Text="No" OnCheckedChanged="radWheelFalse_CheckedChanged" />
-                            <br /> 
-                            <br /> 
-
-                </div>
-
-            <asp:Button ID="SaveChanges" runat="server" Text="Save Walk" OnClick="SaveChanges_Click" />
-
-            <br />
-
-            <br />
-                <div id="clone" runat="server" Visible ="false">
+                        <asp:Button ID="SaveChanges" runat="server" Text="Save Walk" OnClick="SaveChanges_Click" />
+            <div id="clone" runat="server" Visible ="false">
                     <p>There's a walk that already exists with this postcode. Would you like to create it anyway?to create it anyway?to create it anyway?</p>
                     <asp:Button ID="noCancel" runat="server" Text="Cancel" />
                     <asp:Button ID="yesCont" runat="server" Text="Yes - Save" />                  
                 </div>
+                </div>
+            <br />
+            <br />
+                
 
-           </div>
-        </div>
+          </div>
     </form>
 </body>
 </html>
