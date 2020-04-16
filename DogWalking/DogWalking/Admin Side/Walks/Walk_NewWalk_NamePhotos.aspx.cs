@@ -15,6 +15,33 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            loadBack();
+        }
+
+        private void loadBack()
+        {
+            if (Session["goBack"] == null)
+            {
+
+            }
+            else
+            {
+                string load = Session["goBack"].ToString();
+                string sqlQuery = @"SELECT Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration FROM Walk WHERE Walk.WalkName = '" + load + "'";
+                ConnectionClass conn = new ConnectionClass();
+                conn.retrieveData(sqlQuery);
+
+                foreach (DataRow dr in conn.SQLTable.Rows)
+                {
+                    txtPlaceName.Text = (string)dr[0];
+                    txtAddress.Text = (string)dr[1];
+                    txtPostcode.Text = (string)dr[2];
+                    drpLocation.SelectedIndex = (int)dr[3] - 1;
+                    txtDescript.Text = (string)dr[4];
+                    txtTimeLength.Text = (string)dr[5];
+                    txtDuration.Text = (string)dr[6];
+                }
+            }
 
         }
 
