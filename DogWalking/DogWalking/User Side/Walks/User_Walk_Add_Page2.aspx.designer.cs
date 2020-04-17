@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DogWalking.Admin_Side.Walks {
+namespace DogWalking.User_Side.Walks {
     
     
-    public partial class Walk_NewWalk_Part2 {
+    public partial class User_Walk_Add_Page2 {
         
         /// <summary>
         /// form1 control.

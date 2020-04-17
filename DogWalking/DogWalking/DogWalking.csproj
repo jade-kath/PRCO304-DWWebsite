@@ -155,6 +155,7 @@
     <Content Include="Admin Side\User\Users_ViewAdminUsers.aspx" />
     <Content Include="Admin Side\User\Users_ViewUsers.aspx" />
     <Content Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx" />
+    <Content Include="Admin Side\Walks\Walk_WalkDetails.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -191,6 +192,8 @@
     <Content Include="User Side\UserCreateAccount.aspx" />
     <Content Include="User Side\UserProfile.aspx" />
     <Content Include="User Side\CRUD User Settings\UserEditSettings.aspx" />
+    <Content Include="User Side\Walks\User_Walk_Add_Page1.aspx" />
+    <Content Include="User Side\Walks\User_Walk_Add_Page2.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +260,13 @@
     <Compile Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx.designer.cs">
       <DependentUpon>Walk_NewWalk_NamePhotos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.cs">
+      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.designer.cs">
+      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -307,6 +317,20 @@
     </Compile>
     <Compile Include="User Side\CRUD User Settings\UserEditSettings.aspx.designer.cs">
       <DependentUpon>UserEditSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\Walks\User_Walk_Add_Page1.aspx.cs">
+      <DependentUpon>User_Walk_Add_Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\Walks\User_Walk_Add_Page1.aspx.designer.cs">
+      <DependentUpon>User_Walk_Add_Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\Walks\User_Walk_Add_Page2.aspx.cs">
+      <DependentUpon>User_Walk_Add_Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\Walks\User_Walk_Add_Page2.aspx.designer.cs">
+      <DependentUpon>User_Walk_Add_Page2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

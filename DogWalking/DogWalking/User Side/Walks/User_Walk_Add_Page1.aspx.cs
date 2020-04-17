@@ -7,11 +7,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Windows;
 
-namespace DogWalking.Admin_Side.Walks
+namespace DogWalking.User_Side.Walks
 {
-    public partial class Walk_WalkDetails : System.Web.UI.Page
+    public partial class User_Walk_Add_Page1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -75,13 +74,13 @@ namespace DogWalking.Admin_Side.Walks
             string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
                               " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
                                  " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
-                                 " '" + txtDuration.Text + "', 'False')";
+                                 " '" + txtDuration.Text + "', 'True')";
 
             SqlCommand cmd = new SqlCommand(SaveWalk, con);
             cmd.ExecuteScalar();
 
             Session["newWalk"] = txtPlaceName.Text;
-            Response.Redirect("Walk_NewWalk_Part2.aspx");
+            Response.Redirect("User_Walk_Add_Page2.aspx");
         }
 
         protected void SaveChanges_Click(object sender, EventArgs e)
@@ -99,7 +98,7 @@ namespace DogWalking.Admin_Side.Walks
 
         protected void noCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Walk_AllWalks.aspx");
+            Response.Redirect("User_Walk_Add_Page2.aspx");
         }
 
         protected void yesCont_Click(object sender, EventArgs e)

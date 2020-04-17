@@ -8,14 +8,44 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace DogWalking.Admin_Side.Walks
+namespace DogWalking.User_Side.Walks
 {
-    public partial class Walk_NewWalk_Part2 : System.Web.UI.Page
+    public partial class User_Walk_Add_Page2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+        private void Clear()
+        {
+            radTerFlat.Checked = false;
+            radTerHill.Checked = false;
+            radTerRough.Checked = false;
+            radTerMud.Checked = false;
+            radTerMount.Checked = false;
+            radTerMarsh.Checked = false;
+            radTerRiver.Checked = false;
+            radTerValley.Checked = false;
+            radTerForest.Checked = false;
+            radTerBeach.Checked = false;
+        }
+
+        private void clearLead()
+        {
+            radLeadOff.Checked = false;
+            radLeadOn.Checked = false;
+        }
+
+        protected void btnClearTer_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        protected void btnClearLead_Click(object sender, EventArgs e)
+        {
+            clearLead();
+        }
+
         private void addFacilities()
         {
             //facilities
@@ -112,6 +142,7 @@ namespace DogWalking.Admin_Side.Walks
             SqlCommand cmd = new SqlCommand(addFacilities, con);
             cmd.ExecuteScalar();
             con.Close();
+            addTerrain();
         }
 
         private void addTerrain()
@@ -228,43 +259,12 @@ namespace DogWalking.Admin_Side.Walks
                 con.Close();
             }
 
-            Response.Redirect("Walk_AllWalks.aspx");
-        }
-
-        private void Clear()
-        {
-            radTerFlat.Checked = false;
-            radTerHill.Checked = false;
-            radTerRough.Checked = false;
-            radTerMud.Checked = false;
-            radTerMount.Checked = false;
-            radTerMarsh.Checked = false;
-            radTerRiver.Checked = false;
-            radTerValley.Checked = false;
-            radTerForest.Checked = false;
-            radTerBeach.Checked = false;
-        }
-
-        protected void btnClearTer_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
-
-        private void clearLead()
-        {
-            radLeadOff.Checked = false;
-            radLeadOn.Checked = false;
-        }
-
-        protected void btnClearLead_Click(object sender, EventArgs e)
-        {
-            clearLead();
+            Response.Redirect("UserProfile.aspx");
         }
 
         protected void Back_Click(object sender, EventArgs e)
-        { 
-            Session["goBack"] = Session["newWalk"];
-            Response.Redirect("Walk_NewWalk_NamePhotos.aspx");
+        {
+            Response.Redirect("User_Walk_Add_Page1.aspx");
         }
 
         protected void Save_Click(object sender, EventArgs e)
@@ -284,7 +284,7 @@ namespace DogWalking.Admin_Side.Walks
             con.Close();
 
             Session.Remove("newWalk");
-            Response.Redirect("Walk_AllWalks.aspx");
+            Response.Redirect("UserProfile.aspx");
         }
 
         //TERRAIN
@@ -298,12 +298,12 @@ namespace DogWalking.Admin_Side.Walks
 
         }
 
-        protected void radTerRough_CheckedChanged(object sender, EventArgs e)
+        protected void radTerMud_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void radTerMud_CheckedChanged(object sender, EventArgs e)
+        protected void radTerRough_CheckedChanged(object sender, EventArgs e)
         {
 
         }

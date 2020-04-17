@@ -12,6 +12,10 @@
             <h3>User Profile</h3>
             <br />
             <h4><a href="UserEditSettings.aspx">Edit Profile</a></h4>
+
+            <div class="newWalk">
+                <asp:Button ID="btnNewWalk" runat="server" Text="Add a Walk" OnClick="btnNewWalk_Click"></asp:Button>
+            </div>
         </div>
     </form>
 </body>

@@ -51,7 +51,7 @@
 
             <asp:GridView ID="grdViewWalks" runat="server" OnSelectedIndexChanged="grdViewWalks_SelectedIndexChanged">
                 <Columns>
-                    <asp:ButtonField Text="Edit Walk" CommandName="Select" ItemStyle-Width="100"/>
+                    <asp:ButtonField Text="Edit" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>
             </asp:GridView>
 
