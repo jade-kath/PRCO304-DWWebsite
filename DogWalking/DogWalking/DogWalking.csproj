@@ -155,7 +155,7 @@
     <Content Include="Admin Side\User\Users_ViewAdminUsers.aspx" />
     <Content Include="Admin Side\User\Users_ViewUsers.aspx" />
     <Content Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx" />
-    <Content Include="Admin Side\Walks\Walk_WalkDetails.aspx" />
+    <Content Include="Admin Side\Walks\Walk_WalkPreview.aspx" />
     <Content Include="index.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -260,12 +260,12 @@
     <Compile Include="Admin Side\Walks\Walk_NewWalk_NamePhotos.aspx.designer.cs">
       <DependentUpon>Walk_NewWalk_NamePhotos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.cs">
-      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_WalkPreview.aspx.cs">
+      <DependentUpon>Walk_WalkPreview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin Side\Walks\Walk_WalkDetails.aspx.designer.cs">
-      <DependentUpon>Walk_WalkDetails.aspx</DependentUpon>
+    <Compile Include="Admin Side\Walks\Walk_WalkPreview.aspx.designer.cs">
+      <DependentUpon>Walk_WalkPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="index.aspx.cs">
