@@ -67,40 +67,49 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
-        /// lblPlaceName control.
+        /// lblWalkName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPlaceName;
+        protected global::System.Web.UI.WebControls.Label lblWalkName;
         
         /// <summary>
-        /// lblAddress control.
+        /// lblAddr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddress;
+        protected global::System.Web.UI.WebControls.Label lblAddr;
         
         /// <summary>
-        /// lblLocation control.
+        /// lblPostcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lblPostcode;
         
         /// <summary>
-        /// lblDescript control.
+        /// lblLocate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescript;
+        protected global::System.Web.UI.WebControls.Label lblLocate;
+        
+        /// <summary>
+        /// lblDescribe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDescribe;
         
         /// <summary>
         /// lblTime control.
@@ -112,22 +121,22 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblTime;
         
         /// <summary>
-        /// lblDistance control.
+        /// lblDist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDistance;
+        protected global::System.Web.UI.WebControls.Label lblDist;
         
         /// <summary>
-        /// lstTerrain control.
+        /// grdTerrain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstTerrain;
+        protected global::System.Web.UI.WebControls.GridView grdTerrain;
         
         /// <summary>
         /// lblLeaded control.
@@ -148,13 +157,13 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblNonLead;
         
         /// <summary>
-        /// lblLeadDetails control.
+        /// lblLeadDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLeadDetails;
+        protected global::System.Web.UI.WebControls.Label lblLeadDetail;
         
         /// <summary>
         /// lblEntry control.
@@ -166,13 +175,13 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblEntry;
         
         /// <summary>
-        /// lblEntryDetails control.
+        /// lblEntryDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEntryDetails;
+        protected global::System.Web.UI.WebControls.Label lblEntryDetail;
         
         /// <summary>
         /// lblPark control.
@@ -184,13 +193,13 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblPark;
         
         /// <summary>
-        /// lblParkDetails control.
+        /// lblParkDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblParkDetails;
+        protected global::System.Web.UI.WebControls.Label lblParkDetail;
         
         /// <summary>
         /// lblLive control.
@@ -202,13 +211,13 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblLive;
         
         /// <summary>
-        /// lblLiveDetails control.
+        /// lblLiveDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLiveDetails;
+        protected global::System.Web.UI.WebControls.Label lblLiveDetail;
         
         /// <summary>
         /// lblToilet control.
@@ -220,13 +229,13 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblToilet;
         
         /// <summary>
-        /// lblToiletDetails control.
+        /// lblToiletDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblToiletDetails;
+        protected global::System.Web.UI.WebControls.Label lblToiletDetail;
         
         /// <summary>
         /// lblRefresh control.
@@ -238,12 +247,21 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblRefresh;
         
         /// <summary>
-        /// lblRefreshDetails control.
+        /// lblRefreshDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRefreshDetails;
+        protected global::System.Web.UI.WebControls.Label lblRefreshDetail;
+        
+        /// <summary>
+        /// lblWheel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWheel;
     }
 }

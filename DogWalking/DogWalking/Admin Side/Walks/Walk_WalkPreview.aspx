@@ -37,8 +37,8 @@
                   </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
-                         <a href="../User/Users_ViewAdminUsers.aspx">
-                         <a href="../User/Users_CreateAccount.aspx"
+                         <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
+                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
                       </div>
                 </div>   
             </div>
@@ -53,73 +53,71 @@
             </div>
                     <br />
             <div class="general">
-                <asp:Label ID="lblPlaceName" runat="server"/>
-                    <br />
-                <asp:Label ID="lblAddress" runat="server"/>
-                    <br />
-                <asp:Label ID="lblLocation" runat="server"/>
-                    <br />
-                <asp:Label ID="lblDescript" runat="server"/>
-                    <br />
-                
-                <label>Time spent here:bel>Time spent here:</label>
+                <asp:Label ID="lblWalkName" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="lblAddr" runat="server"></asp:Label>
+                <asp:Label ID="lblPostcode" runat="server" />
+                <br />
+                <asp:Label ID="lblLocate" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="lblDescribe" runat="server"></asp:Label>
+                <br />
+
+                <label>Time spent here:</label>
                 <asp:Label ID="lblTime" runat="server"/>
                     <br />
                 <label>Distance of this Walk:</label>
-                <asp:Label ID="lblDistance" runat="server"/>
+                    <br />
+                <asp:Label ID="lblDist" runat="server" ReadOnly="true"/>
                     <br />
             </div>
                     <br />
             <div class="terrain">
-                <asp:ListBox ID="lstTerrain" runat="server"></asp:ListBox>
+                <asp:GridView ID="grdTerrain" runat="server"></asp:GridView>
             </div>
                     <br />
             <div class="leads">
-                <label>Leaded Areas:</label>
-                    <br />
+                <h3>Lead Information:</h3>
                 <asp:Label ID="lblLeaded" runat="server" />
-                    <br />
-                
-                <label>Non-leaded Areas:</label>
                     <br />
                 <asp:Label ID="lblNonLead" runat="server" />
                     <br />
-                
-                <label>Further Details:</label>
-                    <br />
-                <asp:Label ID="lblLeadDetails" runat="server" />
+                <asp:Label ID="lblLeadDetail" runat="server" />
                     <br />
             </div>
 
             <div class="facilities">
-                <label>Entry Fee</label>
+                <h3>Entry Fee</h3>
                 <asp:Label ID="lblEntry" runat="server" />
                     <br />
-                <asp:Label ID="lblEntryDetails" runat="server" />
+                <asp:Label ID="lblEntryDetail" runat="server" />
                     <br />
                 
-                <label>Parking</label>
+                <h3>Parking</h3>
                 <asp:Label ID="lblPark" runat="server" />
                     <br />
-                <asp:Label ID="lblParkDetails" runat="server" />
+                <asp:Label ID="lblParkDetail" runat="server" />
                     <br />
                 
-                <label>Live Stock</label>
+                <h3>Live Stock</h3>
                 <asp:Label ID="lblLive" runat="server" />
                     <br />
-                <asp:Label ID="lblLiveDetails" runat="server" />
+                <asp:Label ID="lblLiveDetail" runat="server" />
                     <br />
                 
-                <label>Toilets</label>
+                <h3>Toilets</h3>
                 <asp:Label ID="lblToilet" runat="server" />
                     <br />
-                <asp:Label ID="lblToiletDetails" runat="server" />
+                <asp:Label ID="lblToiletDetail" runat="server" />
                     <br />
 
-                <label>Refreshments</label>
+                <h3>Refreshments</h3>
                 <asp:Label ID="lblRefresh" runat="server" />
                     <br />
-                <asp:Label ID="lblRefreshDetails" runat="server" />
+                <asp:Label ID="lblRefreshDetail" runat="server" />
+
+                <h3>Wheelchair Friendly</h3>
+                <asp:Label ID="lblWheel" runat="server" />
                     <br />
             </div>
         </div>
