@@ -408,7 +408,7 @@ namespace DogWalking.Admin_Side.Walks
             string walkPost = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string postWeb = "UPDATE Walk SET NewWalk = 'False' WHERE WalkName = '" + walkPost + "'";
+            string postWeb = "UPDATE Walk SET NewWalk = 'False' WHERE WalkID = '" + walkPost + "'";
             SqlCommand cmd = new SqlCommand(postWeb, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -421,7 +421,7 @@ namespace DogWalking.Admin_Side.Walks
             string walkRemove = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string removeWeb = "UPDATE Walk SET NewWalk = 'True' WHERE WalkName = '" + walkRemove + "'";
+            string removeWeb = "UPDATE Walk SET NewWalk = 'True' WHERE WalkID = '" + walkRemove + "'";
             SqlCommand cmd = new SqlCommand(removeWeb, con);
             cmd.ExecuteScalar();
             con.Close();

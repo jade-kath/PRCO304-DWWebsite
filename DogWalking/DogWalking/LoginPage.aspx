@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Lead The Way - Log In</title>
+    <title>Lead The Way</title>
 </head>
 <body>
     <form id="form1" runat="server">

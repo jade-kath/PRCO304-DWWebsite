@@ -262,7 +262,9 @@ namespace DogWalking.Admin_Side.Walks
         }
 
         protected void Back_Click(object sender, EventArgs e)
-        { 
+        {
+            Clear();
+            clearLead();
             Session["goBack"] = Session["newWalk"];
             Response.Redirect("Walk_NewWalk_NamePhotos.aspx");
         }
