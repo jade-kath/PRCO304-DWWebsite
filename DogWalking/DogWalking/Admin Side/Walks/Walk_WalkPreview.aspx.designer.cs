@@ -31,15 +31,6 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
-        /// btnEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
-        
-        /// <summary>
         /// btnPost control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace DogWalking.Admin_Side.Walks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// btnEditGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditGeneral;
         
         /// <summary>
         /// lblWalkName control.
@@ -130,6 +130,15 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblDist;
         
         /// <summary>
+        /// btnEditTerrain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditTerrain;
+        
+        /// <summary>
         /// grdTerrain control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace DogWalking.Admin_Side.Walks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdTerrain;
+        
+        /// <summary>
+        /// btnEditFacility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditFacility;
         
         /// <summary>
         /// lblLeaded control.

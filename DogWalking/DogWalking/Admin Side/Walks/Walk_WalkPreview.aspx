@@ -46,13 +46,14 @@
         <div class="main">
             <div class="controlButtons">
                 <asp:Button runat="server" ID="btnBack" Text="Go Back" OnClick="btnBack_Click" />
-                <asp:Button runat="server" ID="btnEdit" Text="Edit" OnClick="btnEdit_Click" />
                 <asp:Button runat="server" ID="btnPost" Visible="false" Text="Post to Website" OnClick="btnPost_Click" />
                 <asp:Button runat="server" ID="btnRemove" Visible="false" Text="Remove From Website" OnClick="btnRemove_Click" />
                 <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="btnDelete_Click" />
             </div>
                     <br />
             <div class="general">
+                <asp:Button runat="server" ID="btnEditGeneral" Text="Edit General Details" OnClick="btnEditGeneral_Click"/>
+                <br />
                 <asp:Label ID="lblWalkName" runat="server"></asp:Label>
                 <br />
                 <asp:Label ID="lblAddr" runat="server"></asp:Label>
@@ -72,17 +73,24 @@
                     <br />
             </div>
                     <br />
+
             <div class="terrain">
-                <asp:GridView ID="grdTerrain" runat="server"></asp:GridView>
-            </div>
+                <h3>Terrain:</h3>
+                <asp:Button runat="server" ID="btnEditTerrain" Text="Edit Terrain" OnClick="btnEditTerrain_Click" />
                     <br />
+                <asp:GridView ID="grdTerrain" runat="server"></asp:GridView>
+                    <br />
+            </div>
+
             <div class="leads">
                 <h3>Lead Information:</h3>
+                <asp:Button runat="server" ID="btnEditFacility" Text="Edit Facility and Lead Details" OnClick="btnEditFacility_Click" />
                 <asp:Label ID="lblLeaded" runat="server" />
                     <br />
                 <asp:Label ID="lblNonLead" runat="server" />
                     <br />
                 <asp:Label ID="lblLeadDetail" runat="server" />
+                    <br />
                     <br />
             </div>
 

@@ -148,6 +148,9 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Admin Side\User\Users_ChangeEmailPassword.aspx" />
     <Content Include="Admin Side\Walks\Walk_AllWalks.aspx" />
+    <Content Include="Admin Side\Walks\Walk_EditWalk_Facility.aspx" />
+    <Content Include="Admin Side\Walks\Walk_EditWalk_General.aspx" />
+    <Content Include="Admin Side\Walks\Walk_EditWalk_Terrain.aspx" />
     <Content Include="Admin Side\Walks\Walk_NewWalk_Part2.aspx" />
     <Content Include="Admin Side\Walks\Walk_ReqWalks.aspx" />
     <Content Include="Admin Side\User\Users_CreateAccount.aspx" />
@@ -210,6 +213,27 @@
     </Compile>
     <Compile Include="Admin Side\Walks\Walk_AllWalks.aspx.designer.cs">
       <DependentUpon>Walk_AllWalks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_Facility.aspx.cs">
+      <DependentUpon>Walk_EditWalk_Facility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_Facility.aspx.designer.cs">
+      <DependentUpon>Walk_EditWalk_Facility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_General.aspx.cs">
+      <DependentUpon>Walk_EditWalk_General.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_General.aspx.designer.cs">
+      <DependentUpon>Walk_EditWalk_General.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_Terrain.aspx.cs">
+      <DependentUpon>Walk_EditWalk_Terrain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Walks\Walk_EditWalk_Terrain.aspx.designer.cs">
+      <DependentUpon>Walk_EditWalk_Terrain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Walks\Walk_NewWalk_Part2.aspx.cs">
       <DependentUpon>Walk_NewWalk_Part2.aspx</DependentUpon>

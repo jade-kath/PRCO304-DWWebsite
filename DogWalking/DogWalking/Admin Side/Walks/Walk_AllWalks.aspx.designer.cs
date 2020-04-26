@@ -22,12 +22,21 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// grdViewWalks control.
+        /// grdPubWalks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdViewWalks;
+        protected global::System.Web.UI.WebControls.GridView grdPubWalks;
+        
+        /// <summary>
+        /// grdUnWalks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdUnWalks;
     }
 }

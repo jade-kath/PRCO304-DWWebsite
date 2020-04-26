@@ -14,9 +14,10 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            PostToWebsite();
+
             if (!IsPostBack)
             {
-                PostToWebsite();
                 previewWalk();
                 terrainList();
                 facilityDetails();
@@ -385,9 +386,6 @@ namespace DogWalking.Admin_Side.Walks
 
         private void PostToWebsite()
         {
-            //string notPosted = Session["notPosted"].ToString();
-            //string Posted = Session["Posted"].ToString();
-
             if (Session["notPosted"] == null)
             {
                 btnRemove.Visible = true;
@@ -398,17 +396,12 @@ namespace DogWalking.Admin_Side.Walks
             }
         }
 
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("");
-        }
-
         protected void btnPost_Click(object sender, EventArgs e)
         {
             string walkPost = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string postWeb = "UPDATE Walk SET NewWalk = 'False' WHERE WalkID = '" + walkPost + "'";
+            string postWeb = "UPDATE Walk SET Published = 'True' WHERE WalkID = '" + walkPost + "'";
             SqlCommand cmd = new SqlCommand(postWeb, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -421,7 +414,7 @@ namespace DogWalking.Admin_Side.Walks
             string walkRemove = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string removeWeb = "UPDATE Walk SET NewWalk = 'True' WHERE WalkID = '" + walkRemove + "'";
+            string removeWeb = "UPDATE Walk SET Published = 'False' WHERE WalkID = '" + walkRemove + "'";
             SqlCommand cmd = new SqlCommand(removeWeb, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -469,6 +462,21 @@ namespace DogWalking.Admin_Side.Walks
                 Session.Remove("notPosted");
                 Response.Redirect("Walk_ReqWalks.aspx");
             }
+        }
+
+        protected void btnEditGeneral_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Walk_EditWalk_General.aspx");
+        }
+
+        protected void btnEditTerrain_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Walk_EditWalk_Terrain.aspx");
+        }
+
+        protected void btnEditFacility_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Walk_EditWalk_Facility.aspx");
         }
     }
 }

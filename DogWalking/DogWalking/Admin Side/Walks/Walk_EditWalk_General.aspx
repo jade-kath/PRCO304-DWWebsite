@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_NewWalk_NamePhotos.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_WalkDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Walk_EditWalk_General.aspx.cs" Inherits="DogWalking.Admin_Side.Walks.Walk_EditWalk" %>
 
 <!DOCTYPE html>
 
@@ -16,8 +16,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <div class="sidenav">
+
+         <div class="sidenav">
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Walks
@@ -25,7 +25,7 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="Walk_AllWalks.aspx">View All Walks</a>
                          <a href="Walk_ReqWalks.aspx">Requested Walks</a>
-                          <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
+                         <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
                       </div>
                  </div>
                 
@@ -41,14 +41,10 @@
                          <a href="../User/Users_CreateAccount.aspx">Create New User</a>
                       </div>
                 </div>
-                
             </div>
-        
+
         <div class="main">
-
-            <h2>Walk</h2>
-
-                <div class="walkName">
+            <div class="general">
                     <h2>General Details</h2>
                     <p>Name of this walk/place:-</p>
                         <asp:TextBox ID="txtPlaceName" runat="server" Width="167px"/>
@@ -72,26 +68,10 @@
                     <p>Distance/Size of the walk or area:-</p>
                         <asp:TextBox ID="txtDuration" runat="server" Width="163px" placeholder="eg. 2km, 5 miles, 150 acres"/>
                              <br />
-                </div>
-                <div class="gallery">
-                    <p>Upload an image to use as the cover photo</p>
-                    <asp:TextBox ID="txtCoverImg" runat="server" Width="163px"/>
-
-                    <br />
-
-                </div>
-                        <asp:Button ID="SaveChanges" runat="server" Text="Next Page" OnClick="SaveChanges_Click" />
-            <div id="clone" runat="server" Visible ="false">
-                    <p>There's a walk that already exists with this postcode. Would you like to create it anyway</p>
-                    <asp:Button ID="noCancel" runat="server" Text="Cancel" />
-                    <asp:Button ID="yesCont" runat="server" Text="Yes, Continue & Save" OnClick="yesCont_Click" />                  
-                </div>
-                </div>
-            <br />
-            <br />
-                
-
-          </div>
+                <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
+                <asp:Button runat="server" ID="btnSave" Text="Save Changes" OnClick="btnSave_Click" />
+             </div>
+        </div>
     </form>
 </body>
 </html>

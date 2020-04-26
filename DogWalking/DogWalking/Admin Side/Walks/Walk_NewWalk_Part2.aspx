@@ -47,7 +47,7 @@
             <div class ="main">
                 <div class="terrain">
                  <h2>Terrain</h2>
-  Types of terrains on this walk:- (Select all that apply)</p>
+                    <p>Types of terrains on this walk:- (Select all that apply)</p>
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged" />
                         <br /> 
                     <asp:RadioButton ID="radTerHill" runat="server" Text="Hilly" OnCheckedChanged="radTerHill_CheckedChanged" />
@@ -140,7 +140,7 @@
                     <asp:TextBox ID="txtLeadDetails" runat="server" Width="167px" placeholder=" eg. All dogs must be on leads on sports fields."/>
                             <br /> 
                     <!-- WHEELCHAIR ACCESSIBILITY -->
-                    <p>Is this walk Wheelchair friendly?</p>
+   Is this walk Wheelchair friendly?</p>
                         <asp:RadioButton ID="radWheelTrue" runat="server" Text="Yes" GroupName="Wheel" OnCheckedChanged="radWheelTrue_CheckedChanged" />
                             <br /> 
                         <asp:RadioButton ID="radWheelFalse" runat="server" Text="No" GroupName="Wheel" OnCheckedChanged="radWheelFalse_CheckedChanged" />
@@ -150,6 +150,7 @@
 
                 <asp:Button ID="Back" runat="server" Text="Back" OnClick="Back_Click" />
                 <asp:Button ID="Save" runat="server" Text="Save" OnClick="Save_Click" />
+                <asp:Button ID="SavePublish" runat="server" Text="Save & Publish" OnClick="SavePublish_Click" />
                 <br />
                 <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" />
             </div>

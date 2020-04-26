@@ -106,7 +106,7 @@ namespace DogWalking.Admin_Side.Walks
             string addFacilities = "UPDATE Walk SET EntryFee = '" + entry + "' , EntryCost = '" + txtEntryCost.Text + "' , " +
                                    "FreeParking = '" + parking + "', ParkingDetail = '" + txtParkDetails.Text + "', Livestock = '" + live + "', " +
                                    "LivestockDetail = '" + txtLiveDetails.Text + "', Toilets = '" + toilet + "', ToiletsDetail = '" + txtToiletDetails.Text + "', " +
-                                   "Refreshments = '" + refresh + "', RefreshmentDetail = '" + txtRefreshDetails + "', " +
+                                   "Refreshments = '" + refresh + "', RefreshmentDetail = '" + txtRefreshDetails.Text + "', " +
                                    "WheelchairFriendly = '" + wheel + "', OffLead = '" + leadOff + "', OnLead = '" + leadOn + "', " +
                                    "LeadDetails = '" + txtLeadDetails.Text + "' WHERE WalkName = '" + session + "'";
             SqlCommand cmd = new SqlCommand(addFacilities, con);
@@ -227,8 +227,6 @@ namespace DogWalking.Admin_Side.Walks
                 cmd.ExecuteScalar();
                 con.Close();
             }
-
-            Response.Redirect("Walk_AllWalks.aspx");
         }
 
         private void Clear()
@@ -266,6 +264,7 @@ namespace DogWalking.Admin_Side.Walks
             Clear();
             clearLead();
             Session["goBack"] = Session["newWalk"];
+            Session.Remove("newWalk");
             Response.Redirect("Walk_NewWalk_NamePhotos.aspx");
         }
 
@@ -273,6 +272,35 @@ namespace DogWalking.Admin_Side.Walks
         {
             addFacilities();
             addTerrain();
+
+            string session = Session["newWalk"].ToString();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+            string justSave = "UPDATE Walk SET Published = 'False' WHERE WalkID = '" + session + "'";
+            
+            SqlCommand cmd = new SqlCommand(justSave, con);
+            cmd.ExecuteScalar();
+            con.Close();
+
+            Session.Remove("newWalk");
+            Response.Redirect("Walk_AllWalks.aspx");
+        }
+
+        protected void SavePublish_Click(object sender, EventArgs e)
+        {
+            addFacilities();
+            addTerrain();
+            string session = Session["newWalk"].ToString();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+            string savePublish = "UPDATE Walk SET Published = 'True' WHERE WalkID = '" + session + "'";
+
+            SqlCommand cmd = new SqlCommand(savePublish, con);
+            cmd.ExecuteScalar();
+            con.Close();
+
+            Session.Remove("newWalk");
+            Response.Redirect("Walk_AllWalks.aspx");
         }
 
         protected void Cancel_Click(object sender, EventArgs e)

@@ -70,15 +70,39 @@ namespace DogWalking.Admin_Side.Walks
 
         private void saveWalk()
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            con.Open();
-            string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
-                              " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
-                                 " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
-                                 " '" + txtDuration.Text + "', 'False')";
+            if (Session["goBack"] == null)
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                con.Open();
+                string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                  " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                     " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                     " '" + txtDuration.Text + "', 'False')";
 
-            SqlCommand cmd = new SqlCommand(SaveWalk, con);
-            cmd.ExecuteScalar();
+                SqlCommand cmd = new SqlCommand(SaveWalk, con);
+                cmd.ExecuteScalar();
+                con.Close();
+            }
+            else
+            {
+                string name = Session["goBack"].ToString();
+                string delWalk = @"DELETE FROM Walk WHERE WalkID = '(SELECT WalkID FROM Walk WHERE WalkName = '" + name + "')'";
+                ConnectionClass con = new ConnectionClass();
+                con.retrieveData(delWalk);
+
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                conn.Open();
+                string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                  " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                     " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                     " '" + txtDuration.Text + "', 'False')";
+
+                SqlCommand cmd = new SqlCommand(SaveWalk, conn);
+                cmd.ExecuteScalar();
+                conn.Close();
+
+                Session.Remove("goBack");
+            }
 
             Session["newWalk"] = txtPlaceName.Text;
             Response.Redirect("Walk_NewWalk_Part2.aspx");
@@ -92,13 +116,14 @@ namespace DogWalking.Admin_Side.Walks
             }
             else
             {
-                Session.Remove("goBack");
                 saveWalk();
             }
         }
 
         protected void noCancel_Click(object sender, EventArgs e)
         {
+            Session.Remove("goBack");
+            Session.Remove("newWalk");
             Response.Redirect("Walk_AllWalks.aspx");
         }
 
