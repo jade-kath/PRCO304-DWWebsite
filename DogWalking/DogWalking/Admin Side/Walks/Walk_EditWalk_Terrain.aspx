@@ -45,7 +45,7 @@
         <div class="main">
             <div class="terrain">
                  <h2>Terrain</h2>
-   Types of terrains on this walk:- (Select all that apply)</p>
+                    <p>Types of terrains on this walk:- (Select all that apply)</p>
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" />
                         <br /> 
                     <asp:RadioButton ID="radTerHill" runat="server" Text="Hilly" />

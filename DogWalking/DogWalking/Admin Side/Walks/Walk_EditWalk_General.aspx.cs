@@ -14,14 +14,17 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            showWalk();
+            if (!IsPostBack)
+            {
+                showWalk();
+            }
         }
 
         private void showWalk()
         {
             string load = Session["WalkID"].ToString();
             string sqlQuery = @"SELECT Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID," +
-                               " Walk.Description, Walk.Hours, Walk.Duration FROM Walk WHERE Walk.WalkName = '" + load + "'";
+                               " Walk.Description, Walk.Hours, Walk.Duration FROM Walk WHERE Walk.WalkID = '" + load + "'";
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);
 
@@ -39,17 +42,21 @@ namespace DogWalking.Admin_Side.Walks
 
         private void updateGeneral()
         {
+            string session = Session["WalkID"].ToString();
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            conn.Open();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
             string updateWalk = "UPDATE Walk SET Walk.WalkName = '" + txtPlaceName.Text + "', Walk.WalkAddress = '" + txtAddress.Text + "'," +
                                 " Walk.WalkPostcode = '" + txtPostcode.Text + "', Walk.LocationID = '" + drpLocation.SelectedValue + "'," +
                                 " Walk.Description = '" + txtDescript.Text + "', Walk.Hours = '" + txtTimeLength.Text + "'," +
-                                " Walk.Duration = '" + txtDuration.Text + "'";
+                                " Walk.Duration = '" + txtDuration.Text + "' WHERE WalkID = '" + session + "'";
 
-            SqlCommand cmd = new SqlCommand(updateWalk, conn);
+            SqlCommand cmd = new SqlCommand(updateWalk, con);
             cmd.ExecuteScalar();
-            conn.Close();
+            con.Close();
+
+            Response.Redirect("Walk_WalkPreview.aspx");
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -60,7 +67,6 @@ namespace DogWalking.Admin_Side.Walks
         protected void btnSave_Click(object sender, EventArgs e)
         {
             updateGeneral();
-            Response.Redirect("Walk_WalkPreview.aspx");
         }
     }
 }

@@ -83,8 +83,8 @@
             </div>
 
             <div class="leads">
-                <h3>Lead Information:</h3>
                 <asp:Button runat="server" ID="btnEditFacility" Text="Edit Facility and Lead Details" OnClick="btnEditFacility_Click" />
+                <h3>Lead Information:</h3>
                 <asp:Label ID="lblLeaded" runat="server" />
                     <br />
                 <asp:Label ID="lblNonLead" runat="server" />
