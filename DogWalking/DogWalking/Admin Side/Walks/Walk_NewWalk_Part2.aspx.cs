@@ -274,10 +274,16 @@ namespace DogWalking.Admin_Side.Walks
             addTerrain();
 
             string session = Session["newWalk"].ToString();
+            string user = Session["Admin"].ToString();
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string justSave = "UPDATE Walk SET Published = 'False' WHERE WalkID = '" + session + "'";
-            
+
+            string walkCreator = "UPDATE Walk SET UserID = (SELECT UserID FROM Users WHERE Username = '" + user + "') WHERE WalkName = '" + session + "'";
+            SqlCommand cmdCreator = new SqlCommand(walkCreator, con);
+            cmdCreator.ExecuteScalar();
+
+            string justSave = "UPDATE Walk SET Published = 'False' WHERE WalkName = '" + session + "'";
             SqlCommand cmd = new SqlCommand(justSave, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -291,10 +297,15 @@ namespace DogWalking.Admin_Side.Walks
             addFacilities();
             addTerrain();
             string session = Session["newWalk"].ToString();
+            string user = Session["Admin"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string savePublish = "UPDATE Walk SET Published = 'True' WHERE WalkID = '" + session + "'";
 
+            string walkCreator = "UPDATE Walk SET UserID = (SELECT UserID FROM Users WHERE Username = '" + user + "') WHERE WalkName = '" + session + "'";
+            SqlCommand cmdCreator = new SqlCommand(walkCreator, con);
+            cmdCreator.ExecuteScalar();
+
+            string savePublish = "UPDATE Walk SET Published = 'True' WHERE WalkName = '" + session + "'";
             SqlCommand cmd = new SqlCommand(savePublish, con);
             cmd.ExecuteScalar();
             con.Close();

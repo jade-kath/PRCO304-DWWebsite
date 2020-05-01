@@ -264,6 +264,10 @@ namespace DogWalking.User_Side.Walks
 
         protected void Back_Click(object sender, EventArgs e)
         {
+            Clear();
+            clearLead();
+            Session["goBack"] = Session["newWalk"];
+            Session.Remove("newWalk");
             Response.Redirect("User_Walk_Add_Page1.aspx");
         }
 
@@ -271,6 +275,20 @@ namespace DogWalking.User_Side.Walks
         {
             addFacilities();
             addTerrain();
+
+            string user = Session["User"].ToString();
+            string session = Session["newWalk"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string walkCreator = "UPDATE Walk SET UserID = (SELECT UserID FROM Users WHERE Username = '" + user + "') WHERE WalkName = '" + session + "'";
+            SqlCommand cmdCreator = new SqlCommand(walkCreator, con);
+            cmdCreator.ExecuteScalar();
+            con.Close();
+
+            Session.Remove("newWalk");
+            Response.Redirect("UserProfile.aspx");
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
