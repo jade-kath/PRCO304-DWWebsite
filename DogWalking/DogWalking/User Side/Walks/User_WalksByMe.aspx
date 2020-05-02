@@ -10,9 +10,9 @@
     <form id="form1" runat="server">
         <div>
             <h2>Walks By Me</h2>
-            <asp:GridView ID="grdMyWalks" runat="server">
+            <asp:GridView ID="grdMyWalks" runat="server" OnSelectedIndexChanged="grdMyWalks_SelectedIndexChanged">
                 <Columns>
-                    <asp:ButtonField Text="Delete" CommandName="Select" ItemStyle-Width="100"/>
+                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>
             </asp:GridView>
         </div>

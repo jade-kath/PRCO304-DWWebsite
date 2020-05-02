@@ -195,6 +195,7 @@
     <Content Include="User Side\UserCreateAccount.aspx" />
     <Content Include="User Side\UserProfile.aspx" />
     <Content Include="User Side\CRUD User Settings\UserEditSettings.aspx" />
+    <Content Include="User Side\User_WalkPreview.aspx" />
     <Content Include="User Side\Walks\User_WalksByMe.aspx" />
     <Content Include="User Side\Walks\User_Walk_Add_Page1.aspx" />
     <Content Include="User Side\Walks\User_Walk_Add_Page2.aspx" />
@@ -342,6 +343,13 @@
     </Compile>
     <Compile Include="User Side\CRUD User Settings\UserEditSettings.aspx.designer.cs">
       <DependentUpon>UserEditSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\User_WalkPreview.aspx.cs">
+      <DependentUpon>User_WalkPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\User_WalkPreview.aspx.designer.cs">
+      <DependentUpon>User_WalkPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="User Side\Walks\User_WalksByMe.aspx.cs">
       <DependentUpon>User_WalksByMe.aspx</DependentUpon>
