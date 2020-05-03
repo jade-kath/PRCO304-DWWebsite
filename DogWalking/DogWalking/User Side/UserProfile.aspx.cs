@@ -11,7 +11,10 @@ namespace DogWalking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         protected void btnNewWalk_Click(object sender, EventArgs e)

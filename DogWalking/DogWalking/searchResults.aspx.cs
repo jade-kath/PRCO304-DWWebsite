@@ -8,27 +8,22 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace DogWalking.User_Side.Walks
+namespace DogWalking
 {
-    public partial class User_WalksByMe : System.Web.UI.Page
+    public partial class searchResults : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] == null)
-            {
-                Response.Redirect("LoginPage.aspx");
-            }
-
-            bindToGrid();
+            loadSearch();
         }
 
-        private void bindToGrid()
+        private void loadSearch()
         {
-            string user = Session["User"].ToString();
+            string location = Session["searchWalk"].ToString();
 
-            string sqlQuery = @"SELECT WalkName, Location.Location, WalkAddress, 
-                                WalkPostcode FROM Walk JOIN Location ON 
-                                Location.LocationID = Walk.LocationID WHERE Walk.UserID = '" + user + "'";
+            string sqlQuery = @"SELECT WalkName, Location.Location, WalkAddress, WalkPostcode FROM Walk JOIN" +
+                               " Location ON Location.LocationID = Walk.LocationID WHERE Location.Location = " +
+                               "'%" + location + "%' OR Walk.Postcode = '%" + location + "%'";
 
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);
@@ -52,15 +47,20 @@ namespace DogWalking.User_Side.Walks
                 dt.Rows.Add(WalkName, Location, WalkAddress, WalkPostcode);
             }
 
-            this.grdMyWalks.DataSource = dt;
-            this.grdMyWalks.DataBind();
+            this.grdWalkResults.DataSource = dt;
+            this.grdWalkResults.DataBind();
         }
 
-        protected void grdMyWalks_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Session["WalkID"] = this.grdMyWalks.SelectedRow.Cells[1].Text;
-            Session["userWalk"] = "userWalk";
-            Response.Redirect("User_WalkPreview.aspx");
+            Session["searchWalk"] = txtSearchBar.Text;
+            Response.Redirect("searchResults.aspx");
+        }
+
+        protected void grdWalkResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["WalkID"] = this.grdWalkResults.SelectedRow.Cells[1].Text;
+            Response.Redirect("Walks/User_WalkPreview.aspx");
         }
     }
 }

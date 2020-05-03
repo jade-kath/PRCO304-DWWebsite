@@ -14,8 +14,12 @@ namespace DogWalking.User_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
+
         private void Clear()
         {
             radTerFlat.Checked = false;

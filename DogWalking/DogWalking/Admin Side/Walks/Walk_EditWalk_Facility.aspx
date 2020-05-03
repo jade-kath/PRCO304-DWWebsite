@@ -38,14 +38,15 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
+                         <a href="../User/Users_CreateAccount.aspx"
                       </div>
                 </div>
+                        <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
             </div>
 
         <div class="main">
              <div class="facilities">
-                    <h2>Facility Details</h2>
+                    <h2>Facility Details<h2>Facility Details</h2>
                     <!--ENTRY FEE-->
                     <p>Does this walk have an entry fee?</p>
                         <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" GroupName="Entry" />

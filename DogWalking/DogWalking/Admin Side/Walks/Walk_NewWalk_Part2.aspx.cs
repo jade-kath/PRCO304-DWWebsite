@@ -14,7 +14,10 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
         private void addFacilities()
         {
@@ -448,6 +451,12 @@ namespace DogWalking.Admin_Side.Walks
         protected void radWheelFalse_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

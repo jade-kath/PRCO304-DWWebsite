@@ -14,6 +14,11 @@ namespace DogWalking.Admin_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+
             if (!IsPostBack)
             {
                 addUserData();
@@ -72,6 +77,12 @@ namespace DogWalking.Admin_Side
         protected void ChangeEmail_Click(object sender, EventArgs e)
         {
             Response.Redirect("Users_ChangeEmailPassword.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

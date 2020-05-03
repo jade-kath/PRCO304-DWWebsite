@@ -14,6 +14,11 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+
             bindToPublished();
             bindToUnpub();
         }
@@ -96,6 +101,12 @@ namespace DogWalking.Admin_Side.Walks
             Session["WalkID"] = this.grdUnWalks.SelectedRow.Cells[1].Text;
             Session["notPosted"] = "notPosted";
             Response.Redirect("Walk_WalkPreview.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

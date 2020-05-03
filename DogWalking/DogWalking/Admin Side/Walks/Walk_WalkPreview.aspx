@@ -38,9 +38,10 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
+                         <a href="../User/Users_CreateAccount.aspx"
                       </div>
                 </div>   
+                         <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click"/>
             </div>
 
         <div class="main">
@@ -64,7 +65,7 @@
                 <asp:Label ID="lblDescribe" runat="server"></asp:Label>
                 <br />
 
-                <label>Time spent here:</label>
+                <label>Time spent here:bel>Time spent here:</label>
                 <asp:Label ID="lblTime" runat="server"/>
                     <br />
                 <label>Distance of this Walk:</label>

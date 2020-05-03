@@ -14,7 +14,10 @@ namespace DogWalking.Admin_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         private void CreateUser()
@@ -39,6 +42,12 @@ namespace DogWalking.Admin_Side
         protected void radIsAdmin_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

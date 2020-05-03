@@ -414,7 +414,7 @@ namespace DogWalking.User_Side
             if (Session["userWalk"] == null)
             {
                 Session.Remove("WalkID");
-                Response.Redirect("index.aspx");
+                Response.Redirect("searchResults.aspx");
             }
             else
             {

@@ -38,14 +38,15 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
+                         <a href="../User/Users_CreateAccount.aspx"
                       </div>
                 </div>
+                        <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click"/>
             </div>
 
         <div class="main">
             <div class="general">
-                    <h2>General Details</h2>
+                    <h2>General Details <h2>General Details</h2>
                     <p>Name of this walk/place:-</p>
                         <asp:TextBox ID="txtPlaceName" runat="server" Width="167px"/>
                              <br />

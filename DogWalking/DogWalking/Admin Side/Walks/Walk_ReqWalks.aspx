@@ -39,14 +39,14 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
+                         <a href="../User/Users_CreateAccount.aspx"
                       </div>
                 </div>
-                
+                        <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click"/>
             </div>
         
         <div class="main">
-            <h3>Requested Walks</h3>
+            <h3>Requested Walks <h3>Requested Walks</h3>
             <br />
 
             <asp:GridView ID="grdViewWalks" runat="server" OnSelectedIndexChanged="grdViewWalks_SelectedIndexChanged">

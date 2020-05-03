@@ -14,6 +14,11 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+
             PostToWebsite();
 
             if (!IsPostBack)
@@ -477,6 +482,12 @@ namespace DogWalking.Admin_Side.Walks
         protected void btnEditFacility_Click(object sender, EventArgs e)
         {
             Response.Redirect("Walk_EditWalk_Facility.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

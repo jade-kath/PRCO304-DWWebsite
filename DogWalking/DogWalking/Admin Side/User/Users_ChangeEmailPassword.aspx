@@ -39,15 +39,16 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create New User</a>
+                         <a href="../User/Users_CreateAccount.aspx"
                       </div>
                 </div>
+                         <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
             </div>
         
       
         <div class="main">
              <div id="changeEmail">
-                <h2>Change Email</h2>                 
+                <h2>Change Email    <h2>Change Email</h2>                 
                   <label>New Email Address:-</label>
                   <asp:TextBox ID="txtNewEmail" runat="server" TextMode="Email" Width="167px"/>
                   <br />

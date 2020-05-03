@@ -13,6 +13,11 @@ namespace DogWalking.Admin_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+
             bindToGrid();
         }
 
@@ -60,6 +65,12 @@ namespace DogWalking.Admin_Side
         {
             Session["updateUser"] = this.grdViewUserAdmin.SelectedRow.Cells[1].Text;
             Response.Redirect("Users_ChangeUserDetails.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

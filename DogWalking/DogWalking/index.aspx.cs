@@ -13,5 +13,11 @@ namespace DogWalking
         {
 
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            Session["searchWalk"] = txtSearchBar.Text;
+            Response.Redirect("searchResults.aspx");
+        }
     }
 }

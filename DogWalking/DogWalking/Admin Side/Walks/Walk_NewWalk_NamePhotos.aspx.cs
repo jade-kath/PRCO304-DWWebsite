@@ -15,6 +15,11 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+
             loadBack();
         }
 
@@ -130,6 +135,12 @@ namespace DogWalking.Admin_Side.Walks
         protected void yesCont_Click(object sender, EventArgs e)
         {
             saveWalk();
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

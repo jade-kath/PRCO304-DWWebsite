@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="DogWalking.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="searchResults.aspx.cs" Inherits="DogWalking.searchResults" %>
 
 <!DOCTYPE html>
 
@@ -9,8 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p><a href="LoginPage.aspx">Log in</a></p>
-
             <div class="search">
                 <p>Where would you like to go?</p>
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSearch">
@@ -23,6 +21,8 @@
                     </asp:Panel>
             </div>
 
+            <br />
+            <asp:GridView ID="grdWalkResults" runat="server" OnSelectedIndexChanged="grdWalkResults_SelectedIndexChanged"></asp:GridView>
         </div>
     </form>
 </body>
