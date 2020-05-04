@@ -23,7 +23,7 @@ namespace DogWalking
 
             string sqlQuery = @"SELECT WalkName, Location.Location, WalkAddress, WalkPostcode FROM Walk JOIN" +
                                " Location ON Location.LocationID = Walk.LocationID WHERE Location.Location = " +
-                               "'%" + location + "%' OR Walk.Postcode = '%" + location + "%'";
+                               "'%" + location + "%' OR Walk.Postcode = '%" + location + "%' AND Walk.Published = 'True'";
 
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);

@@ -26,6 +26,7 @@ namespace DogWalking.User_Side
 
             if (!IsPostBack)
             {
+                Creator();
                 previewWalk();
                 terrainList();
                 facilityDetails();
@@ -389,6 +390,20 @@ namespace DogWalking.User_Side
                 {
                     lblLeadDetail.Text = (string)dr[0];
                 }
+            }
+        }
+
+        //created by user
+        private void Creator()
+        {
+            string walk = Session["WalkID"].ToString();
+            string creator = @"SELECT Users.Username FROM Users JOIN Walk ON Walk.UserID = Users.UserID WHERE Walk.WalkID = '" + walk +"'";
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(creator);
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                lblCreated.Text = "Created by: " + (string)dr[0];
             }
         }
 

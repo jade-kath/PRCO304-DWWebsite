@@ -39,7 +39,7 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx"
+                         <a href="../User/Users_CreateAccount.aspx">Create a User</a>
                       </div>
                 </div>
                           <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
@@ -49,7 +49,7 @@
             <h3>Publish to Website Walksish to Website Walks</h3>
             <asp:GridView ID="grdPubWalks" runat="server" OnSelectedIndexChanged="grdPubWalks_SelectedIndexChanged">
                 <Columns>
-                    <asp:ButtonField Text="Edit Walk" CommandName="Select" ItemStyle-Width="100"/>
+                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>
             </asp:GridView>
             <br />
@@ -57,7 +57,7 @@
             <h3>Unpublished Walks</h3>
             <asp:GridView ID="grdUnWalks" runat="server" OnSelectedIndexChanged="grdUnWalks_SelectedIndexChanged">
                 <Columns>
-                    <asp:ButtonField Text="Edit Walk" CommandName="Select" ItemStyle-Width="100"/>
+                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>
             </asp:GridView>
         </div>

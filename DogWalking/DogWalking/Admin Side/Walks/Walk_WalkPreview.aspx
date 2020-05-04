@@ -38,7 +38,7 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx"
+                         <a href="../User/Users_CreateAccount.aspx">Create a User</a>
                       </div>
                 </div>   
                          <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click"/>
@@ -49,7 +49,7 @@
                 <asp:Button runat="server" ID="btnBack" Text="Go Back" OnClick="btnBack_Click" />
                 <asp:Button runat="server" ID="btnPost" Visible="false" Text="Post to Website" OnClick="btnPost_Click" />
                 <asp:Button runat="server" ID="btnRemove" Visible="false" Text="Remove From Website" OnClick="btnRemove_Click" />
-                <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="btnDelete_Click" />
+                <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="btnDelete_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this walk?')) return false;"/>
             </div>
                     <br />
             <div class="general">
@@ -128,6 +128,9 @@
                 <h3>Wheelchair Friendly</h3>
                 <asp:Label ID="lblWheel" runat="server" />
                     <br />
+            </div>
+            <div class="creation">
+                <asp:Label ID="lblCreated" runat="server" />
             </div>
         </div>
     </form>

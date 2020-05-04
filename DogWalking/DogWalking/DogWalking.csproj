@@ -146,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Admin Side\Outbreaks\OB_AddOB.aspx" />
+    <Content Include="Admin Side\Outbreaks\OB_AllOB.aspx" />
+    <Content Include="Admin Side\Outbreaks\OB_ReqOB.aspx" />
     <Content Include="Admin Side\User\Users_ChangeEmailPassword.aspx" />
     <Content Include="Admin Side\Walks\Walk_AllWalks.aspx" />
     <Content Include="Admin Side\Walks\Walk_EditWalk_Facility.aspx" />
@@ -203,6 +206,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin Side\Outbreaks\OB_AddOB.aspx.cs">
+      <DependentUpon>OB_AddOB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_AddOB.aspx.designer.cs">
+      <DependentUpon>OB_AddOB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_AllOB.aspx.cs">
+      <DependentUpon>OB_AllOB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_AllOB.aspx.designer.cs">
+      <DependentUpon>OB_AllOB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_ReqOB.aspx.cs">
+      <DependentUpon>OB_ReqOB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_ReqOB.aspx.designer.cs">
+      <DependentUpon>OB_ReqOB.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin Side\User\Users_ChangeEmailPassword.aspx.cs">
       <DependentUpon>Users_ChangeEmailPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,9 +405,7 @@
       <DependentUpon>User_Walk_Add_Page2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin Side\Outbreaks\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
