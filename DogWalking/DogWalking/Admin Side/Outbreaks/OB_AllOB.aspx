@@ -54,8 +54,8 @@
             </div>
 
         <div class="main">
-                <h2>All Reported Dog Illness Outbreaks</h2>
-                <asp:GridView ID="grdOutbreaks" runat="server">
+All Reported Dog Illness Outbreaks</h2>
+                <asp:GridView ID="grdOutbreaks" runat="server" OnSelectedIndexChanged="grdOutbreaks_SelectedIndexChanged">
                     <Columns>
                     <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>

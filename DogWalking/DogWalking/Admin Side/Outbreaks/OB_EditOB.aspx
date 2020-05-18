@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OB_OBPreview.aspx.cs" Inherits="DogWalking.Admin_Side.Outbreaks.OB_OBPreview" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OB_EditOB.aspx.cs" Inherits="DogWalking.Admin_Side.Outbreaks.OB_EditOB" %>
 
 <!DOCTYPE html>
 
@@ -16,7 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div class="sidenav">
+        <div class="sidenav">
              <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,29 +54,23 @@
             </div>
 
         <div class="main">
-            <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
-            <asp:Button runat="server" ID="btnEdit" Text="Edit Outbreak Report" OnClick="btnEdit_Click" />
-            <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="btnDelete_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this walk?')) return false;"/>
-            <br />
-            <asp:Button runat="server" ID="btnWalkPreview" Text="View This Walk" OnClick="btnWalkPreview_Click" />
-            <br />
-
             <label>Walk:</label><br />
             <asp:Label runat="server" ID="lblName" /><asp:Label runat="server" ID="lblLocation" />
             <br />
 
             <label>Type of Illness:</label><br />
-            <asp:Label runat="server" ID="lblIllType"></asp:Label>
+            <asp:TextBox runat="server" ID="txtIllType"></asp:TextBox>
             <br />
 
             <label>Date of Illnesses Occurrence:</label><br />
-            <asp:Label ID="lblIllDate" runat="server" TextMode="Date" />
+            <asp:TextBox ID="txtIllDate" runat="server" TextMode="Date" />
             <br />
             <label>Futher Description or Notes:</label><br />
-            <asp:Label runat="server" ID="lblIllNotes" />
+            <asp:TextBox runat="server" ID="txtIllNotes" />
             <br />
 
-            <asp:Label runat="server" ID="lblReported" />
+            <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
+            <asp:Button runat="server" ID="btnSave" Text="Save Changes" OnClick="btnSave_Click" />
         </div>
     </form>
 </body>

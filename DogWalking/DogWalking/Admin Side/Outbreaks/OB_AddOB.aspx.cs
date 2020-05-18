@@ -51,7 +51,7 @@ namespace DogWalking.Admin_Side.Outbreaks
             con.Open();
             string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
                             " VALUES ('" + txtIllDate.Text + "', '" + txtIllType.Text + "', '" + txtIllNotes.Text + "'," +
-                                 " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user +"')', 'False')";
+                            " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user +"')', 'False')";
 
             SqlCommand cmd = new SqlCommand(newOut, con);
             cmd.ExecuteScalar();
@@ -67,6 +67,12 @@ namespace DogWalking.Admin_Side.Outbreaks
         {
             addOutbreak();
             Response.Redirect("OB_AllOB.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

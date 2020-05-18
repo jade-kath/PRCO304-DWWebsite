@@ -10,7 +10,7 @@
 namespace DogWalking.Admin_Side.Outbreaks {
     
     
-    public partial class OB_OBPreview {
+    public partial class OB_EditOB {
         
         /// <summary>
         /// form1 control.
@@ -31,42 +31,6 @@ namespace DogWalking.Admin_Side.Outbreaks {
         protected global::System.Web.UI.WebControls.Button btnLogOut;
         
         /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
-        
-        /// <summary>
-        /// btnEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
-        
-        /// <summary>
-        /// btnDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
-        
-        /// <summary>
-        /// btnWalkPreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnWalkPreview;
-        
-        /// <summary>
         /// lblName control.
         /// </summary>
         /// <remarks>
@@ -85,39 +49,48 @@ namespace DogWalking.Admin_Side.Outbreaks {
         protected global::System.Web.UI.WebControls.Label lblLocation;
         
         /// <summary>
-        /// lblIllType control.
+        /// txtIllType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIllType;
+        protected global::System.Web.UI.WebControls.TextBox txtIllType;
         
         /// <summary>
-        /// lblIllDate control.
+        /// txtIllDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIllDate;
+        protected global::System.Web.UI.WebControls.TextBox txtIllDate;
         
         /// <summary>
-        /// lblIllNotes control.
+        /// txtIllNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIllNotes;
+        protected global::System.Web.UI.WebControls.TextBox txtIllNotes;
         
         /// <summary>
-        /// lblReported control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReported;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

@@ -55,5 +55,18 @@ namespace DogWalking.Admin_Side.Outbreaks
             this.grdOutbreaks.DataSource = dt;
             this.grdOutbreaks.DataBind();
         }
+
+        protected void grdOutbreaks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["OBID"] = this.grdOutbreaks.SelectedRow.Cells[1].Text;
+            Session["OB"] = "OB";
+            Response.Redirect("OB_OBPreview.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
+        }
     }
 }

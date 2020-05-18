@@ -71,7 +71,7 @@
             <label>Date of Illnesses Occurrence:</label><br />
             <asp:TextBox ID="txtIllDate" runat="server" TextMode="Date" />
             <br />
-Futher Description or Notes:</label><br />
+            <label>Futher Description or Notes:</label><br />
             <asp:TextBox runat="server" ID="txtIllNotes" />
             <br />
 
