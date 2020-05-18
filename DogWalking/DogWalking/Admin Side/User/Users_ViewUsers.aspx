@@ -18,7 +18,8 @@
 <body>
     <form id="form1" runat="server">
 
-        <div class="sidenav">
+         <div class="sidenav">
+             <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Walks
@@ -29,9 +30,18 @@
                           <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
                       </div>
                  </div>
-                
-                         <a href="#">Oubreaks</a>
-
+             <!-- Outbreak Dropdown -->
+                 <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-outbreak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dog Illnesses
+                  </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a href="../Outbreaks/OB_AllOB.aspx">View All Dog Illness Reports</a>
+                         <a href="../Outbreaks/OB_ReqOB.aspx">View Requested Illness Reports</a>
+                         <a href="../Outbreaks/OB_AddOB.aspx">Create New Illness Report</a>
+                      </div>
+                </div>
+             <!-- User Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-User" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
@@ -42,12 +52,12 @@
                          <a href="../User/Users_CreateAccount.aspx">Create a User</a>
                       </div>
                 </div>
-                        <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
+                         <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
             </div>
 
         <div class="main">
                          
-            <h3>View Users      <h3>View Users</h3>
+            <h3>View Users</h3>
             
             <br />
             <asp:GridView ID="grdViewUsers" runat="server" Width="638px" OnSelectedIndexChanged="grdViewUsers_SelectedIndexChanged">

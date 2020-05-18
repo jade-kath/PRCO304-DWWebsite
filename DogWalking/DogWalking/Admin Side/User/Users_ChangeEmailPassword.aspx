@@ -18,7 +18,8 @@
 <body>
     <form id="form1" runat="server">
 
-        <div class="sidenav">
+         <div class="sidenav">
+             <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Walks
@@ -29,9 +30,18 @@
                           <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
                       </div>
                  </div>
-                
-                         <a href="#">Oubreaks</a>
-
+             <!-- Outbreak Dropdown -->
+                 <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-outbreak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dog Illnesses
+                  </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a href="../Outbreaks/OB_AllOB.aspx">View All Dog Illness Reports</a>
+                         <a href="../Outbreaks/OB_ReqOB.aspx">View Requested Illness Reports</a>
+                         <a href="../Outbreaks/OB_AddOB.aspx">Create New Illness Report</a>
+                      </div>
+                </div>
+             <!-- User Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-User" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users

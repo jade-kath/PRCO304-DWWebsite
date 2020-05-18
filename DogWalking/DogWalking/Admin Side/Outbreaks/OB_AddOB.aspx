@@ -16,7 +16,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="sidenav">
+         <div class="sidenav">
+             <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Walks
@@ -27,9 +28,18 @@
                           <a href="Walk_NewWalk_NamePhotos.aspx">Create New Walk</a>
                       </div>
                  </div>
-                
-                         <a href="#">Oubreaks</a>
-
+             <!-- Outbreak Dropdown -->
+                 <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-outbreak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dog Illnesses
+                  </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a href="../Outbreaks/OB_AllOB.aspx">View All Dog Illness Reports</a>
+                         <a href="../Outbreaks/OB_ReqOB.aspx">View Requested Illness Reports</a>
+                         <a href="../Outbreaks/OB_AddOB.aspx">Create New Illness Report</a>
+                      </div>
+                </div>
+             <!-- User Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-User" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
@@ -39,11 +49,34 @@
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
                          <a href="../User/Users_CreateAccount.aspx">Create a User</a>
                       </div>
-                </div>   
-                         <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click"/>
+                </div>
+                         <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
             </div>
 
         <div class="main">
+            <label>Walk Location:</label><br />
+            <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID"></asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
+            <br />
+
+            <label>Walk Name:</label><br />
+            <asp:DropDownList ID="drpWalkName" runat="server"></asp:DropDownList><br />
+            <asp:Label runat="server" ID="lblCatch" Visible="false">Please choose the location of the walk.</asp:Label>
+            <br />
+
+            <label>Type of Illness:</label><br />
+            <asp:TextBox runat="server" ID="txtIllType"></asp:TextBox>
+            <br />
+
+            <label>Date of Illnesses Occurrence:</label><br />
+            <asp:TextBox ID="txtIllDate" runat="server" TextMode="Date" />
+            <br />
+Futher Description or Notes:</label><br />
+            <asp:TextBox runat="server" ID="txtIllNotes" />
+            <br />
+
+            <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
+            <asp:Button runat="server" ID="btnSave" Text="Save & Publish" OnClick="btnSave_Click" />
         </div>
     </form>
 </body>

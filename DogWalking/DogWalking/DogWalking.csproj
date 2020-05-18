@@ -148,6 +148,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Admin Side\Outbreaks\OB_AddOB.aspx" />
     <Content Include="Admin Side\Outbreaks\OB_AllOB.aspx" />
+    <Content Include="Admin Side\Outbreaks\OB_OBPreview.aspx" />
     <Content Include="Admin Side\Outbreaks\OB_ReqOB.aspx" />
     <Content Include="Admin Side\User\Users_ChangeEmailPassword.aspx" />
     <Content Include="Admin Side\Walks\Walk_AllWalks.aspx" />
@@ -219,6 +220,13 @@
     </Compile>
     <Compile Include="Admin Side\Outbreaks\OB_AllOB.aspx.designer.cs">
       <DependentUpon>OB_AllOB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_OBPreview.aspx.cs">
+      <DependentUpon>OB_OBPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Side\Outbreaks\OB_OBPreview.aspx.designer.cs">
+      <DependentUpon>OB_OBPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin Side\Outbreaks\OB_ReqOB.aspx.cs">
       <DependentUpon>OB_ReqOB.aspx</DependentUpon>
