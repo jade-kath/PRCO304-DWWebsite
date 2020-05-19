@@ -57,7 +57,7 @@
             <div class ="main">
                 <div class="terrain">
                  <h2>Terrain</h2>
-                    <p>Types of terrains on this walk:- (Select all that apply)</p>
+   Types of terrains on this walk:- (Select all that apply)</p>
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged" />
                         <br /> 
                     <asp:RadioButton ID="radTerHill" runat="server" Text="Hilly" OnCheckedChanged="radTerHill_CheckedChanged" />
@@ -78,13 +78,15 @@
                         <br /> 
                     <asp:RadioButton ID="radTerBeach" runat="server" Text="Beach" OnCheckedChanged="radTerBeach_CheckedChanged" />
                         <br />
+                    <asp:RadioButton ID="radTerPark" runat="server" Text="Park" OnCheckedChanged="radTerPark_CheckedChanged" />
+                        <br />
                         <br /> 
                     <asp:Button ID="btnClearTer" runat="server" Text="Clear Terrain" OnClick="btnClearTer_Click" />
                     <br />
                 </div>
                 
                 <div class="facilities">
-                    <h2>Facility Details</h2>
+                    <h2>Facility Details<h2>Facility Details</h2>
                     <!--ENTRY FEE-->
                     <p>Does this walk have an entry fee?</p>
                         <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" GroupName="Entry" OnCheckedChanged="radEntryTrue_CheckedChanged" />

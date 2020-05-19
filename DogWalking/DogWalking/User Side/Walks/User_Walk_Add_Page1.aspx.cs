@@ -72,6 +72,7 @@ namespace DogWalking.User_Side.Walks
 
         }
 
+        //if the user goes back from the second page, the original version saved gets deleted first to avoid a system crash
         private void saveWalk()
         {
             if (Session["goBack"] == null)
@@ -108,7 +109,9 @@ namespace DogWalking.User_Side.Walks
                 Session.Remove("goBack");
             }
 
+            //Sessions allow for adding to the new walk created, have to match with the two incase there's multiple walks around the country with the same name - that will cause a system crash
             Session["newWalk"] = txtPlaceName.Text;
+            Session["postcode"] = txtPostcode.Text;
             Response.Redirect("User_Walk_Add_Page2.aspx");
         }
 
@@ -128,6 +131,7 @@ namespace DogWalking.User_Side.Walks
         {
             Session.Remove("goBack");
             Session.Remove("newWalk");
+            Session.Remove("postcode");
             Response.Redirect("UserProfile.aspx");
         }
 

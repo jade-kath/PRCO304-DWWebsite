@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DogWalking.Admin_Side.Walks {
+namespace DogWalking.User_Side.Outbreaks {
     
     
-    public partial class Walk_EditWalk_Terrain {
+    public partial class User_AddOB {
         
         /// <summary>
         /// form1 control.
@@ -22,121 +22,67 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnLogOut control.
+        /// drpLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogOut;
+        protected global::System.Web.UI.WebControls.DropDownList drpLocation;
         
         /// <summary>
-        /// radTerFlat control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerFlat;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// radTerHill control.
+        /// drpWalkName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerHill;
+        protected global::System.Web.UI.WebControls.DropDownList drpWalkName;
         
         /// <summary>
-        /// radTerRough control.
+        /// lblCatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerRough;
+        protected global::System.Web.UI.WebControls.Label lblCatch;
         
         /// <summary>
-        /// radTerMud control.
+        /// txtIllType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerMud;
+        protected global::System.Web.UI.WebControls.TextBox txtIllType;
         
         /// <summary>
-        /// radTerMount control.
+        /// txtIllDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerMount;
+        protected global::System.Web.UI.WebControls.TextBox txtIllDate;
         
         /// <summary>
-        /// radTerValley control.
+        /// txtIllNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerValley;
-        
-        /// <summary>
-        /// radTerForest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerForest;
-        
-        /// <summary>
-        /// radTerMarsh control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerMarsh;
-        
-        /// <summary>
-        /// radTerRiver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerRiver;
-        
-        /// <summary>
-        /// radTerBeach control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerBeach;
-        
-        /// <summary>
-        /// radTerPark control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radTerPark;
-        
-        /// <summary>
-        /// btnClearTer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClearTer;
+        protected global::System.Web.UI.WebControls.TextBox txtIllNotes;
         
         /// <summary>
         /// btnCancel control.

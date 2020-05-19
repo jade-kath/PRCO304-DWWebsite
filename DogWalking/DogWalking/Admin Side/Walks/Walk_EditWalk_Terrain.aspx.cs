@@ -25,6 +25,7 @@ namespace DogWalking.Admin_Side.Walks
             }
         }
 
+        //Previewing and prechecking all terrains that are already associated with the walk
         private void showSavedData()
         {
             string session = Session["WalkID"].ToString();
@@ -161,8 +162,22 @@ namespace DogWalking.Admin_Side.Walks
             {
                 radTerBeach.Checked = false;
             }
+
+            string parkQuery = @"SELECT COUNT (*) FROM WalksTerrain Where WalkID = '" + session + "' AND TerrainID = 11";
+            SqlCommand cmdPark = new SqlCommand(parkQuery, con);
+            string outputPark = cmdPark.ExecuteScalar().ToString();
+
+            if (outputPark == "1")
+            {
+                radTerPark.Checked = true;
+            }
+            else
+            {
+                radTerPark.Checked = false;
+            }
         }
 
+        //Checks for any saved terrains on the walk so system doesn't crash
         private void checkTerrain()
         {
             string session = Session["WalkID"].ToString();
@@ -189,6 +204,7 @@ namespace DogWalking.Admin_Side.Walks
             }
         }
 
+        //Then add all terrains that have been checked.
         private void addTerrain()
         {
             string session = Session["WalkID"].ToString();
@@ -196,7 +212,6 @@ namespace DogWalking.Admin_Side.Walks
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
 
-            //Then add all terrains that have been checked.
             if (radTerFlat.Checked == true)
             {
                 string addFlat = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES (" + session + ", 1)";
@@ -267,6 +282,13 @@ namespace DogWalking.Admin_Side.Walks
                 cmd.ExecuteScalar();
             }
 
+            if (radTerPark.Checked == true)
+            {
+                string addPark = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES (" + session + ", 11)";
+                SqlCommand cmd = new SqlCommand(addPark, con);
+                cmd.ExecuteScalar();
+            }
+
             con.Close();
             Response.Redirect("Walk_WalkPreview.aspx");
         }
@@ -283,6 +305,7 @@ namespace DogWalking.Admin_Side.Walks
             radTerValley.Checked = false;
             radTerRough.Checked = false;
             radTerBeach.Checked = false;
+            radTerPark.Checked = false;
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

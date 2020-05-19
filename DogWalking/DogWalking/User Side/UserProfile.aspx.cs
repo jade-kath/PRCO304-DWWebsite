@@ -21,5 +21,10 @@ namespace DogWalking
         {
             Response.Redirect("Walks/User_Walk_Add_Page1.aspx");
         }
+
+        protected void btnWalksByMe_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Walks/User_WalksByMe.aspx");
+        }
     }
 }

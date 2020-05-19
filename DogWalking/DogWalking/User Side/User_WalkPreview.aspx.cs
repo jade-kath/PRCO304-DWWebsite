@@ -20,8 +20,7 @@ namespace DogWalking.User_Side
             }
             else
             {
-                lblStatus.Visible = true;
-                btnDel.Visible = true;
+                checkStatus();
             }
 
             if (!IsPostBack)
@@ -31,6 +30,37 @@ namespace DogWalking.User_Side
                 terrainList();
                 facilityDetails();
                 facilityBoolValues();
+            }
+        }
+
+        //making delete button available to non published walks
+        private void checkStatus()
+        {
+            string walk = Session["WalkID"].ToString();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string statusDeleteQuery = @"SELECT COUNT (*) FROM Walk Where WalkID = '" + walk + "' AND NewWalk = 'True'";
+            SqlCommand cmdStatusDelete = new SqlCommand(statusDeleteQuery, con);
+            string outputStatusDelete = cmdStatusDelete.ExecuteScalar().ToString();
+
+            if (outputStatusDelete == "1")
+            {
+                btnDel.Visible = true;
+                lblStatus.Text = "This walk is pending confirmation.";
+            }
+            else
+            {
+                btnDel.Visible = false;
+            }
+
+            string notPub = @"SELECT COUNT (*) FROM Walk WHERE WalkID = '" + walk + "' AND Published = 'False' AND NewWalk = 'False'";
+            SqlCommand cmdNotPubState = new SqlCommand(notPub, con);
+            string outputNotPub = cmdNotPubState.ExecuteScalar().ToString();
+
+            if (outputNotPub == "1")
+            {
+                lblStatus.Text = "This walk is pending confirmation.";
             }
         }
 

@@ -230,6 +230,17 @@ namespace DogWalking.Admin_Side.Walks
                 cmd.ExecuteScalar();
                 con.Close();
             }
+
+            if (radTerPark.Checked == true)
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                con.Open();
+                string addPark = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
+                                 "WalkName = '" + session + "'), 11)";
+                SqlCommand cmd = new SqlCommand(addPark, con);
+                cmd.ExecuteScalar();
+                con.Close();
+            }
         }
 
         private void Clear()
@@ -244,6 +255,7 @@ namespace DogWalking.Admin_Side.Walks
             radTerValley.Checked = false;
             radTerForest.Checked = false;
             radTerBeach.Checked = false;
+            radTerPark.Checked = false;
         }
 
         protected void btnClearTer_Click(object sender, EventArgs e)
@@ -378,6 +390,10 @@ namespace DogWalking.Admin_Side.Walks
         }
 
         protected void radTerBeach_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void radTerPark_CheckedChanged(object sender, EventArgs e)
         {
 
         }

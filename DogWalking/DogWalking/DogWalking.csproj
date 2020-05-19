@@ -198,6 +198,8 @@
     <Content Include="Style\Admin_Navbar.css" />
     <Content Include="User Side\CRUD User Settings\UserChangeEmail.aspx" />
     <Content Include="User Side\CRUD User Settings\UserChangePassword.aspx" />
+    <Content Include="User Side\Outbreaks\User_AddOB.aspx" />
+    <Content Include="User Side\Outbreaks\User_ReportedOB.aspx" />
     <Content Include="User Side\UserCreateAccount.aspx" />
     <Content Include="User Side\UserProfile.aspx" />
     <Content Include="User Side\CRUD User Settings\UserEditSettings.aspx" />
@@ -370,6 +372,20 @@
     </Compile>
     <Compile Include="User Side\CRUD User Settings\UserChangePassword.aspx.designer.cs">
       <DependentUpon>UserChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\Outbreaks\User_AddOB.aspx.cs">
+      <DependentUpon>User_AddOB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\Outbreaks\User_AddOB.aspx.designer.cs">
+      <DependentUpon>User_AddOB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User Side\Outbreaks\User_ReportedOB.aspx.cs">
+      <DependentUpon>User_ReportedOB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User Side\Outbreaks\User_ReportedOB.aspx.designer.cs">
+      <DependentUpon>User_ReportedOB.aspx</DependentUpon>
     </Compile>
     <Compile Include="User Side\UserCreateAccount.aspx.cs">
       <DependentUpon>UserCreateAccount.aspx</DependentUpon>

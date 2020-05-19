@@ -22,7 +22,7 @@ namespace DogWalking.Admin_Side.Outbreaks
         {
             string outbreak = Session["OBID"].ToString();
             string sqlQuery = @"SELECT Walk.WalkName, Location.Location, Outbreak.OutbreakDate, Outbreak.OutbreakType," +
-                               " Outbreak.WalkID FROM Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location" +
+                               " Outbreak.ODescription, Outbreak.WalkID FROM Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location" +
                                " ON Location.LocationID = Walk.LocationID WHERE OutbreakID = '" + outbreak + "'";
             ConnectionClass conn = new ConnectionClass();
             conn.retrieveData(sqlQuery);
@@ -35,34 +35,12 @@ namespace DogWalking.Admin_Side.Outbreaks
                 lblLocation.Text = (string)dr[1];
                 lblIllDate.Text = (string)dr[2];
                 lblIllType.Text = (string)dr[3];
-                walkID = (string)dr[4];
+                lblIllNotes.Text = (string)dr[4];
+                walkID = (string)dr[5];
             }
 
             Session["WalkID"] = walkID;
-            
-            //if description is null
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            con.Open();
 
-            string DescriptQuery = @"SELECT COUNT (*) FROM Outbreak Where OutbreakID = '" + outbreak + "' AND ODescription IS NULL";
-            SqlCommand cmdDescript = new SqlCommand(DescriptQuery, con);
-            string outputDescript = cmdDescript.ExecuteScalar().ToString();
-
-            if (outputDescript == "1")
-            {
-                lblIllNotes.Text = "No information available.";
-            }
-            else
-            {
-                string Query = @"SELECT ODescription FROM Outbreak WHERE OutbreakID = '" + outbreak + "'";
-                ConnectionClass connect = new ConnectionClass();
-                connect.retrieveData(Query);
-
-                foreach (DataRow d in connect.SQLTable.Rows)
-                {
-                    lblIllNotes.Text = (string)d[0];
-                }   
-            }
         }
 
         private void Creator()
@@ -81,6 +59,7 @@ namespace DogWalking.Admin_Side.Outbreaks
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Session.Remove("OBID");
+
             if (Session["reqOB"] == null)
             {
                 Session.Remove("OB");

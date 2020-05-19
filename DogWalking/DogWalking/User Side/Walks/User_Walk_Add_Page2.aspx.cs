@@ -32,6 +32,7 @@ namespace DogWalking.User_Side.Walks
             radTerValley.Checked = false;
             radTerForest.Checked = false;
             radTerBeach.Checked = false;
+            radTerPark.Checked = false;
         }
 
         private void clearLead()
@@ -135,6 +136,8 @@ namespace DogWalking.User_Side.Walks
             }
 
             string session = Session["newWalk"].ToString();
+            string post = Session["postcode"].ToString();
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
             string addFacilities = "UPDATE Walk SET EntryFee = '" + entry + "' , EntryCost = '" + txtEntryCost.Text + "' , " +
@@ -142,7 +145,7 @@ namespace DogWalking.User_Side.Walks
                                    "LivestockDetail = '" + txtLiveDetails.Text + "', Toilets = '" + toilet + "', ToiletsDetail = '" + txtToiletDetails.Text + "', " +
                                    "Refreshments = '" + refresh + "', RefreshmentDetail = '" + txtRefreshDetails + "', " +
                                    "WheelchairFriendly = '" + wheel + "', OffLead = '" + leadOff + "', OnLead = '" + leadOn + "', " +
-                                   "LeadDetails = '" + txtLeadDetails.Text + "' WHERE WalkName = '" + session + "'";
+                                   "LeadDetails = '" + txtLeadDetails.Text + "' WHERE WalkName = '" + session + "' AND WalkPostcode = '" + post + "'";
             SqlCommand cmd = new SqlCommand(addFacilities, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -152,13 +155,14 @@ namespace DogWalking.User_Side.Walks
         private void addTerrain()
         {
             string session = Session["newWalk"].ToString();
+            string post = Session["postcode"].ToString();
 
             if (radTerFlat.Checked == true)
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addFlat = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 1)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 1)";
                 SqlCommand cmd = new SqlCommand(addFlat, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -169,7 +173,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addHill = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 2)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 2)";
                 SqlCommand cmd = new SqlCommand(addHill, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -180,7 +184,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addRough = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 3)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 3)";
                 SqlCommand cmd = new SqlCommand(addRough, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -191,7 +195,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addMud = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 4)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 4)";
                 SqlCommand cmd = new SqlCommand(addMud, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -202,7 +206,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addMount = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 5)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 5)";
                 SqlCommand cmd = new SqlCommand(addMount, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -213,7 +217,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addValley = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 6)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 6)";
                 SqlCommand cmd = new SqlCommand(addValley, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -224,7 +228,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addForest = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 7)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 7)";
                 SqlCommand cmd = new SqlCommand(addForest, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -235,7 +239,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addMarsh = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 8)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 8)";
                 SqlCommand cmd = new SqlCommand(addMarsh, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -246,7 +250,7 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addRiver = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 9)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 9)";
                 SqlCommand cmd = new SqlCommand(addRiver, con);
                 cmd.ExecuteScalar();
                 con.Close();
@@ -257,8 +261,19 @@ namespace DogWalking.User_Side.Walks
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string addBeach = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
-                                 "WalkName = '" + session + "'), 10)";
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 10)";
                 SqlCommand cmd = new SqlCommand(addBeach, con);
+                cmd.ExecuteScalar();
+                con.Close();
+            }
+
+            if (radTerPark.Checked == true)
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                con.Open();
+                string addPark = "INSERT INTO WalksTerrain (WalkID, TerrainID) VALUES ((SELECT WalkID FROM Walk WHERE " +
+                                 "WalkName = '" + session + "' AND WalkPostcode = '" + post + "), 11)";
+                SqlCommand cmd = new SqlCommand(addPark, con);
                 cmd.ExecuteScalar();
                 con.Close();
             }
@@ -272,6 +287,7 @@ namespace DogWalking.User_Side.Walks
             clearLead();
             Session["goBack"] = Session["newWalk"];
             Session.Remove("newWalk");
+            Session.Remove("postcode");
             Response.Redirect("User_Walk_Add_Page1.aspx");
         }
 
@@ -282,11 +298,12 @@ namespace DogWalking.User_Side.Walks
 
             string user = Session["User"].ToString();
             string session = Session["newWalk"].ToString();
+            string post = Session["postcode"].ToString();
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
 
-            string walkCreator = "UPDATE Walk SET UserID = (SELECT UserID FROM Users WHERE Username = '" + user + "') WHERE WalkName = '" + session + "'";
+            string walkCreator = "UPDATE Walk SET UserID = (SELECT UserID FROM Users WHERE Username = '" + user + "') WHERE WalkName = '" + session + "' AND WalkPostcode = '" + post + "";
             SqlCommand cmdCreator = new SqlCommand(walkCreator, con);
             cmdCreator.ExecuteScalar();
             con.Close();
@@ -298,14 +315,17 @@ namespace DogWalking.User_Side.Walks
         protected void Cancel_Click(object sender, EventArgs e)
         {
             string session = Session["newWalk"].ToString();
+            string post = Session["postcode"].ToString();
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string deleteWalk = "DELETE FROM Walk WHERE WalkName = '" + session + "'";
+            string deleteWalk = "DELETE FROM Walk WHERE WalkName = '" + session + "' AND WalkPostcode = '" + post + "";
             SqlCommand cmd = new SqlCommand(deleteWalk, con);
             cmd.ExecuteScalar();
             con.Close();
 
             Session.Remove("newWalk");
+            Session.Remove("postcode");
             Response.Redirect("UserProfile.aspx");
         }
 
@@ -356,6 +376,11 @@ namespace DogWalking.User_Side.Walks
         }
 
         protected void radTerBeach_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void radTerPark_CheckedChanged(object sender, EventArgs e)
         {
 
         }
@@ -430,5 +455,6 @@ namespace DogWalking.User_Side.Walks
         {
 
         }
+
     }
 }

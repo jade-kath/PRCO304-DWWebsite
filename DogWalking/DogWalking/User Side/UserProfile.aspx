@@ -16,6 +16,8 @@
             <div class="newWalk">
                 <asp:Button ID="btnNewWalk" runat="server" Text="Add a Walk" OnClick="btnNewWalk_Click"></asp:Button>
             </div>
+
+            <asp:Button ID="btnWalksByMe" runat="server" Text="Walks By Me" OnClick="btnWalksByMe_Click" />
         </div>
     </form>
 </body>

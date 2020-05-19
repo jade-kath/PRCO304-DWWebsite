@@ -292,6 +292,24 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.Label lblWheel;
         
         /// <summary>
+        /// grdWalkOutbreaks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdWalkOutbreaks;
+        
+        /// <summary>
+        /// btnAddOutbreak control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddOutbreak;
+        
+        /// <summary>
         /// lblCreated control.
         /// </summary>
         /// <remarks>

@@ -12,7 +12,7 @@
             
             <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
             <br />
-            <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
+            <asp:Label runat="server" ID="lblStatus"></asp:Label>
             <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
             <br />
             <div class="general">

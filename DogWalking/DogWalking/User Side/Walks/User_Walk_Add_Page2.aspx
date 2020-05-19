@@ -32,6 +32,8 @@
                         <br /> 
                     <asp:RadioButton ID="radTerBeach" runat="server" Text="Beach" OnCheckedChanged="radTerBeach_CheckedChanged" />
                         <br />
+                    <asp:RadioButton ID="radTerPark" runat="server" Text="Park" OnCheckedChanged="radTerPark_CheckedChanged" />
+                        <br />
                         <br /> 
                     <asp:Button ID="btnClearTer" runat="server" Text="Clear Terrain" OnClick="btnClearTer_Click" />
                         <br />

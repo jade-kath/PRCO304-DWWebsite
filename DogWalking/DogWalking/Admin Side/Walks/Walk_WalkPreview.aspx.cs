@@ -28,6 +28,7 @@ namespace DogWalking.Admin_Side.Walks
                 terrainList();
                 facilityDetails();
                 facilityBoolValues();
+                bindToOutbreak();
             }            
         }
 
@@ -390,6 +391,43 @@ namespace DogWalking.Admin_Side.Walks
             }
         }
 
+        //View the Outbreaks for that walk
+        private void bindToOutbreak()
+        {
+            string walk = Session["WalkID"].ToString();
+
+            string sqlQuery = @"SELECT Outbreak.OutbreakID, Outbreak.OutbreakDate, Outbreak.OutbreakType," +
+                               " Outbreak.ODescription, Users.Username FROM Outbreak JOIN Users" +
+                               " ON Outbreak.UserID = Users.UserID WHERE Outbreak.WalkID = '" + walk +"' and NewOutbreak = 'False'";
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
+
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("OutbreakID", typeof(int)),
+                new DataColumn("OutbreakDate", typeof(DateTime)),
+                new DataColumn("OutbreakType",typeof(string)),
+                new DataColumn("ODescription", typeof(string)),
+                new DataColumn("Username", typeof(string))
+            });
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                int OutbreakID = (int)dr[0];
+                string OutbreakDate = ((DateTime)dr[1]).ToShortDateString();
+                string OutbreakType = (string)dr[2];
+                string ODescription = (string)dr[3];
+                string Username = (string)dr[4]; 
+
+                dt.Rows.Add(OutbreakID, OutbreakDate, OutbreakType, ODescription, Username);
+            }
+
+            this.grdWalkOutbreaks.DataSource = dt;
+            this.grdWalkOutbreaks.DataBind();
+        }
+
+        //Views who created the walk
         private void Creator()
         {
             string walk = Session["WalkID"].ToString();
@@ -403,6 +441,7 @@ namespace DogWalking.Admin_Side.Walks
             }
         }
 
+        //checks the session of whether the walk has been published or not, the appropriate button will show
         private void PostToWebsite()
         {
             if (Session["notPosted"] == null)
@@ -420,7 +459,7 @@ namespace DogWalking.Admin_Side.Walks
             string walkPost = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string postWeb = "UPDATE Walk SET Published = 'True' WHERE WalkID = '" + walkPost + "'";
+            string postWeb = "UPDATE Walk SET Published = 'True', NewWalk = 'False' WHERE WalkID = '" + walkPost + "'";
             SqlCommand cmd = new SqlCommand(postWeb, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -433,7 +472,7 @@ namespace DogWalking.Admin_Side.Walks
             string walkRemove = Session["WalkID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            string removeWeb = "UPDATE Walk SET Published = 'False' WHERE WalkID = '" + walkRemove + "'";
+            string removeWeb = "UPDATE Walk SET Published = 'False', NewWalk = 'False' WHERE WalkID = '" + walkRemove + "'";
             SqlCommand cmd = new SqlCommand(removeWeb, con);
             cmd.ExecuteScalar();
             con.Close();
@@ -496,6 +535,12 @@ namespace DogWalking.Admin_Side.Walks
         protected void btnEditFacility_Click(object sender, EventArgs e)
         {
             Response.Redirect("Walk_EditWalk_Facility.aspx");
+        }
+
+        protected void grdWalkOutbreaks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["OBID"] = this.grdWalkOutbreaks.SelectedRow.Cells[1].Text;
+            Response.Redirect("OB_OBPreview.aspx");
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)

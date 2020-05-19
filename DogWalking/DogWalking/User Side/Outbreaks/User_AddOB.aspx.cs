@@ -8,17 +8,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace DogWalking.Admin_Side.Outbreaks
+namespace DogWalking.User_Side.Outbreaks
 {
-    public partial class OB_AddOB : System.Web.UI.Page
+    public partial class User_AddOB : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Admin"] == null)
-            {
-                Response.Redirect("LoginPage.aspx");
-            }
-
             LoadWalkName();
         }
 
@@ -51,13 +46,13 @@ namespace DogWalking.Admin_Side.Outbreaks
             if (String.IsNullOrEmpty(txtIllNotes.Text))
             {
                 string description = "No further information available.";
-                string user = Session["Admin"].ToString();
+                string user = Session["User"].ToString();
 
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
                                 " VALUES ('" + txtIllDate.Text + "', '" + txtIllType.Text + "', '" + description + "'," +
-                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'False')";
+                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'True')";
 
                 SqlCommand cmd = new SqlCommand(newOut, con);
                 cmd.ExecuteScalar();
@@ -70,31 +65,23 @@ namespace DogWalking.Admin_Side.Outbreaks
                 con.Open();
                 string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
                                 " VALUES ('" + txtIllDate.Text + "', '" + txtIllType.Text + "', '" + txtIllNotes.Text + "'," +
-                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'False')";
+                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'True')";
 
                 SqlCommand cmd = new SqlCommand(newOut, con);
                 cmd.ExecuteScalar();
                 con.Close();
             }
-
-            
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("OB_AllOB.aspx");
+            Response.Redirect("");
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             addOutbreak();
-            Response.Redirect("OB_AllOB.aspx");
-        }
-
-        protected void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("User_ReportedOB.aspx");
         }
     }
 }

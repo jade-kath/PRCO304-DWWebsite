@@ -112,6 +112,15 @@ namespace DogWalking.User_Side.Walks {
         protected global::System.Web.UI.WebControls.RadioButton radTerBeach;
         
         /// <summary>
+        /// radTerPark control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton radTerPark;
+        
+        /// <summary>
         /// btnClearTer control.
         /// </summary>
         /// <remarks>
