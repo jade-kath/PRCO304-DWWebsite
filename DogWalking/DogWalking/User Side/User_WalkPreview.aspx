@@ -12,8 +12,11 @@
             
             <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
             <br />
-            <asp:Label runat="server" ID="lblStatus"></asp:Label>
-            <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
+
+            <div class="userCreated">
+                <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
+                <asp:Label runat="server" ID="lblStatus"></asp:Label>
+            </div>
             <br />
             <div class="general">
                 <asp:Label ID="lblWalkName" runat="server"></asp:Label>
@@ -53,43 +56,68 @@
                     <br />
             </div>
 
-            <div class="facilities">
-                <h3>Entry Fee</h3>
-                <asp:Label ID="lblEntry" runat="server" />
+             <div class="facilities">
+                <div class="entry">
+                    <h3>Entry Fee</h3>
+                    <asp:Label ID="lblEntry" runat="server" />
                     <br />
-                <asp:Label ID="lblEntryDetail" runat="server" />
+                    <asp:Label ID="lblEntryDetail" runat="server" />
                     <br />
+                </div>
                 
-                <h3>Parking</h3>
-                <asp:Label ID="lblPark" runat="server" />
+                <div class="parking">
+                    <h3>Parking</h3>
+                    <asp:Label ID="lblPark" runat="server" />
                     <br />
-                <asp:Label ID="lblParkDetail" runat="server" />
+                    <asp:Label ID="lblParkDetail" runat="server" />
                     <br />
-                
-                <h3>Live Stock</h3>
-                <asp:Label ID="lblLive" runat="server" />
-                    <br />
-                <asp:Label ID="lblLiveDetail" runat="server" />
-                    <br />
-                
-                <h3>Toilets</h3>
-                <asp:Label ID="lblToilet" runat="server" />
-                    <br />
-                <asp:Label ID="lblToiletDetail" runat="server" />
-                    <br />
+                </div>
 
-                <h3>Refreshments</h3>
-                <asp:Label ID="lblRefresh" runat="server" />
+                <div class="livestock">
+                    <h3>Live Stock</h3>
+                    <asp:Label ID="lblLive" runat="server" />
                     <br />
-                <asp:Label ID="lblRefreshDetail" runat="server" />
+                    <asp:Label ID="lblLiveDetail" runat="server" />
+                    <br />
+                </div>
 
-                <h3>Wheelchair Friendly</h3>
-                <asp:Label ID="lblWheel" runat="server" />
+                <div class="toilets">
+                    <h3>Toilets</h3>
+                    <asp:Label ID="lblToilet" runat="server" />
                     <br />
+                    <asp:Label ID="lblToiletDetail" runat="server" />
+                    <br />
+                </div>
+
+                <div class="refreshments">
+                    <h3>Refreshments</h3>
+                    <asp:Label ID="lblRefresh" runat="server" />
+                    <br />
+                    <asp:Label ID="lblRefreshDetail" runat="server" />
+                </div>
+
+                <div class="wheelchair">
+                    <h3>Wheelchair Friendly</h3>
+                    <asp:Label ID="lblWheel" runat="server" />
+                    <br />
+                </div>
+
             </div>
+
+            <br />
             <div class="creation">
                 <asp:Label ID="lblCreated" runat="server" />
             </div>
+            <br />
+
+            <div class="outbreaks">      
+                <h3>Dog Illness Reported</h3>
+                <asp:GridView ID="grdWalkOutbreaks" runat="server"></asp:GridView>
+                    <br />
+                <asp:Button runat="server" ID="btnAddOutbreak" Text="Report a Dog Illness Linked to This Walk" OnClick="btnAddOutbreak_Click" />
+                    <br />
+            </div>
+            
         </div>
     </form>
 </body>

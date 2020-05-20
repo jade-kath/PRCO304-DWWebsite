@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
         <div>
             <h2>Walks By Me</h2>
+
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+            <asp:Button ID="btnAddWalk" runat="server" Text="Add a New Walk" OnClick="btnAddWalk_Click" />
+            <br />
+
             <h3>Pending Confirmation</h3>
             <asp:GridView ID="grdMyWalksPending" runat="server" datakeynames="WalkPostcode" OnSelectedIndexChanged="grdMyWalksPending_SelectedIndexChanged">
                 <Columns>
@@ -18,7 +23,7 @@
             </asp:GridView>
 
             <h3>Published</h3>
-            <asp:GridView ID="grdMyWalksConfirmed" runat="server" OnSelectedIndexChanged="grdMyWalksConfirmed_SelectedIndexChanged">
+            <asp:GridView ID="grdMyWalksConfirmed" runat="server" datakeysnames="WalkPostcode" OnSelectedIndexChanged="grdMyWalksConfirmed_SelectedIndexChanged">
                 <Columns>
                     <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
                 </Columns>

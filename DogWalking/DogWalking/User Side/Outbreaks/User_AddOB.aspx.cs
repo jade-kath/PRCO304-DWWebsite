@@ -19,7 +19,6 @@ namespace DogWalking.User_Side.Outbreaks
 
         private void LoadWalkName()
         {
-
             DataTable walkName = new DataTable();
 
             using (SqlConnection con = new SqlConnection("connect"))
@@ -60,7 +59,7 @@ namespace DogWalking.User_Side.Outbreaks
             }
             else
             {
-                string user = Session["Admin"].ToString();
+                string user = Session["User"].ToString();
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
                 string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
@@ -75,6 +74,7 @@ namespace DogWalking.User_Side.Outbreaks
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
+            //Session to walk or profile
             Response.Redirect("");
         }
 

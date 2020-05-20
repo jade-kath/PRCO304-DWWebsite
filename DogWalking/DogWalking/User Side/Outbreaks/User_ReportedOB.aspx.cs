@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DogWalking.User_Side.Outbreaks
 {
@@ -11,7 +14,32 @@ namespace DogWalking.User_Side.Outbreaks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bindOutbreak();
+        }
 
+        private void bindOutbreak()
+        {
+            string user = Session["User"].ToString();
+
+            SqlConnection con = new SqlConnection("connect");
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType, Walk.WalkName," +
+                                                    " Location.Location, Outbreak.ODescription, Users.Username FROM" +
+                                                    " Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location ON" +
+                                                    " Walk.LocationID = Location.LocationID WHERE Users.Username = '" + user + "'", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            lstOutbreaks.DataSource = dt;
+            lstOutbreaks.DataBind();
+        }
+
+        protected void btnNewOutbreak_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("User_AddOB.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../UserProfile.aspx");
         }
     }
 }

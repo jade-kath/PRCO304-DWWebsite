@@ -158,6 +158,12 @@
 
             <br />
 
+            <div class="creation">
+                <asp:Label ID="lblCreated" runat="server" />
+            </div>
+
+            <br />
+
             <div class="outbreaks">      
                 <h3>Dog Illness Reported</h3>
                 <asp:GridView ID="grdWalkOutbreaks" runat="server" OnSelectedIndexChanged="grdWalkOutbreaks_SelectedIndexChanged">
@@ -168,10 +174,6 @@
                     <br />
                 <asp:Button runat="server" ID="btnAddOutbreak" Text="Report a Dog Illness on This Walk" />
                     <br />
-            </div>
-
-            <div class="creation">
-                <asp:Label ID="lblCreated" runat="server" />
             </div>
 
         </div>

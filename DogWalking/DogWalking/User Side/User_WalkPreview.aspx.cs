@@ -14,11 +14,7 @@ namespace DogWalking.User_Side
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userWalk"] == null)
-            {
-
-            }
-            else
+            if (Session["userWalk"] != null)
             {
                 checkStatus();
             }
@@ -30,6 +26,7 @@ namespace DogWalking.User_Side
                 terrainList();
                 facilityDetails();
                 facilityBoolValues();
+                walkOutbreakReports();
             }
         }
 
@@ -423,6 +420,40 @@ namespace DogWalking.User_Side
             }
         }
 
+        private void walkOutbreakReports()
+        {
+            string walk = Session["WalkID"].ToString();
+
+            string sqlQuery = @"SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType," +
+                               " Outbreak.ODescription, Users.Username FROM Outbreak JOIN Users" +
+                               " ON Outbreak.UserID = Users.UserID WHERE Outbreak.WalkID = '" + walk + "' and NewOutbreak = 'False'";
+
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
+
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("OutbreakDate", typeof(DateTime)),
+                new DataColumn("OutbreakType",typeof(string)),
+                new DataColumn("ODescription", typeof(string)),
+                new DataColumn("Username", typeof(string))
+            });
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                string OutbreakDate = ((DateTime)dr[0]).ToShortDateString();
+                string OutbreakType = (string)dr[1];
+                string ODescription = (string)dr[2];
+                string Username = (string)dr[3];
+
+                dt.Rows.Add(OutbreakDate, OutbreakType, ODescription, Username);
+            }
+
+            this.grdWalkOutbreaks.DataSource = dt;
+            this.grdWalkOutbreaks.DataBind();
+        }
+
         //created by user
         private void Creator()
         {
@@ -467,6 +498,13 @@ namespace DogWalking.User_Side
                 Session.Remove("userWalk");
                 Response.Redirect("Users_WalksByMe.aspx");
             }
+        }
+
+        protected void btnAddOutbreak_Click(object sender, EventArgs e)
+        {
+            Session.Remove("userWalk");
+            Response.Redirect("Outbreaks/User_AddOB.aspx");
+           
         }
     }
 }
