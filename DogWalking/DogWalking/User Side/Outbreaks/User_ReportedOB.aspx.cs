@@ -21,7 +21,7 @@ namespace DogWalking.User_Side.Outbreaks
         {
             string user = Session["User"].ToString();
 
-            SqlConnection con = new SqlConnection("connect");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType, Walk.WalkName," +
                                                     " Location.Location, Walk.WalkPostcode, Outbreak.ODescription, Users.Username FROM" +
                                                     " Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location ON" +

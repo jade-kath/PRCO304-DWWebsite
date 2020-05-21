@@ -33,6 +33,7 @@
                     <ItemTemplate>
                         <div class="list">
                             <table>
+                                <tr><td><img src="<%#Eval("ImagePath"%>" /></td></tr>
                                 <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
                                 <tr><td><h4><%#Eval("Address")%></h4></td></tr>
                                 <tr><td><p><%#Eval("Description")%></p></td></tr>

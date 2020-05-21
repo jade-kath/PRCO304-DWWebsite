@@ -21,9 +21,9 @@ namespace DogWalking
         {
             string location = Session["searchWalk"].ToString();
 
-            SqlConnection con = new SqlConnection("connect");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
-                                                    " Walk.Description FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
+                                                    " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
                                                     " JOIN Users ON Walk.UserID = Users.UserID WHERE Location.Location = '%" + location + "%' OR" +
                                                     " Walk.Postcode = '%" + location + "%' AND Walk.Published = 'True'", con);
 

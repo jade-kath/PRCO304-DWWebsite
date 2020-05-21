@@ -30,7 +30,7 @@ namespace DogWalking.User_Side.Walks
         {
             string user = Session["User"].ToString();
 
-            SqlConnection con = new SqlConnection("connect");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode, Walk.Description FROM Walk JOIN" +
                                " Location ON Location.LocationID = Walk.LocationID JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "'" +
                                " AND Walk.NewWalk = 'True' OR Walk.Published = 'False'", con);
@@ -47,7 +47,7 @@ namespace DogWalking.User_Side.Walks
 
             SqlConnection con = new SqlConnection("connect");
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
-                                                    " Walk.Description FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
+                                                    " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
                                                     " JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "' AND Walk.Published = 'True'", con);
 
             DataTable dt = new DataTable();
