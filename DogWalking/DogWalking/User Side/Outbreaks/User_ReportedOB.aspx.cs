@@ -23,7 +23,7 @@ namespace DogWalking.User_Side.Outbreaks
 
             SqlConnection con = new SqlConnection("connect");
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType, Walk.WalkName," +
-                                                    " Location.Location, Outbreak.ODescription, Users.Username FROM" +
+                                                    " Location.Location, Walk.WalkPostcode, Outbreak.ODescription, Users.Username FROM" +
                                                     " Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location ON" +
                                                     " Walk.LocationID = Location.LocationID WHERE Users.Username = '" + user + "'", con);
             DataTable dt = new DataTable();
@@ -40,6 +40,26 @@ namespace DogWalking.User_Side.Outbreaks
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("../UserProfile.aspx");
+        }
+
+        protected void lstOutbreaks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = lstOutbreaks.SelectedDataKey.Value.ToString();
+
+            string sqlQuery = @"SELECT WalkID FROM Walk WHERE WalkPostcode = '" + value + "'";
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
+
+            string WalkID = "";
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                WalkID = (string)dr[0];
+            }
+
+            Session["WalkID"] = WalkID;
+
+            Response.Redirect("../User_WalkPreview.aspx");
         }
     }
 }

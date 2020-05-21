@@ -21,34 +21,16 @@ namespace DogWalking
         {
             string location = Session["searchWalk"].ToString();
 
-            string sqlQuery = @"SELECT WalkName, Location.Location, WalkAddress, WalkPostcode FROM Walk JOIN" +
-                               " Location ON Location.LocationID = Walk.LocationID WHERE Location.Location = " +
-                               "'%" + location + "%' OR Walk.Postcode = '%" + location + "%' AND Walk.Published = 'True'";
-
-            ConnectionClass conn = new ConnectionClass();
-            conn.retrieveData(sqlQuery);
+            SqlConnection con = new SqlConnection("connect");
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
+                                                    " Walk.Description FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
+                                                    " JOIN Users ON Walk.UserID = Users.UserID WHERE Location.Location = '%" + location + "%' OR" +
+                                                    " Walk.Postcode = '%" + location + "%' AND Walk.Published = 'True'", con);
 
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("WalkName",typeof(string)),
-                new DataColumn("Location", typeof(string)),
-                new DataColumn("WalkAddress", typeof(string)),
-                new DataColumn("WalkPostcode", typeof(string))
-            });
-
-            foreach (DataRow dr in conn.SQLTable.Rows)
-            {
-                string WalkName = (string)dr[0];
-                string Location = (string)dr[1];
-                string WalkAddress = (string)dr[2];
-                string WalkPostcode = (string)dr[3];
-
-                dt.Rows.Add(WalkName, Location, WalkAddress, WalkPostcode);
-            }
-
-            this.grdWalkResults.DataSource = dt;
-            this.grdWalkResults.DataBind();
+            sda.Fill(dt);
+            lstResults.DataSource = dt;
+            lstResults.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -57,9 +39,24 @@ namespace DogWalking
             Response.Redirect("searchResults.aspx");
         }
 
-        protected void grdWalkResults_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void lstConfirmed_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["WalkID"] = this.grdWalkResults.SelectedRow.Cells[1].Text;
+            string value = lstResults.SelectedDataKey.Value.ToString();
+
+            string sqlQuery = @"SELECT WalkID FROM Walk WHERE WalkPostcode = '" + value + "'";
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
+
+            string WalkID = "";
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                WalkID = (string)dr[0];
+            }
+
+            Session["WalkID"] = WalkID;
+
             Response.Redirect("Walks/User_WalkPreview.aspx");
         }
     }

@@ -16,19 +16,31 @@
             <br />
 
             <h3>Pending Confirmation</h3>
-            <asp:GridView ID="grdMyWalksPending" runat="server" datakeynames="WalkPostcode" OnSelectedIndexChanged="grdMyWalksPending_SelectedIndexChanged">
-                <Columns>
-                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100" />
-                </Columns>
-            </asp:GridView>
+            <asp:ListView ID="lstPending" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstPending_SelectedIndexChanged">
+                    <ItemTemplate>
+                        <div class="list">
+                            <table>
+                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
+                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
+                                <tr><td><p><%#Eval("Description")%></p></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
 
-            <h3>Published</h3>
-            <asp:GridView ID="grdMyWalksConfirmed" runat="server" datakeysnames="WalkPostcode" OnSelectedIndexChanged="grdMyWalksConfirmed_SelectedIndexChanged">
-                <Columns>
-                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
-                </Columns>
-            </asp:GridView>
-        </div>
+            <h3>Confirmed & Published</h3>
+             <asp:ListView ID="lstConfirmed" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstConfirmed_SelectedIndexChanged">
+                    <ItemTemplate>
+                        <div class="list">
+                            <table>
+                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
+                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
+                                <tr><td><p><%#Eval("Description")%></p></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
+           </div>
     </form>
 </body>
 </html>

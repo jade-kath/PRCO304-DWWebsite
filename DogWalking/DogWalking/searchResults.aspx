@@ -22,7 +22,17 @@
             </div>
 
             <br />
-            <asp:GridView ID="grdWalkResults" runat="server" OnSelectedIndexChanged="grdWalkResults_SelectedIndexChanged"></asp:GridView>
+            <asp:ListView ID="lstResults" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstConfirmed_SelectedIndexChanged">
+                    <ItemTemplate>
+                        <div class="list">
+                            <table>
+                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
+                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
+                                <tr><td><p><%#Eval("Description")%></p></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
         </div>
     </form>
 </body>

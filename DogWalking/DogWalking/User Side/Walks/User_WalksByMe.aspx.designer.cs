@@ -40,21 +40,21 @@ namespace DogWalking.User_Side.Walks {
         protected global::System.Web.UI.WebControls.Button btnAddWalk;
         
         /// <summary>
-        /// grdMyWalksPending control.
+        /// lstPending control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdMyWalksPending;
+        protected global::System.Web.UI.WebControls.ListView lstPending;
         
         /// <summary>
-        /// grdMyWalksConfirmed control.
+        /// lstConfirmed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdMyWalksConfirmed;
+        protected global::System.Web.UI.WebControls.ListView lstConfirmed;
     }
 }
