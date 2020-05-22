@@ -27,7 +27,7 @@ namespace DogWalking.Admin_Side.Outbreaks
 
             DataTable walkName = new DataTable();
 
-            using (SqlConnection con = new SqlConnection("connect"))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString()))
             {
                 try
                 {
@@ -41,9 +41,28 @@ namespace DogWalking.Admin_Side.Outbreaks
                 }
                 catch
                 {
-                    lblCatch.Visible = true;
+                    throw;
                 }
             }
+        }
+
+        private void required()
+        {
+            if (string.IsNullOrEmpty(txtIllDate.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtIllType.Text))
+                {
+                    lblrequired.Visible = true;
+                }
+                else
+                {
+                    addOutbreak();
+                }
+            }   
         }
 
         private void addOutbreak()
@@ -75,9 +94,7 @@ namespace DogWalking.Admin_Side.Outbreaks
                 SqlCommand cmd = new SqlCommand(newOut, con);
                 cmd.ExecuteScalar();
                 con.Close();
-            }
-
-            
+            }   
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -87,7 +104,7 @@ namespace DogWalking.Admin_Side.Outbreaks
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            addOutbreak();
+            required();
             Response.Redirect("OB_AllOB.aspx");
         }
 

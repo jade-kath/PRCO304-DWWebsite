@@ -14,6 +14,11 @@ namespace DogWalking.User_Side.Outbreaks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("../../index.aspx");
+            }
+
             bindOutbreak();
         }
 
@@ -25,7 +30,7 @@ namespace DogWalking.User_Side.Outbreaks
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType, Walk.WalkName," +
                                                     " Location.Location, Walk.WalkPostcode, Outbreak.ODescription, Users.Username FROM" +
                                                     " Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location ON" +
-                                                    " Walk.LocationID = Location.LocationID WHERE Users.Username = '" + user + "'", con);
+                                                    " Walk.LocationID = Location.LocationID JOIN Users ON Users.UserID = Outbreak.UserID WHERE Users.Username = '" + user + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             lstOutbreaks.DataSource = dt;

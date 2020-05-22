@@ -14,6 +14,11 @@ namespace DogWalking.User_Side.Outbreaks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("../../index.aspx");
+            }
+
             LoadWalkName();
         }
 
@@ -21,7 +26,7 @@ namespace DogWalking.User_Side.Outbreaks
         {
             DataTable walkName = new DataTable();
 
-            using (SqlConnection con = new SqlConnection("connect"))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString()))
             {
                 try
                 {
@@ -35,7 +40,26 @@ namespace DogWalking.User_Side.Outbreaks
                 }
                 catch
                 {
-                    lblCatch.Visible = true;
+                    throw;
+                }
+            }
+        }
+
+        private void required()
+        {
+            if (string.IsNullOrEmpty(txtIllDate.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtIllType.Text))
+                {
+                    lblrequired.Visible = true;
+                }
+                else
+                {
+                    addOutbreak();
                 }
             }
         }
@@ -75,12 +99,12 @@ namespace DogWalking.User_Side.Outbreaks
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             //Session to walk or profile
-            Response.Redirect("");
+            Response.Redirect("../UserProfile.aspx");
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            addOutbreak();
+            required();
             Response.Redirect("User_ReportedOB.aspx");
         }
     }

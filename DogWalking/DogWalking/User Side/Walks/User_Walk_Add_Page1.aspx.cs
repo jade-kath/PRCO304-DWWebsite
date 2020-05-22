@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace DogWalking.User_Side.Walks
 {
@@ -16,7 +17,7 @@ namespace DogWalking.User_Side.Walks
         {
             if (Session["User"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             loadBack();
@@ -24,11 +25,7 @@ namespace DogWalking.User_Side.Walks
 
         private void loadBack()
         {
-            if (Session["goBack"] == null)
-            {
-
-            }
-            else
+            if (Session["goBack"] != null)
             {
                 string load = Session["goBack"].ToString();
                 string sqlQuery = @"SELECT Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration FROM Walk WHERE Walk.WalkName = '" + load + "'";
@@ -47,6 +44,46 @@ namespace DogWalking.User_Side.Walks
                 }
             }
 
+        }
+
+        //Testing required text fields
+        private void required()
+        {
+            if (string.IsNullOrEmpty(txtPlaceName.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtPostcode.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtDescript.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtDuration.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtTimeLength.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                if (Session["goBack"] == null)
+                {
+                    checkWalks();
+                }
+                else
+                {
+                    saveWalk();
+                }
+            }
         }
 
         private void checkWalks()
@@ -77,16 +114,39 @@ namespace DogWalking.User_Side.Walks
         {
             if (Session["goBack"] == null)
             {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-                con.Open();
-                string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
-                                  " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
-                                     " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
-                                     " '" + txtDuration.Text + "', 'True')";
+                if (FileUpload != null)
+                {
+                    string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
+                    string filePath = "../../Images/" + fileName;
 
-                SqlCommand cmd = new SqlCommand(SaveWalk, con);
-                cmd.ExecuteScalar();
-                con.Close();
+                    FileUpload.PostedFile.SaveAs(Server.MapPath(filePath));
+
+
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                    con.Open();
+                    string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                      " Walk.NewWalk, Walk.ImageName, Walk.ImagePath) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                         " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                         " '" + txtDuration.Text + "', 'False', '" + fileName + "', '" + filePath + "')";
+
+                    SqlCommand cmd = new SqlCommand(SaveWalk, con);
+                    cmd.ExecuteScalar();
+                    con.Close();
+                }
+                else
+                {
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                    con.Open();
+                    string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                      " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                         " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                         " '" + txtDuration.Text + "', 'False')";
+
+                    SqlCommand cmd = new SqlCommand(SaveWalk, con);
+                    cmd.ExecuteScalar();
+                    con.Close();
+                }
+
             }
             else
             {
@@ -95,16 +155,38 @@ namespace DogWalking.User_Side.Walks
                 ConnectionClass con = new ConnectionClass();
                 con.retrieveData(delWalk);
 
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-                conn.Open();
-                string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
-                                  " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
-                                     " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
-                                     " '" + txtDuration.Text + "', 'True')";
+                if (FileUpload != null)
+                {
+                    string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
+                    string filePath = "../../Images/" + fileName;
 
-                SqlCommand cmd = new SqlCommand(SaveWalk, conn);
-                cmd.ExecuteScalar();
-                conn.Close();
+                    FileUpload.PostedFile.SaveAs(Server.MapPath(filePath));
+
+
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                    conn.Open();
+                    string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                      " Walk.NewWalk, Walk.ImageName, Walk.ImagePath) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                         " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                         " '" + txtDuration.Text + "', 'False', '" + fileName + "', '" + filePath + "')";
+
+                    SqlCommand cmd = new SqlCommand(SaveWalk, conn);
+                    cmd.ExecuteScalar();
+                    conn.Close();
+                }
+                else
+                {
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+                    conn.Open();
+                    string SaveWalk = "INSERT INTO Walk(Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration," +
+                                      " Walk.NewWalk) VALUES ('" + txtPlaceName.Text + "', '" + txtAddress.Text + "', '" + txtPostcode.Text + "'," +
+                                         " '" + drpLocation.SelectedValue + "', '" + txtDescript.Text + "', '" + txtTimeLength.Text + "'," +
+                                         " '" + txtDuration.Text + "', 'False')";
+
+                    SqlCommand cmd = new SqlCommand(SaveWalk, conn);
+                    cmd.ExecuteScalar();
+                    conn.Close();
+                }
 
                 Session.Remove("goBack");
             }
@@ -117,14 +199,12 @@ namespace DogWalking.User_Side.Walks
 
         protected void SaveChanges_Click(object sender, EventArgs e)
         {
-            if (Session["goBack"] == null)
-            {
-                checkWalks();
-            }
-            else
-            {
-                saveWalk();
-            }
+            required();
+        }
+
+        protected void yesCont_Click(object sender, EventArgs e)
+        {
+            required();
         }
 
         protected void noCancel_Click(object sender, EventArgs e)
@@ -135,9 +215,12 @@ namespace DogWalking.User_Side.Walks
             Response.Redirect("UserProfile.aspx");
         }
 
-        protected void yesCont_Click(object sender, EventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            saveWalk();
+            Session.Remove("goBack");
+            Session.Remove("newWalk");
+            Session.Remove("postcode");
+            Response.Redirect("../UserProfile.aspx");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DogWalking.User_Side.Walks
         {
             if (Session["User"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
         }
 
@@ -278,7 +278,7 @@ namespace DogWalking.User_Side.Walks
                 con.Close();
             }
 
-            Response.Redirect("UserProfile.aspx");
+            Response.Redirect("../UserProfile.aspx");
         }
 
         protected void Back_Click(object sender, EventArgs e)
@@ -309,7 +309,8 @@ namespace DogWalking.User_Side.Walks
             con.Close();
 
             Session.Remove("newWalk");
-            Response.Redirect("UserProfile.aspx");
+            Session.Remove("postcode");
+            Response.Redirect("../UserProfile.aspx");
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
@@ -326,7 +327,7 @@ namespace DogWalking.User_Side.Walks
 
             Session.Remove("newWalk");
             Session.Remove("postcode");
-            Response.Redirect("UserProfile.aspx");
+            Response.Redirect("../UserProfile.aspx");
         }
 
         //TERRAIN

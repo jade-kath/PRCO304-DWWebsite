@@ -31,6 +31,15 @@ namespace DogWalking.User_Side {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+        
+        /// <summary>
         /// btnDel control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace DogWalking.User_Side {
         protected global::System.Web.UI.WebControls.Button btnDel;
         
         /// <summary>
-        /// lblStatus control.
+        /// lstImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
+        protected global::System.Web.UI.WebControls.ListView lstImage;
         
         /// <summary>
         /// lblWalkName control.
@@ -256,21 +265,12 @@ namespace DogWalking.User_Side {
         protected global::System.Web.UI.WebControls.Label lblCreated;
         
         /// <summary>
-        /// grdWalkOutbreaks control.
+        /// lstOutbreaks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdWalkOutbreaks;
-        
-        /// <summary>
-        /// btnAddOutbreak control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddOutbreak;
+        protected global::System.Web.UI.WebControls.ListView lstOutbreaks;
     }
 }

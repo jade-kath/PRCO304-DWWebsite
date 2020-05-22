@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Add Dog Illness Report</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -54,25 +54,32 @@
             </div>
 
         <div class="main">
-            <label>Walk Location:</label><br />
+            <h1>Report a Dog Illness</h1>
+            <br />
+            <p id="required">* indicates a required field</p>
+            <br />
+
+            <label>*</label><label>Walk Location:</label><br />
             <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
             <br />
 
-            <label>Walk Name:</label><br />
+            <label>*</label><label>Walk Name:</label><br />
             <asp:DropDownList ID="drpWalkName" runat="server"></asp:DropDownList><br />
-            <asp:Label runat="server" ID="lblCatch" Visible="false">Please choose the location of the walk.</asp:Label>
             <br />
 
-            <label>Type of Illness:</label><br />
+            <label>*</label><label>Type of Illness:</label><br />
             <asp:TextBox runat="server" ID="txtIllType"></asp:TextBox>
             <br />
 
-            <label>Date of Illnesses Occurrence:</label><br />
+            <label>*</label><label>Date of Illnesses Occurrence:</label><br />
             <asp:TextBox ID="txtIllDate" runat="server" TextMode="Date" />
             <br />
             <label>Futher Description or Notes:</label><br />
             <asp:TextBox runat="server" ID="txtIllNotes" />
+            <br />
+
+            <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
             <br />
 
             <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />

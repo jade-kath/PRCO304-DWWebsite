@@ -16,7 +16,7 @@ namespace DogWalking.User_Side
         {
             if (Session["User"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             if (!IsPostBack)
@@ -81,6 +81,11 @@ namespace DogWalking.User_Side
 
             Session.Remove("User");
             Response.Redirect("~/index.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../UserProfile.aspx");
         }
     }
 }

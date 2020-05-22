@@ -4,12 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Add a Walk</title>
 </head>
 <body>
     <form id="form1" runat="server">
          <div class ="userMain">
-                <div class="terrain">
+             <h1>Add a Walk - Page 2</h1>
+             <p>If possible, please provide as much information as you can by answering the questions. If you are unsure or do not know, you can leave the answer empty.</p>
+             <br />
+             
+             <div class="terrain">
                  <h2>Terrain</h2>
                    <p>Types of terrains on this walk:- (Select all that apply)</p>
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged" />
@@ -114,8 +118,8 @@
                             <br /> 
                 </div>
 
-                <asp:Button ID="Back" runat="server" Text="Back" OnClick="Back_Click" />
-                <asp:Button ID="Save" runat="server" Text="Save" OnClick="Save_Click" />
+                <asp:Button ID="Back" runat="server" Text="Previous Page" OnClick="Back_Click" />
+                <asp:Button ID="Save" runat="server" Text="Save & Finish" OnClick="Save_Click" />
                 <br />
                 <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" />
             </div>

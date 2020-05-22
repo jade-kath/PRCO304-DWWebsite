@@ -16,7 +16,27 @@ namespace DogWalking.User_Side
         {
             if (Session["User"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
+            }
+        }
+
+        private void required()
+        {
+            if (string.IsNullOrEmpty(txtOldPassword.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtNewPassword.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtEmailAddress.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                saveChanges();
             }
         }
 
@@ -53,7 +73,12 @@ namespace DogWalking.User_Side
 
         protected void SaveUserChanges_Click(object sender, EventArgs e)
         {
-            saveChanges();
+            required();
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserEditSettings.aspx");
         }
     }
 }

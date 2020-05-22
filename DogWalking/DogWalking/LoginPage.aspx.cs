@@ -17,12 +17,12 @@ namespace DogWalking
 
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        private void loginUser()
         {
             //SqlConnection con = new SqlConnection(@"Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Integrated Security=False;User ID=JMarshall;Password=********;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
-            
+
 
             //Admin
             string adminLoginQuery = "SELECT Count (*) FROM Users WHERE Username='" + txtusernameInsert.Text + "' AND Password='" + txtpasswordInsert.Text + "' AND isAdmin='True'";
@@ -50,6 +50,11 @@ namespace DogWalking
             }
 
             con.Close();
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            loginUser();
         }
     }
 }

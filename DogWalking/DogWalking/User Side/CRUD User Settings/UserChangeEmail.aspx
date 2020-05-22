@@ -4,22 +4,33 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - User Settings</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2>Change Email</h2>
+            <h1>User Settings - Change Email Address</h1>
 
-            <label>Old Email Adress:-</label>
+            <br />
+            <asp:Button ID="btnCancel" runat="server" Text="Back" OnClick="btnCancel_Click" />
+            <br />
+
+            <p id="required">* indicates a required field</p>
+            <br />
+
+            <label>*</label><label>Old Email Address:-</label>
             <asp:TextBox ID="txtOldEmail" runat="server" TextMode="Email"/>
             <br />
-            <label>New Email Address:-</label>
+            <label>*</label><label>New Email Address:-</label>
             <asp:TextBox ID="txtNewEmail" runat="server" TextMode="Email" Width="167px"/>
             <br />
-            <label>Enter password to confirm change:-</label>
+            <label>*</label><label>Enter password to confirm change:-</label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
             <br />
+
+            <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
+            <br />
+
             <asp:Button ID="SaveUserChanges" runat="server" OnClick="SvUserChanges_Click" Text="Save Changes" />
             <br />
             <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>

@@ -4,12 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - User Settings</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2>Edit Profile/Settings</h2>
+            <h1>User Settings</h1>
+
+            <br />
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+            <br />
 
             <label>Username:-</label>
             <asp:TextBox ID="txtUserUsername" runat="server" ReadOnly="true"/>
@@ -32,6 +36,8 @@
             <br />
             <asp:Button ID="UserChangeEmail" runat="server" Text="Change Email Address" OnClick="UserChangeEmail_Click" />
             <asp:Button ID="UserChangePassword" runat="server" Text="Change Password" OnClick="UserChangePassword_Click" />
+            <br />
+
             <asp:Button ID="UserDeleteAccount" runat="server" Text="Delete My Account" OnClick="UserDeleteAccount_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;" />
             <br />
                 

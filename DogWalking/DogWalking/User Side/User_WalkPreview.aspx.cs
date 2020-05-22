@@ -22,6 +22,7 @@ namespace DogWalking.User_Side
             if (!IsPostBack)
             {
                 Creator();
+                viewImage();
                 previewWalk();
                 terrainList();
                 facilityDetails();
@@ -59,6 +60,19 @@ namespace DogWalking.User_Side
             {
                 lblStatus.Text = "This walk is pending confirmation.";
             }
+        }
+
+        private void viewImage()
+        {
+            string walk = Session["WalkID"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT ImagePath FROM Walk WHERE WalkID = '" + walk + "'", con);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            lstImage.DataSource = dt;
+            lstImage.DataBind();
         }
 
         private void previewWalk()
@@ -422,36 +436,17 @@ namespace DogWalking.User_Side
 
         private void walkOutbreakReports()
         {
-            string walk = Session["WalkID"].ToString();
+            string user = Session["User"].ToString();
 
-            string sqlQuery = @"SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType," +
-                               " Outbreak.ODescription, Users.Username FROM Outbreak JOIN Users" +
-                               " ON Outbreak.UserID = Users.UserID WHERE Outbreak.WalkID = '" + walk + "' and NewOutbreak = 'False'";
-
-            ConnectionClass conn = new ConnectionClass();
-            conn.retrieveData(sqlQuery);
-
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT Outbreak.OutbreakDate, Outbreak.OutbreakType, Walk.WalkName," +
+                                                    " Location.Location, Walk.WalkPostcode, Outbreak.ODescription, Users.Username FROM" +
+                                                    " Outbreak JOIN Walk ON Outbreak.WalkID = Walk.WalkID JOIN Location ON" +
+                                                    " Walk.LocationID = Location.LocationID JOIN Users ON Users.UserID = Outbreak.UserID WHERE Users.Username = '" + user + "'", con);
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[]
-            {
-                new DataColumn("OutbreakDate", typeof(DateTime)),
-                new DataColumn("OutbreakType",typeof(string)),
-                new DataColumn("ODescription", typeof(string)),
-                new DataColumn("Username", typeof(string))
-            });
-
-            foreach (DataRow dr in conn.SQLTable.Rows)
-            {
-                string OutbreakDate = ((DateTime)dr[0]).ToShortDateString();
-                string OutbreakType = (string)dr[1];
-                string ODescription = (string)dr[2];
-                string Username = (string)dr[3];
-
-                dt.Rows.Add(OutbreakDate, OutbreakType, ODescription, Username);
-            }
-
-            this.grdWalkOutbreaks.DataSource = dt;
-            this.grdWalkOutbreaks.DataBind();
+            sda.Fill(dt);
+            lstOutbreaks.DataSource = dt;
+            lstOutbreaks.DataBind();
         }
 
         //created by user
@@ -490,13 +485,13 @@ namespace DogWalking.User_Side
             if (Session["userWalk"] == null)
             {
                 Session.Remove("WalkID");
-                Response.Redirect("searchResults.aspx");
+                Response.Redirect("../searchResults.aspx");
             }
             else
             {
                 Session.Remove("WalkID");
                 Session.Remove("userWalk");
-                Response.Redirect("Users_WalksByMe.aspx");
+                Response.Redirect("Walks/Users_WalksByMe.aspx");
             }
         }
 

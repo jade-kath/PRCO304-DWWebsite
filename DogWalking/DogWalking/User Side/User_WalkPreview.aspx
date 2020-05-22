@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,11 +14,22 @@
             <br />
 
             <div class="userCreated">
-                <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
                 <asp:Label runat="server" ID="lblStatus"></asp:Label>
+                <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
             </div>
             <br />
+
             <div class="general">
+                <asp:ListView ID="lstImage" runat="server">
+                    <ItemTemplate>
+                        <div>
+                            <table>
+                                <tr><td><img src="<%#Eval("ImagePath") %>" /></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
+                
                 <asp:Label ID="lblWalkName" runat="server"></asp:Label>
                 <br />
                 <asp:Label ID="lblAddr" runat="server"></asp:Label>
@@ -33,20 +44,19 @@
                 <asp:Label ID="lblTime" runat="server"/>
                     <br />
                 <label>Distance of this Walk:</label>
-                    <br />
-                <asp:Label ID="lblDist" runat="server" ReadOnly="true"/>
+                <asp:Label ID="lblDist" runat="server"/>
                     <br />
             </div>
                     <br />
 
             <div class="terrain">
-                <h3>Terrain:</h3>
+                <h2>Terrain</h2>
                 <asp:GridView ID="grdTerrain" runat="server"></asp:GridView>
                     <br />
             </div>
 
             <div class="leads">
-              <h3>Lead Information:</h3>
+              <h2>Lead Information</h2>
                 <asp:Label ID="lblLeaded" runat="server" />
                     <br />
                 <asp:Label ID="lblNonLead" runat="server" />
@@ -57,6 +67,7 @@
             </div>
 
              <div class="facilities">
+                 <h2>Facilities</h2>
                 <div class="entry">
                     <h3>Entry Fee</h3>
                     <asp:Label ID="lblEntry" runat="server" />
@@ -111,11 +122,19 @@
             <br />
 
             <div class="outbreaks">      
-                <h3>Dog Illness Reported</h3>
-                <asp:GridView ID="grdWalkOutbreaks" runat="server"></asp:GridView>
-                    <br />
-                <asp:Button runat="server" ID="btnAddOutbreak" Text="Report a Dog Illness Linked to This Walk" OnClick="btnAddOutbreak_Click" />
-                    <br />
+                <h2>Dog Illness Reported</h2>
+                <asp:ListView ID="lstOutbreaks" runat="server" DataKeyNames="WalkPostcode">
+                    <ItemTemplate>
+                        <div class="list">
+                            <table>
+                                <tr><td><h3><%#Eval("OutbreakDate")%> - <%#Eval("OutbreakType")%></h3></td></tr>
+                                <tr><td><h4><%#Eval("WalkName")%>, <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h4></td></tr>
+                                <tr><td><p><%#Eval("ODecription")%></p></td></tr>
+                                <tr><td><p><%#Eval("Username")%></p></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
             </div>
             
         </div>

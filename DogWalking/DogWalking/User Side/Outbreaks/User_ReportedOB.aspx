@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - My Reported Dog Illnesses</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="userMain">
-            <h2>My Report Dog Illnesses</h2>
+            <h1>My Reported Dog Illnesses</h1>
             <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
             <asp:Button ID="btnNewOutbreak" runat="server" Text="Report a Dog Illness" OnClick="btnNewOutbreak_Click" />
 

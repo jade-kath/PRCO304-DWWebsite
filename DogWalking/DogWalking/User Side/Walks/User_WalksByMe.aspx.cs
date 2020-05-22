@@ -16,7 +16,7 @@ namespace DogWalking.User_Side.Walks
         {
             if (Session["User"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             if (!IsPostBack)
@@ -45,7 +45,7 @@ namespace DogWalking.User_Side.Walks
         {
             string user = Session["User"].ToString();
 
-            SqlConnection con = new SqlConnection("connect");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
                                                     " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
                                                     " JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "' AND Walk.Published = 'True'", con);
@@ -60,14 +60,12 @@ namespace DogWalking.User_Side.Walks
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Session.Remove("WalkID");
-            Session.Remove("userWalk");
             Response.Redirect("../UserProfile.aspx");
         }
 
         protected void btnAddWalk_Click(object sender, EventArgs e)
         {
             Session.Remove("WalkID");
-            Session.Remove("userWalk");
             Response.Redirect("User_Walk_Add_Page1.aspx");
         }
 

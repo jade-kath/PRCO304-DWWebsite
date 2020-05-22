@@ -14,7 +14,29 @@ namespace DogWalking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadSearch();
+            checkSearch();
+        }
+
+        private void checkSearch()
+        {
+            string location = Session["searchWalk"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string Query = @"SELECT COUNT (*) FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" + 
+                            " WHERE Location.Location = '%" + location + "%' OR Walk.Postcode = '%" + location + "%' Walk.WalkName = '%" + location + "%' AND Walk.Published = 'True'";
+            SqlCommand cmdQuery = new SqlCommand(Query, con);
+            string outputQuery = cmdQuery.ExecuteScalar().ToString();
+
+            if (outputQuery != "0")
+            {
+                loadSearch();
+            }
+            else
+            {
+                lblNoResults.Visible = true;
+            }
         }
 
         private void loadSearch()
@@ -25,7 +47,7 @@ namespace DogWalking
             SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
                                                     " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
                                                     " JOIN Users ON Walk.UserID = Users.UserID WHERE Location.Location = '%" + location + "%' OR" +
-                                                    " Walk.Postcode = '%" + location + "%' AND Walk.Published = 'True'", con);
+                                                    " Walk.Postcode = '%" + location + "%' OR Walk.WalkName = '%" + location + "%' AND Walk.Published = 'True'", con);
 
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -33,14 +55,7 @@ namespace DogWalking
             lstResults.DataBind();
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            Session["searchWalk"] = txtSearchBar.Text;
-            Response.Redirect("searchResults.aspx");
-        }
-
-
-        protected void lstConfirmed_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkCreator()
         {
             string value = lstResults.SelectedDataKey.Value.ToString();
 
@@ -57,7 +72,35 @@ namespace DogWalking
 
             Session["WalkID"] = WalkID;
 
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string Query = @"SELECT COUNT (*) FROM Walk JOIN Users ON Users.UserID = Walk.UserID WHERE Walk.WalkID = '" + WalkID + "' AND Walk.Published = 'True'";
+            SqlCommand cmdQuery = new SqlCommand(Query, con);
+            string outputQuery = cmdQuery.ExecuteScalar().ToString();
+
+            if (outputQuery == "1")
+            {
+                if (Session["User"] != null)
+                {
+                    Session["userWalk"] = "userWalk";
+                }
+            }
+
+            con.Close();
+
             Response.Redirect("Walks/User_WalkPreview.aspx");
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            Session["searchWalk"] = txtSearchBar.Text;
+            Response.Redirect("searchResults.aspx");
+        }
+
+        protected void lstResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkCreator();
         }
     }
 }
