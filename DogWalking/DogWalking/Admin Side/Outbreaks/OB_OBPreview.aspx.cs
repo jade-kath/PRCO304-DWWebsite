@@ -14,8 +14,31 @@ namespace DogWalking.Admin_Side.Outbreaks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("../../index.aspx");
+            }
+
+            newOutbreak();
             previewOutbreak();
             Creator();
+        }
+
+        private void newOutbreak()
+        {
+            string outbreak = Session["OBID"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+
+            string Query = @"SELECT COUNT (*) FROM Outbreak WHERE OutbreakID = '" + outbreak + "' AND NewOutbreak = 'True'";
+            SqlCommand cmdQuery = new SqlCommand(Query, con);
+            string outputQuery = cmdQuery.ExecuteScalar().ToString();
+
+            if (outputQuery == "1")
+            {
+                btnPublish.Visible = true;
+            }
         }
 
         private void previewOutbreak()
@@ -40,7 +63,6 @@ namespace DogWalking.Admin_Side.Outbreaks
             }
 
             Session["WalkID"] = walkID;
-
         }
 
         private void Creator()
@@ -54,6 +76,19 @@ namespace DogWalking.Admin_Side.Outbreaks
             {
                 lblReported.Text = "Reported by: " + (string)dr[0];
             }
+        }
+
+        private void postReport()
+        {
+            string outbreak = Session["OBID"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            con.Open();
+            string updateOut = "UPDATE Outbreak SET NewOutbreak = 'False' WHERE OutbreakID = '" + outbreak + "'";
+
+            SqlCommand cmd = new SqlCommand(updateOut, con);
+            cmd.ExecuteScalar();
+            con.Close();
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -106,6 +141,11 @@ namespace DogWalking.Admin_Side.Outbreaks
             Session.Remove("reqOB");
 
             Response.Redirect("Walk_WalkPreview.aspx");
+        }
+
+        protected void btnPublish_Click(object sender, EventArgs e)
+        {
+            postReport();
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side.Outbreaks
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             bindToGrid();
@@ -66,7 +66,7 @@ namespace DogWalking.Admin_Side.Outbreaks
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

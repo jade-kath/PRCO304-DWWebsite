@@ -14,6 +14,11 @@ namespace DogWalking.Admin_Side.Outbreaks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("../../index.aspx");
+            }
+
             previewOutbreak();
         }
 
@@ -38,11 +43,12 @@ namespace DogWalking.Admin_Side.Outbreaks
 
         private void updateOutbreak()
         {
-            string user = Session["Admin"].ToString();
+            string outbreak = Session["OBID"].ToString();
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
             string updateOut = "UPDATE Outbreak SET OutbreakDate = '" + txtIllDate.Text + "', OutbreakType = '" + txtIllType.Text + "'," +
-                            " ODescription = '" + txtIllNotes.Text + "'";
+                            " ODescription = '" + txtIllNotes.Text + "', NewOutbreak = 'False' WHERE OutbreakID = '" + outbreak + "'";
 
             SqlCommand cmd = new SqlCommand(updateOut, con);
             cmd.ExecuteScalar();
@@ -59,6 +65,12 @@ namespace DogWalking.Admin_Side.Outbreaks
         protected void btnSave_Click(object sender, EventArgs e)
         {
             updateOutbreak();
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../index.aspx");
         }
     }
 }

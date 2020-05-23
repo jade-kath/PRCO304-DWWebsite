@@ -34,8 +34,8 @@
             <asp:TextBox runat="server" ID="txtIllNotes" />
             <br />
 
-            
-
+            <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
+            <br />
 
             <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
             <asp:Button runat="server" ID="btnSave" Text="Send Request" OnClick="btnSave_Click" />

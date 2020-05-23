@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -54,7 +54,8 @@
             </div>
 
         <div class="main">
-All Reported Dog Illness Outbreaks</h2>
+                <h1>All Reported Dog Illness Outbreaks</h1>
+
                 <asp:GridView ID="grdOutbreaks" runat="server" OnSelectedIndexChanged="grdOutbreaks_SelectedIndexChanged">
                     <Columns>
                     <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>

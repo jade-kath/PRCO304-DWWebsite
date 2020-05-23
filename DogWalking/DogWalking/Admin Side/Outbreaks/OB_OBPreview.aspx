@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -55,12 +55,14 @@
 
         <div class="main">
             <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
-            <asp:Button runat="server" ID="btnEdit" Text="Edit Outbreak Report" OnClick="btnEdit_Click" />
+            <asp:Button runat="server" ID="btnPublish" Text="Post Report to Website" Visible="false" OnClick="btnPublish_Click"/>
+            <asp:Button runat="server" ID="btnEdit" Text="Edit Illness Report" OnClick="btnEdit_Click" />
             <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="btnDelete_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this walk?')) return false;"/>
             <br />
             <asp:Button runat="server" ID="btnWalkPreview" Text="View This Walk" OnClick="btnWalkPreview_Click" />
             <br />
 
+            <h1>View of Dog Illness Reportf Dog Illness Report</h1>
             <label>Walk:</label><br />
             <asp:Label runat="server" ID="lblName" /><asp:Label runat="server" ID="lblLocation" />
             <br />
