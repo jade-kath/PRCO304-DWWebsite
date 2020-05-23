@@ -43,6 +43,20 @@ namespace DogWalking.User_Side.Outbreaks
                     throw;
                 }
             }
+
+            if (Session["WalkID"] != null)
+            {
+                string walk = Session["WalkID"].ToString();
+                string sqlQuery = @"SELECT Walk.WalkName, Location.Location FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID WHERE WalkID = '" + walk + "'";
+                ConnectionClass conn = new ConnectionClass();
+                conn.retrieveData(sqlQuery);
+
+                foreach (DataRow dr in conn.SQLTable.Rows)
+                {
+                    drpWalkName.SelectedIndex = (int)dr[0] - 1;
+                    drpLocation.SelectedIndex = (int)dr[1] - 1;
+                }
+            }
         }
 
         private void required()
@@ -98,8 +112,14 @@ namespace DogWalking.User_Side.Outbreaks
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            //Session to walk or profile
-            Response.Redirect("../UserProfile.aspx");
+            if (Session["walkView"] == null)
+            {
+                Response.Redirect("../UserProfile.aspx");
+            }
+            else
+            {
+                Response.Redirect("../User_WalkPreview.aspx");
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

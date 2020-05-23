@@ -559,6 +559,11 @@ namespace DogWalking.Admin_Side.Walks
             Response.Redirect("../Outbreaks/OB_OBPreview.aspx");
         }
 
+        protected void btnAddOutbreak_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Outbreaks/OB_AddOB.aspx");
+        }
+
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();

@@ -498,8 +498,8 @@ namespace DogWalking.User_Side
         protected void btnAddOutbreak_Click(object sender, EventArgs e)
         {
             Session.Remove("userWalk");
+            Session["WalkView"] = "walk";
             Response.Redirect("Outbreaks/User_AddOB.aspx");
-           
         }
     }
 }

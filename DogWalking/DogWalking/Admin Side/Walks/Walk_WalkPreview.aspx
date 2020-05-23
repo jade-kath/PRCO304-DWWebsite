@@ -182,7 +182,7 @@
                 </Columns>
                 </asp:GridView>
                     <br />
-                <asp:Button runat="server" ID="btnAddOutbreak" Text="Report a Dog Illness on This Walk" />
+                <asp:Button runat="server" ID="btnAddOutbreak" Text="Report a Dog Illness on This Walk" OnClick="btnAddOutbreak_Click" />
                     <br />
             </div>
 

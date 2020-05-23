@@ -24,7 +24,6 @@ namespace DogWalking.Admin_Side.Outbreaks
 
         private void LoadWalkName()
         {
-
             DataTable walkName = new DataTable();
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString()))
@@ -42,6 +41,20 @@ namespace DogWalking.Admin_Side.Outbreaks
                 catch
                 {
                     throw;
+                }
+            }
+
+            if (Session["WalkID"] != null)
+            {
+                string walk = Session["WalkID"].ToString();
+                string sqlQuery = @"SELECT Walk.WalkName, Location.Location FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID WHERE WalkID = '" + walk + "'";
+                ConnectionClass conn = new ConnectionClass();
+                conn.retrieveData(sqlQuery);
+
+                foreach (DataRow dr in conn.SQLTable.Rows)
+                {
+                    drpWalkName.SelectedIndex = (int)dr[0] - 1;
+                    drpLocation.SelectedIndex = (int)dr[1] - 1;
                 }
             }
         }
