@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
         }
 
@@ -31,12 +31,50 @@ namespace DogWalking.Admin_Side
             cmd.ExecuteScalar();
         }
 
+        private void requiredFields()
+        {
+            if (string.IsNullOrEmpty(txtFirstName.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtDOB.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtUserUsername.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtUserEmail.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtUserPassword.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                CreateUser();
+            }
+        }
+
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            CreateUser();
+            requiredFields();
 
-            // if rad == true = viewAdminUsers.aspx, else rad == false = viewUsers.aspx
-            Response.Redirect("Users_ViewUsers.aspx");
+            if(radIsAdmin.Checked == true)
+            {
+                Response.Redirect("Users_ViewAdminUsers.aspx");
+            }
+            else
+            {
+                Response.Redirect("Users_ViewUsers.aspx");
+            }
         }
 
         protected void radIsAdmin_CheckedChanged(object sender, EventArgs e)

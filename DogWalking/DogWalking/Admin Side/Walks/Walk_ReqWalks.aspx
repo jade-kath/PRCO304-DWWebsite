@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -56,7 +56,7 @@
             </div>
         
         <div class="main">
-            <h3>Requested Walks</h3>
+            <h1>User Requested Walks</h1>
             <br />
 
             <asp:GridView ID="grdViewWalks" runat="server" OnSelectedIndexChanged="grdViewWalks_SelectedIndexChanged">

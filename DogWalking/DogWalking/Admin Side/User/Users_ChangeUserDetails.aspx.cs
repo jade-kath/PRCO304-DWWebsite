@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             if (!IsPostBack)
@@ -71,6 +71,9 @@ namespace DogWalking.Admin_Side
             conn.retrieveData(sqlDeleteQuery);
 
             Session.Remove("updateUser");
+            Session.Remove("viewAdmin");
+            Session.Remove("viewUser");
+
             Response.Redirect("Users_ViewUsers.aspx");
         }
 
@@ -82,7 +85,21 @@ namespace DogWalking.Admin_Side
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            if (Session["viewAdmin"] != null)
+            {
+                Session.Remove("viewAdmin");
+                Response.Redirect("Users_ViewUsers.aspx");
+            }
+            else if (Session["viewUser"] != null)
+            {
+                Session.Remove("viewUser");
+                Response.Redirect("Users_ViewAdminUsers.aspx");
+            }
         }
     }
 }

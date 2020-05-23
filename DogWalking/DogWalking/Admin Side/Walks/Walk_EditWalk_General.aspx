@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
@@ -56,7 +56,18 @@
 
         <div class="main">
             <div class="general">
-                    <h2>General Details</h2>
+                    <h1>Edit Walk - General Details</h1>
+
+                    <asp:ListView ID="lstImage" runat="server">
+                    <ItemTemplate>
+                        <div>
+                            <table>
+                                <tr><td><img src="<%#Eval("ImagePath") %>" /></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
+
                     <p>Name of this walk/place:-</p>
                         <asp:TextBox ID="txtPlaceName" runat="server" Width="167px"/>
                              <br />
@@ -79,6 +90,12 @@
                     <p>Distance/Size of the walk or area:-</p>
                         <asp:TextBox ID="txtDuration" runat="server" Width="163px" placeholder="eg. 2km, 5 miles, 150 acres"/>
                              <br />
+                <div class="gallery">
+                    <p>Upload an image to use as the cover photo</p>
+                    <asp:FileUpload ID="FileUpload" runat="server" />
+                    <br />
+                </div>
+
                 <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
                 <asp:Button runat="server" ID="btnSave" Text="Save Changes" OnClick="btnSave_Click" />
              </div>

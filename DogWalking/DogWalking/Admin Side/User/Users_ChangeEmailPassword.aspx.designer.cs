@@ -31,6 +31,15 @@ namespace DogWalking.Admin_Side {
         protected global::System.Web.UI.WebControls.Button btnLogOut;
         
         /// <summary>
+        /// btnBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack;
+        
+        /// <summary>
         /// txtNewEmail control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace DogWalking.Admin_Side {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmailPassword;
+        
+        /// <summary>
+        /// lblrequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblrequired;
         
         /// <summary>
         /// SaveEmailChanges control.
@@ -83,6 +101,15 @@ namespace DogWalking.Admin_Side {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassPassword;
+        
+        /// <summary>
+        /// lblReqPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReqPass;
         
         /// <summary>
         /// SavePasswordChanges control.

@@ -16,18 +16,17 @@ namespace DogWalking.Admin_Side.Walks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["Admin"] == null)
+            {
+                Response.Redirect("../../index.aspx");
+            }
 
             loadBack();
         }
 
         private void loadBack()
         {
-            if (Session["goBack"] == null)
-            {
-
-            }
-            else
+            if (Session["goBack"] != null)
             {
                 string load = Session["goBack"].ToString();
                 string sqlQuery = @"SELECT Walk.WalkName, Walk.WalkAddress, Walk.WalkPostcode, Walk.LocationID, Walk.Description, Walk.Hours, Walk.Duration FROM Walk WHERE Walk.WalkName = '" + load + "'";
@@ -45,7 +44,45 @@ namespace DogWalking.Admin_Side.Walks
                     txtDuration.Text = (string)dr[6];
                 }
             }
+        }
 
+        private void required()
+        {
+            if (string.IsNullOrEmpty(txtPlaceName.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtPostcode.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtDescript.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtDuration.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtTimeLength.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                if (Session["goBack"] == null)
+                {
+                    checkWalks();
+                }
+                else
+                {
+                    saveWalk();
+                }
+            }
         }
 
         private void checkWalks()
@@ -53,12 +90,10 @@ namespace DogWalking.Admin_Side.Walks
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
 
-
             //Check if there's another walk with the same postcode - so there's no duplicates.
             string walkQuery = "SELECT Count (*) FROM Walk WHERE WalkPostcode='" + txtPostcode.Text + "'";
             SqlCommand AdCommand = new SqlCommand(walkQuery, con);
             string outputWalkQuery = AdCommand.ExecuteScalar().ToString();
-
 
             if (outputWalkQuery == "0")
             {
@@ -68,7 +103,6 @@ namespace DogWalking.Admin_Side.Walks
             {
                 clone.Visible = true;
             }
-
         }
 
         private void saveWalk()
@@ -107,7 +141,6 @@ namespace DogWalking.Admin_Side.Walks
                     cmd.ExecuteScalar();
                     con.Close();
                 }
-
             }
             else
             {
@@ -158,14 +191,12 @@ namespace DogWalking.Admin_Side.Walks
 
         protected void SaveChanges_Click(object sender, EventArgs e)
         {
-            if (Session["goBack"] == null)
-            {
-                checkWalks();
-            }
-            else
-            {
-                saveWalk();
-            }
+            required();
+        }
+
+        protected void yesCont_Click(object sender, EventArgs e)
+        {
+            required();
         }
 
         protected void noCancel_Click(object sender, EventArgs e)
@@ -175,15 +206,10 @@ namespace DogWalking.Admin_Side.Walks
             Response.Redirect("Walk_AllWalks.aspx");
         }
 
-        protected void yesCont_Click(object sender, EventArgs e)
-        {
-            saveWalk();
-        }
-
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

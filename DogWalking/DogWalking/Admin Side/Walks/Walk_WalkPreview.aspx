@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -66,6 +66,17 @@
             <div class="general">
                 <asp:Button runat="server" ID="btnEditGeneral" Text="Edit General Details" OnClick="btnEditGeneral_Click"/>
                 <br />
+                <asp:ListView ID="lstImage" runat="server">
+                    <ItemTemplate>
+                        <div>
+                            <table>
+                                <tr><td><img src="<%#Eval("ImagePath") %>" /></td></tr>
+                            </table>
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
+                <br />
+
                 <asp:Label ID="lblWalkName" runat="server"></asp:Label>
                 <br />
                 <asp:Label ID="lblAddr" runat="server"></asp:Label>
@@ -76,7 +87,7 @@
                 <asp:Label ID="lblDescribe" runat="server"></asp:Label>
                 <br />
 
-                <label>Time spent here:bel>Time spent here:</label>
+                <label>Time spent here:</label>
                 <asp:Label ID="lblTime" runat="server"/>
                     <br />
                 <label>Distance of this Walk:</label>
@@ -87,7 +98,7 @@
                     <br />
 
             <div class="terrain">
-                <h3>Terrain:</h3>
+                <h2>Terrain:</h2>
                 <asp:Button runat="server" ID="btnEditTerrain" Text="Edit Terrain" OnClick="btnEditTerrain_Click" />
                     <br />
                 <asp:GridView ID="grdTerrain" runat="server"></asp:GridView>
@@ -95,10 +106,10 @@
             </div>
 
             <div class="leads">
-                <h3>Facilities:</h3>
+                <h2>Facilities:</h2>
                 <asp:Button runat="server" ID="btnEditFacility" Text="Edit Facility and Lead Details" OnClick="btnEditFacility_Click" />
                 
-                <h3>Lead Information</h3>
+                <h2>Lead Information</h2>
                 <asp:Label ID="lblLeaded" runat="server" />
                     <br />
                 <asp:Label ID="lblNonLead" runat="server" />
@@ -153,7 +164,6 @@
                     <asp:Label ID="lblWheel" runat="server" />
                     <br />
                 </div>
-
             </div>
 
             <br />
@@ -165,7 +175,7 @@
             <br />
 
             <div class="outbreaks">      
-                <h3>Dog Illness Reported</h3>
+                <h2>Dog Illness Reported</h2>
                 <asp:GridView ID="grdWalkOutbreaks" runat="server" OnSelectedIndexChanged="grdWalkOutbreaks_SelectedIndexChanged">
                     <Columns>
                     <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>

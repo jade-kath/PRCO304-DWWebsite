@@ -112,6 +112,15 @@ namespace DogWalking.Admin_Side.Walks {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload;
         
         /// <summary>
+        /// lblrequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblrequired;
+        
+        /// <summary>
         /// SaveChanges control.
         /// </summary>
         /// <remarks>

@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             bindToGrid();
@@ -65,13 +65,14 @@ namespace DogWalking.Admin_Side
         protected void grdViewUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["updateUser"] = this.grdViewUsers.SelectedRow.Cells[1].Text;
+            Session["viewUser"] = "viewUser";
             Response.Redirect("Users_ChangeUserDetails.aspx");
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

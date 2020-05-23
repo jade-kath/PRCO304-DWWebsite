@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
     
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -49,7 +49,7 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create a User</a>
+                         <a href="../User/Users_CreateAccount.asp
                       </div>
                 </div>
                          <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
@@ -57,26 +57,39 @@
         
       
         <div class="main">
+
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+
              <div id="changeEmail">
-                <h2>Change Email    <h2>Change Email</h2>                 
-                  <label>New Email Address:-</label>
+                 <h1>Change Email    <h1>Change Email</h1>      
+                  <p id="required">* indicates a required field</p>
+                   <br />
+                  <label>*</label><label>New Email Address:-</label>
                   <asp:TextBox ID="txtNewEmail" runat="server" TextMode="Email" Width="167px"/>
                   <br />
-                  <label>Enter admin password to confirm change:-</label>
+                  <label>*</label><label>Enter admin password to confirm change:-</label>
                   <asp:TextBox ID="txtEmailPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
+                  <br />
+                  <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
                   <br />
                   <asp:Button ID="SaveEmailChanges" runat="server" Text="Save Email Changes" OnClick="SaveEmailChanges_Click" />
                   <br />
                   <asp:label ID="lblEmailSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
             </div>
+
             <br />
+
             <div id="changePassword">
-                <h2>Change Password</h2>                              
-                     <label>New Password:-</label>
+                <h1>Change Password</h1>
+                     <p id="required">* indicates a required field</p>
+                     <br />
+                      <label>*</label><label>New Password:-</label>
                      <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                      <br />
-                     <label>Enter admin password to confirm changes:-</label>
+                      <label>*</label><label>Enter admin password to confirm changes:-</label>
                      <asp:TextBox ID="txtPassPassword" runat="server" Width="167px"/>
+                     <br />
+                     <asp:Label runat="server" ID="lblReqPass" Visible="false">Please fill all the required fields.</asp:Label>
                      <br />
                      <asp:Button ID="SavePasswordChanges" runat="server" Text="Save Password Changes" OnClick="SavePasswordChanges_Click" />
                      <br />

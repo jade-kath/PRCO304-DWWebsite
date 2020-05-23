@@ -64,13 +64,14 @@ namespace DogWalking.Admin_Side
         protected void grdViewUserAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["updateUser"] = this.grdViewUserAdmin.SelectedRow.Cells[1].Text;
+            Session["viewAdmin"] = "viewAdmin";
             Response.Redirect("Users_ChangeUserDetails.aspx");
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

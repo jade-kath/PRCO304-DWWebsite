@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
@@ -48,32 +48,37 @@
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a href="../User/Users_ViewUsers.aspx">View Users</a>
                          <a href="../User/Users_ViewAdminUsers.aspx">View Admin Users</a>
-                         <a href="../User/Users_CreateAccount.aspx">Create a User</a>
+                         <a href="../User/Users_CreateAccount.asp
                       </div>
                 </div>
                          <asp:Button runat="server" ID="btnLogOut" Text="Sign Out" OnClick="btnLogOut_Click" />
             </div>
 
         <div class="main">
-            <label>Username:-</label>
-            <asp:TextBox ID="txtUsername" runat="server" Width="167px"/>
+
+            <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
+
+            <h1>Edit Settings</h1>
+            <div class="form">
+                <label>Username:-   <label>Username:-</label>
+                <asp:TextBox ID="txtUsername" runat="server" Width="167px"/>
+                <br />
+                <label>First Name:-</label>
+                <asp:TextBox ID="txtFirstName" runat="server" Width="167px"/>
+                <br />
+                <label>Last Name:-</label>
+                <asp:TextBox ID="txtLastName" runat="server" Width="163px"/>
+                <br />          
+                <label>Location:-</label>
+                <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID">
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
+                <br />
+                    <asp:Button ID="SaveChanges" runat="server" Text="Save Changes" OnClick="SaveChanges_Click" />
             <br />
-            <label>First Name:-</label>
-            <asp:TextBox ID="txtFirstName" runat="server" Width="167px"/>
-            <br />
-            <label>Last Name:-</label>
-            <asp:TextBox ID="txtLastName" runat="server" Width="163px"/>
-            <br />          
-            <label>Location:-</label>
-            <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID">
-            </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
-            <br />
-            <asp:Button ID="SaveChanges" runat="server" Text="Save Changes" OnClick="SaveChanges_Click" />
-            <br />
-            <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
-            <br />
-            <br />
+                    <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
+            </div>
+           
             <br />
             <asp:Button ID="ChangeEmail" runat="server" Text="Change Email Address/Password" OnClick="ChangeEmail_Click" />
             <asp:Button ID="DeleteAccount" runat="server" Text="Delete This Account" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;" OnClick="DeleteAccount_Click" />

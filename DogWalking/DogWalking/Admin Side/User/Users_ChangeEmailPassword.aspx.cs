@@ -16,10 +16,42 @@ namespace DogWalking.Admin_Side
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             if (!IsPostBack)
+            {
+                ChangePassword();
+            }
+        }
+
+        private void checkEmailBoxes()
+        {
+            if (string.IsNullOrEmpty(txtNewEmail.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtEmailPassword.Text))
+            {
+                lblrequired.Visible = true;
+            }
+            else
+            {
+                ChangeEmail();
+            }
+        }
+
+        private void checkPassBoxes()
+        {
+            if (string.IsNullOrEmpty(txtNewPassword.Text))
+            {
+                lblReqPass.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(txtPassPassword.Text))
+            {
+                lblReqPass.Visible = true;
+            }
+            else
             {
                 ChangePassword();
             }
@@ -79,18 +111,23 @@ namespace DogWalking.Admin_Side
 
         protected void SaveEmailChanges_Click(object sender, EventArgs e)
         {
-            ChangeEmail();
+            checkEmailBoxes();
         }
 
         protected void SavePasswordChanges_Click(object sender, EventArgs e)
         {
-            ChangePassword();
+            checkPassBoxes();
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../..index.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Users_ChangeUserDetails.aspx");
         }
     }
 }

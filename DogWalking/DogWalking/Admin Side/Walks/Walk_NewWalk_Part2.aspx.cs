@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side.Walks
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
         }
         private void addFacilities()

@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side.Walks
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             PostToWebsite();
@@ -25,11 +25,25 @@ namespace DogWalking.Admin_Side.Walks
             {
                 Creator();
                 previewWalk();
+                viewImage();
                 terrainList();
                 facilityDetails();
                 facilityBoolValues();
                 bindToOutbreak();
             }            
+        }
+
+        private void viewImage()
+        {
+            string walk = Session["WalkID"].ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT ImagePath FROM Walk WHERE WalkID = '" + walk + "'", con);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            lstImage.DataSource = dt;
+            lstImage.DataBind();
         }
 
         private void previewWalk()
@@ -464,6 +478,7 @@ namespace DogWalking.Admin_Side.Walks
             cmd.ExecuteScalar();
             con.Close();
 
+            Session["Posted"] = "Posted";
             Session.Remove("notPosted");
         }
 
@@ -477,6 +492,7 @@ namespace DogWalking.Admin_Side.Walks
             cmd.ExecuteScalar();
             con.Close();
 
+            Session["notPosted"] = "notPosted";
             Session.Remove("Posted");
         }
 
@@ -540,13 +556,13 @@ namespace DogWalking.Admin_Side.Walks
         protected void grdWalkOutbreaks_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["OBID"] = this.grdWalkOutbreaks.SelectedRow.Cells[1].Text;
-            Response.Redirect("OB_OBPreview.aspx");
+            Response.Redirect("../Outbreaks/OB_OBPreview.aspx");
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

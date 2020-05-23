@@ -16,7 +16,7 @@ namespace DogWalking.Admin_Side.Walks
         {
             if (Session["Admin"] == null)
             {
-                Response.Redirect("LoginPage.aspx");
+                Response.Redirect("../../LoginPage.aspx");
             }
 
             bindToPublished();
@@ -106,7 +106,7 @@ namespace DogWalking.Admin_Side.Walks
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("index.aspx");
+            Response.Redirect("../../index.aspx");
         }
     }
 }

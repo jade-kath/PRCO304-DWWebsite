@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lead The Way - Admin</title>
 
     <link rel="stylesheet" href="../../Style/Admin_Navbar.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
@@ -55,9 +55,11 @@
             </div>
 
             <div class ="main">
+                <h1>Add a Walk - Page 2</h1>
+
                 <div class="terrain">
                  <h2>Terrain</h2>
-   Types of terrains on this walk:- (Select all that apply)</p>
+                     <p>Types of terrains on this walk:- (Select all that apply)</p>
                     <asp:RadioButton ID="radTerFlat" runat="server" Text="Flat" OnCheckedChanged="radTerFlat_CheckedChanged" />
                         <br /> 
                     <asp:RadioButton ID="radTerHill" runat="server" Text="Hilly" OnCheckedChanged="radTerHill_CheckedChanged" />
@@ -86,7 +88,7 @@
                 </div>
                 
                 <div class="facilities">
-                    <h2>Facility Details<h2>Facility Details</h2>
+                    <h2>Facility Details</h2>
                     <!--ENTRY FEE-->
                     <p>Does this walk have an entry fee?</p>
                         <asp:RadioButton ID="radEntryTrue" runat="server" Text="Yes" GroupName="Entry" OnCheckedChanged="radEntryTrue_CheckedChanged" />
@@ -152,7 +154,7 @@
                     <asp:TextBox ID="txtLeadDetails" runat="server" Width="167px" placeholder=" eg. All dogs must be on leads on sports fields."/>
                             <br /> 
                     <!-- WHEELCHAIR ACCESSIBILITY -->
-   Is this walk Wheelchair friendly?</p>
+                    <p>Is this walk Wheelchair friendly?</p>
                         <asp:RadioButton ID="radWheelTrue" runat="server" Text="Yes" GroupName="Wheel" OnCheckedChanged="radWheelTrue_CheckedChanged" />
                             <br /> 
                         <asp:RadioButton ID="radWheelFalse" runat="server" Text="No" GroupName="Wheel" OnCheckedChanged="radWheelFalse_CheckedChanged" />
@@ -160,8 +162,8 @@
                             <br /> 
                 </div>
 
-                <asp:Button ID="Back" runat="server" Text="Back" OnClick="Back_Click" />
-                <asp:Button ID="Save" runat="server" Text="Save" OnClick="Save_Click" />
+                <asp:Button ID="Back" runat="server" Text="Previous Page" OnClick="Back_Click" />
+                <asp:Button ID="Save" runat="server" Text="Save - Unpublished" OnClick="Save_Click" />
                 <asp:Button ID="SavePublish" runat="server" Text="Save & Publish" OnClick="SavePublish_Click" />
                 <br />
                 <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" />
