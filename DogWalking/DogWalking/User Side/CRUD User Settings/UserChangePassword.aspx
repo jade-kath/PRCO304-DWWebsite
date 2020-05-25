@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - User Settings</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -12,7 +15,7 @@
             <h1>User Settings - Change Password</h1>
 
             <br />
-            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" CssClass="btn-cancel" />
             <br />
 
             <p id="required">* indicates a required field</p>
@@ -31,7 +34,7 @@
             <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
             <br />
 
-            <asp:Button ID="SaveUserChanges" runat="server" Text="Save Changes" OnClick="SaveUserChanges_Click" />
+            <asp:Button ID="SaveUserChanges" runat="server" Text="Save Changes" OnClick="SaveUserChanges_Click" CssClass="btn-save" />
             <br />
             <asp:label ID="lblChangesSaved" runat="server" Visible="false">*Your changes have been saved</asp:label>
         </div>

@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - Sign Up</title>
+
+    <link rel="stylesheet" href="../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -43,7 +46,7 @@
 
             <br />
             <br />
-            <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" Width="216px" OnClick="btnCreateAccount_Click" />
+            <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" Width="216px" OnClick="btnCreateAccount_Click" CssClass="btn-save" />
 
             
 

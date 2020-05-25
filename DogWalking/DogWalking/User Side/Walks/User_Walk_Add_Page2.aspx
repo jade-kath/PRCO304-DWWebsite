@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - Add a Walk</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -39,7 +42,7 @@
                     <asp:RadioButton ID="radTerPark" runat="server" Text="Park" OnCheckedChanged="radTerPark_CheckedChanged" />
                         <br />
                         <br /> 
-                    <asp:Button ID="btnClearTer" runat="server" Text="Clear Terrain" OnClick="btnClearTer_Click" />
+                    <asp:Button ID="btnClearTer" runat="server" Text="Clear Terrain" OnClick="btnClearTer_Click" CssClass="btn-cancel" />
                         <br />
                 </div>
                 
@@ -104,7 +107,7 @@
                             <br /> 
                             <br />
 
-                        <asp:Button ID="btnClearLead" runat="server" Text="Clear Lead Options" OnClick="btnClearLead_Click" />
+                        <asp:Button ID="btnClearLead" runat="server" Text="Clear Lead Options" OnClick="btnClearLead_Click" CssClass="btn-cancel" />
 
                     <p>Further details on lead/off lead areas?lead/off lead areas?lead/off lead areas?</p>
                     <asp:TextBox ID="txtLeadDetails" runat="server" Width="167px" placeholder=" eg. All dogs must be on leads on sports fields."/>
@@ -118,10 +121,10 @@
                             <br /> 
                 </div>
 
-                <asp:Button ID="Back" runat="server" Text="Previous Page" OnClick="Back_Click" />
-                <asp:Button ID="Save" runat="server" Text="Save & Finish" OnClick="Save_Click" />
+                <asp:Button ID="Back" runat="server" Text="Previous Page" OnClick="Back_Click" CssClass="btn-next" />
+                <asp:Button ID="Save" runat="server" Text="Save & Finish" OnClick="Save_Click" CssClass="btn-save" />
                 <br />
-                <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" />
+                <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" CssClass="btn-cancel" />
             </div>
     </form>
 </body>

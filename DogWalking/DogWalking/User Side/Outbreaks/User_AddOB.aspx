@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - Report a Dog Illness</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,8 +40,8 @@
             <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
             <br />
 
-            <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" />
-            <asp:Button runat="server" ID="btnSave" Text="Send Request" OnClick="btnSave_Click" />
+            <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" CssClass="btn-cancel" />
+            <asp:Button runat="server" ID="btnSave" Text="Send Request" OnClick="btnSave_Click" CssClass="btn-save" />
         </div>
     </form>
 </body>

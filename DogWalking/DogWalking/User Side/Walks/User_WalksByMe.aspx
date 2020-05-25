@@ -5,14 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - Walks By Me</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <h1>Walks By Me</h1>
 
-            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
-            <asp:Button ID="btnAddWalk" runat="server" Text="Add a New Walk" OnClick="btnAddWalk_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" CssClass="btn-cancel" />
+            <asp:Button ID="btnAddWalk" runat="server" Text="Add a New Walk" OnClick="btnAddWalk_Click" CssClass="btn-save" />
             <br />
 
             <h2>Pending Confirmation</h2>

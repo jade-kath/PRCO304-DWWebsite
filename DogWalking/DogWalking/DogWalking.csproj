@@ -196,6 +196,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="searchResults.aspx" />
     <Content Include="Style\Admin_Navbar.css" />
+    <Content Include="Style\User_Buttons.css" />
     <Content Include="User Side\CRUD User Settings\UserChangeEmail.aspx" />
     <Content Include="User Side\CRUD User Settings\UserChangePassword.aspx" />
     <Content Include="User Side\Outbreaks\User_AddOB.aspx" />

@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - My Profile</title>
+
+    <link rel="stylesheet" href="../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -20,19 +23,19 @@
                 <div class="searchWalk">
                     <h2>Where would you like to go?</h2>
                     <p>There's so many to choose from for every type of furry friend. Search by County or Postcode to find walks in your area.</p>
-                    <asp:Button runat="server" ID="btnSearch" Text="Search for a Walk" OnClick="btnSearch_Click" />
+                    <asp:Button runat="server" ID="btnSearch" Text="Search for a Walk" OnClick="btnSearch_Click" CssClass="btn-save" />
                 </div>
 
                 <div class="addWalk">
                     <h2>Can't see a dog walk that you know of?</h2>
                     <p>Please add it to our database for others to enjoy!</p>
-                    <asp:Button runat="server" ID="btnAddWalk" Text="Add a Walk" OnClick="btnAddWalk_Click" />
+                    <asp:Button runat="server" ID="btnAddWalk" Text="Add a Walk" OnClick="btnAddWalk_Click" CssClass="btn-save" />
                 </div>
 
                 <div class="addOutbreak">
                     <h2>Keep your dog safe!<br />Have you heard of a dog illness related to a walk?</h2>
                     <p>Seasonal Canine Illnesses (SCI), Kennel Cough and so on can make your dog seriously ill, most of which are spread through dogs socialising. Report illnesses to protect all dogs.</p>
-                    <asp:Button runat="server" ID="btnAddOutbreak" Text="Report an Illness" OnClick="btnAddOutbreak_Click" />
+                    <asp:Button runat="server" ID="btnAddOutbreak" Text="Report an Illness" OnClick="btnAddOutbreak_Click" CssClass="btn-save" />
                 </div>
             </div>
 

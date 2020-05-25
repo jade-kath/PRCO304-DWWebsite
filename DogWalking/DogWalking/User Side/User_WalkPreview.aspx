@@ -5,17 +5,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way</title>
+
+    <link rel="stylesheet" href="../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             
-            <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
+            <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" CssClass="btn-cancel" />
             <br />
 
             <div class="userCreated">
                 <asp:Label runat="server" ID="lblStatus"></asp:Label>
-                <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;"/>
+                <asp:Button runat="server" ID="btnDel" Text="Delete Walk Request" Visible="false" OnClick="btnDel_Click" OnClientClick="if ( !confirm('Are you sure you want to delete this user?')) return false;" CssClass="btn-delete" />
             </div>
             <br />
 

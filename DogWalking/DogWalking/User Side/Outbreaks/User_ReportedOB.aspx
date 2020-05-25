@@ -5,12 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - My Reported Dog Illnesses</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="userMain">
             <h1>My Reported Dog Illnesses</h1>
-            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" CssClass="btn-cancel" />
             <asp:Button ID="btnNewOutbreak" runat="server" Text="Report a Dog Illness" OnClick="btnNewOutbreak_Click" />
 
                 <asp:ListView ID="lstOutbreaks" runat="server" OnSelectedIndexChanged="lstOutbreaks_SelectedIndexChanged" DataKeyNames="WalkPostcode">

@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lead The Way - Add a Walk</title>
+
+    <link rel="stylesheet" href="../../Style/User_Buttons.css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -13,7 +16,6 @@
             <h1>Add a Walk</h1>
 
                 <div class="walkName">
-                    <h1>Add a Walk</h1>
                     <h2>General Details</h2>
 
                     <p id="required">* indicates a required field</p>
@@ -51,14 +53,14 @@
             <asp:Label runat="server" ID="lblrequired" Visible="false">Please fill all the required fields.</asp:Label>
             <br />
 
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
-            <asp:Button ID="SaveChanges" runat="server" Text="Next Page" OnClick="SaveChanges_Click" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CssClass="btn-cancel" />
+            <asp:Button ID="SaveChanges" runat="server" Text="Next Page" OnClick="SaveChanges_Click" CssClass="btn-next" />
 
             <!--Shows the user if they want to add the dupliacte or not -->
             <div id="clone" runat="server" Visible ="false">
                     <p>There's a walk that already exists with this postcode. Would you like to create it anyway</p>
-                    <asp:Button ID="noCancel" runat="server" Text="Cancel" OnClick="noCancel_Click" />
-                    <asp:Button ID="yesCont" runat="server" Text="Yes, Continue & Save" OnClick="yesCont_Click" />                  
+                    <asp:Button ID="noCancel" runat="server" Text="Cancel" OnClick="noCancel_Click" CssClass="btn-cancel" />
+                    <asp:Button ID="yesCont" runat="server" Text="Yes, Continue & Save" OnClick="yesCont_Click" CssClass="btn-next" />                  
                 </div>
         </div>
     </form>
