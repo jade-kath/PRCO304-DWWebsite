@@ -19,45 +19,36 @@ namespace DogWalking.Admin_Side.Outbreaks
                 Response.Redirect("LoginPage.aspx");
             }
 
-            LoadWalkName();
+                bindToGrid();
+                       
         }
 
-        private void LoadWalkName()
+        private void bindToGrid()
         {
-            DataTable walkName = new DataTable();
+            string sqlQuery = @"SELECT WalkID, WalkName FROM Walk JOIN Location ON Walk.LocationID = Location.LocationID WHERE Location.LocationID = '" + drpLocation.SelectedValue + "'";
 
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString()))
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
+
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]
             {
-                try
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT WalkID, WalkName FROM Walk WHERE LocationID = '" + drpLocation.SelectedIndex + "'", con);
-                    adapter.Fill(walkName);
+                new DataColumn("WalkID", typeof(int)),
+                new DataColumn("WalkName",typeof(string))
+            });
 
-                    drpWalkName.DataSource = walkName;
-                    drpWalkName.DataTextField = "WalkName";
-                    drpWalkName.DataValueField = "WalkID";
-                    drpWalkName.DataBind();
-                }
-                catch
-                {
-                    throw;
-                }
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                int WalkID = (int)dr[0];
+                string WalkName = (string)dr[1];
+
+                dt.Rows.Add(WalkID, WalkName);
             }
 
-            if (Session["WalkID"] != null)
-            {
-                string walk = Session["WalkID"].ToString();
-                string sqlQuery = @"SELECT Walk.WalkName, Location.Location FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID WHERE WalkID = '" + walk + "'";
-                ConnectionClass conn = new ConnectionClass();
-                conn.retrieveData(sqlQuery);
-
-                foreach (DataRow dr in conn.SQLTable.Rows)
-                {
-                    drpWalkName.SelectedIndex = (int)dr[0] - 1;
-                    drpLocation.SelectedIndex = (int)dr[1] - 1;
-                }
-            }
+            this.grdWalkName.DataSource = dt;
+            this.grdWalkName.DataBind();
         }
+
 
         private void required()
         {
@@ -80,16 +71,17 @@ namespace DogWalking.Admin_Side.Outbreaks
 
         private void addOutbreak()
         {
+            string walk =  this.grdWalkName.SelectedRow.Cells[1].Text;
+
             if (String.IsNullOrEmpty(txtIllNotes.Text))
             {
                 string description = "No further information available.";
-                string user = Session["Admin"].ToString();
 
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
-                string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
+                string newOut = "INSERT INTO Outbreak (OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
                                 " VALUES ('" + txtIllDate.Text + "', '" + txtIllType.Text + "', '" + description + "'," +
-                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'False')";
+                                " '" + walk + "', 2, 'False')";
 
                 SqlCommand cmd = new SqlCommand(newOut, con);
                 cmd.ExecuteScalar();
@@ -97,17 +89,21 @@ namespace DogWalking.Admin_Side.Outbreaks
             }
             else
             {
-                string user = Session["Admin"].ToString();
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
                 con.Open();
-                string newOut = "INSERT INTO Outbreak(OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
+                string newOut = "INSERT INTO Outbreak (OutbreakDate, OutbreakType, ODescription, WalkID, UserID, NewOutbreak)" +
                                 " VALUES ('" + txtIllDate.Text + "', '" + txtIllType.Text + "', '" + txtIllNotes.Text + "'," +
-                                " '" + drpWalkName.SelectedValue + "', '(SELECT UserID FROM Users WHERE Username = '" + user + "')', 'False')";
+                                " '" + walk + "', 2, 'False')";
 
                 SqlCommand cmd = new SqlCommand(newOut, con);
                 cmd.ExecuteScalar();
                 con.Close();
             }   
+        }
+
+        protected void grdWalkName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string walk = this.grdWalkName.SelectedRow.Cells[1].Text;
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -125,6 +121,11 @@ namespace DogWalking.Admin_Side.Outbreaks
         {
             Session.RemoveAll();
             Response.Redirect("index.aspx");
+        }
+
+        protected void drpLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bindToGrid();
         }
     }
 }

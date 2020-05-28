@@ -16,7 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div class="sidenav">
+        <div class="sidenav">
              <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -14,7 +14,13 @@ namespace DogWalking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User"] != null)
+            {
+                btnSignIn.Visible = false;
+                btnLogout.Visible = true;
+                btnProfile.Visible = true;
+                btnSettings.Visible = true;
+            }
         }
 
         private void loginUser()
@@ -56,5 +62,36 @@ namespace DogWalking
         {
             loginUser();
         }
+
+
+
+        //navbar
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("index.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("User Side/UserProfile.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("User Side/CRUD User Settings/UserEditSettings.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
+        }
+
+        protected void btnSignIn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+
     }
 }

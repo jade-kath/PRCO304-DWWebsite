@@ -64,5 +64,15 @@ namespace DogWalking.User_Side
             Session["User"] = txtUserUsername.Text;
             Response.Redirect("UserProfile.aspx");
         }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../index.aspx");
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
     }
 }

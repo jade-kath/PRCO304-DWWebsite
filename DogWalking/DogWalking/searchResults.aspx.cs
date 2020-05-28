@@ -14,6 +14,14 @@ namespace DogWalking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] != null)
+            {
+                btnLogin.Visible = false;
+                btnLogout.Visible = true;
+                btnProfile.Visible = true;
+                btnSettings.Visible = true;
+            }
+
             if (!IsPostBack)
             {
                 checkSearch();
@@ -118,6 +126,36 @@ namespace DogWalking
         protected void grdWalks_SelectedIndexChanged1(object sender, EventArgs e)
         {
             checkCreator();
+        }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Session.Remove("searchWalk");
+            Response.Redirect("index.aspx");
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Session.Remove("searchWalk");
+            Response.Redirect("LoginPage.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Session.Remove("searchWalk");
+            Response.Redirect("User Side/UserProfile.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            Session.Remove("searchWalk");
+            Response.Redirect("User Side/CRUD User Settings/UserEditSettings.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

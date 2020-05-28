@@ -501,5 +501,42 @@ namespace DogWalking.User_Side
             Session["WalkView"] = "walk";
             Response.Redirect("Outbreaks/User_AddOB.aspx");
         }
+
+        //navbar
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            if (Session["userWalk"] != null)
+            {
+                Session.Remove("userWalk");
+            }
+            Session.Remove("WalkID");
+            Response.Redirect("../index.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            if (Session["userWalk"] != null)
+            {
+                Session.Remove("userWalk");
+            }
+            Session.Remove("WalkID");
+            Response.Redirect("UserProfile.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            if (Session["userWalk"] != null)
+            {
+                Session.Remove("userWalk");
+            }
+            Session.Remove("WalkID");
+            Response.Redirect("/CRUD User Settings/UserEditSettings.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../index.aspx");
+        }
     }
 }

@@ -16,7 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div class="sidenav">
+        <div class="sidenav">
              <!-- Walk Dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-Walk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,14 +59,17 @@
             <p id="required">* indicates a required field</p>
             <br />
 
-            <label>*</label><label>Walk Location:</label><br />
-            <asp:DropDownList ID="drpLocation" runat="server" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID"></asp:DropDownList>
+            <label>Walk Location:</label><br />
+            <asp:DropDownList ID="drpLocation" runat="server" autoPostback="true" DataSourceID="SqlDataSource1" DataTextField="Location" DataValueField="LocationID" OnSelectedIndexChanged="drpLocation_SelectedIndexChanged"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=socem1.uopnet.plymouth.ac.uk;Initial Catalog=PRCO304_JMarshall;Persist Security Info=True;User ID=JMarshall;Password=PRCO304_22018506" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Location]"></asp:SqlDataSource>
             <br />
 
             <label>*</label><label>Walk Name:</label><br />
-            <asp:DropDownList ID="drpWalkName" runat="server"></asp:DropDownList><br />
-            <br />
+            <asp:GridView ID="grdWalkName" runat="server" OnSelectedIndexChanged="grdWalkName_SelectedIndexChanged">
+                    <Columns>
+                    <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="100"/>
+                </Columns>
+             </asp:GridView>
 
             <label>*</label><label>Type of Illness:</label><br />
             <asp:TextBox runat="server" ID="txtIllType"></asp:TextBox>

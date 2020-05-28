@@ -93,5 +93,27 @@ namespace DogWalking.User_Side.Outbreaks
 
             Response.Redirect("../User_WalkPreview.aspx");
         }
+
+        //navbar
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../../index.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../UserProfile.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../CRUD User Settings/UserEditSettings.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../index.aspx");
+        }
     }
 }

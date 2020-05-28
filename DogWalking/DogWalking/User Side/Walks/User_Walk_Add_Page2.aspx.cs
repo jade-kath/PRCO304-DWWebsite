@@ -457,5 +457,32 @@ namespace DogWalking.User_Side.Walks
 
         }
 
+        //navbar
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Session.Remove("newWalk");
+            Session.Remove("postcode");
+            Response.Redirect("../../index.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Session.Remove("newWalk");
+            Session.Remove("postcode");
+            Response.Redirect("../UserProfile.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            Session.Remove("newWalk");
+            Session.Remove("postcode");
+            Response.Redirect("../CRUD User Settings/UserEditSettings.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../index.aspx");
+        }
     }
 }
