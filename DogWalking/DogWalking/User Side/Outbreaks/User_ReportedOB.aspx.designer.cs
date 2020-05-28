@@ -40,12 +40,12 @@ namespace DogWalking.User_Side.Outbreaks {
         protected global::System.Web.UI.WebControls.Button btnNewOutbreak;
         
         /// <summary>
-        /// lstOutbreaks control.
+        /// grdRepOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lstOutbreaks;
+        protected global::System.Web.UI.WebControls.GridView grdRepOB;
     }
 }

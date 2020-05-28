@@ -19,32 +19,19 @@
             <br />
 
             <h2>Pending Confirmation</h2>
-            <asp:ListView ID="lstPending" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstPending_SelectedIndexChanged">
-                    <ItemTemplate>
-                        <div class="list">
-                            <table>
-                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
-                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
-                                <tr><td><p><%#Eval("Description")%></p></td></tr>
-                            </table>
-                        </div>
-                    </ItemTemplate>
-                </asp:ListView>
+            <asp:GridView ID="grdPending" runat="server" OnSelectedIndexChanged="grdPending_SelectedIndexChanged">
+                <Columns>      
+                    <asp:ButtonField Text="View Walk..." CommandName="Select" ItemStyle-Width="100"/>
+                </Columns>
+            </asp:GridView> 
 
             <h2>Confirmed & Published</h2>
-             <asp:ListView ID="lstConfirmed" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstConfirmed_SelectedIndexChanged">
-                    <ItemTemplate>
-                        <div class="list">
-                            <table>
-                                <tr><td><img src="<%#Eval("ImagePath")%>" /></td></tr>
-                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
-                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
-                                <tr><td><p><%#Eval("Description")%></p></td></tr>
-                            </table>
-                        </div>
-                    </ItemTemplate>
-                </asp:ListView>
-           </div>
+             <asp:GridView ID="grdConfirmed" runat="server" OnSelectedIndexChanged="grdConfirmed_SelectedIndexChanged" >
+                <Columns>      
+                    <asp:ButtonField Text="View Walk..." CommandName="Select" ItemStyle-Width="100"/>
+                </Columns>
+            </asp:GridView> 
+        </div>
     </form>
 </body>
 </html>

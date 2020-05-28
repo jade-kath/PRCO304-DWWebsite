@@ -30,82 +30,98 @@ namespace DogWalking.User_Side.Walks
         {
             string user = Session["User"].ToString();
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode, Walk.Description FROM Walk JOIN" +
+            string pending = @"SELECT Walk.WalkID, Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode FROM Walk JOIN" +
                                " Location ON Location.LocationID = Walk.LocationID JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "'" +
-                               " AND Walk.NewWalk = 'True' OR Walk.Published = 'False'", con);
+                               " AND Walk.NewWalk = 'True' OR Walk.Published = 'False'";
+
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(pending);
 
             DataTable dt = new DataTable();
-            sda.Fill(dt);
-            lstPending.DataSource = dt;
-            lstPending.DataBind();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("WalkID", typeof(int)),
+                new DataColumn("WalkName",typeof(string)),
+                new DataColumn("Location", typeof(string)),
+                new DataColumn("WalkAddress", typeof(string)),
+                new DataColumn("WalkPostcode", typeof(string))
+            });
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                int WalkID = (int)dr[0];
+                string WalkName = (string)dr[1];
+                string Location = (string)dr[2];
+                string WalkAddress = (string)dr[3];
+                string WalkPostcode = (string)dr[4];
+
+                dt.Rows.Add(WalkID, WalkName, Location, WalkAddress, WalkPostcode);
+            }
+
+            this.grdPending.DataSource = dt;
+            this.grdPending.DataBind();
         }
 
         private void bindToGridConfirmed()
         {
             string user = Session["User"].ToString();
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
+            string confirmed = @"SELECT Walk.WalkID, Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
                                                     " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
-                                                    " JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "' AND Walk.Published = 'True'", con);
+                                                    " JOIN Users ON Walk.UserID = Users.UserID WHERE Users.Username = '" + user + "' AND Walk.Published = 'True'";
+
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(confirmed);
 
             DataTable dt = new DataTable();
-            sda.Fill(dt);
-            lstConfirmed.DataSource = dt;
-            lstConfirmed.DataBind();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("WalkID", typeof(int)),
+                new DataColumn("WalkName",typeof(string)),
+                new DataColumn("Location", typeof(string)),
+                new DataColumn("WalkAddress", typeof(string)),
+                new DataColumn("WalkPostcode", typeof(string)),
+                new DataColumn("Description", typeof(string))
+            });
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                int WalkID = (int)dr[0];
+                string WalkName = (string)dr[1];
+                string Location = (string)dr[2];
+                string WalkAddress = (string)dr[3];
+                string WalkPostcode = (string)dr[4];
+                string Description = (string)dr[5];
+
+                dt.Rows.Add(WalkID, WalkName, Location, WalkAddress, WalkPostcode, Description);
+            }
+
+            this.grdConfirmed.DataSource = dt;
+            this.grdConfirmed.DataBind();
 
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Session.Remove("WalkID");
             Response.Redirect("../UserProfile.aspx");
         }
 
         protected void btnAddWalk_Click(object sender, EventArgs e)
         {
-            Session.Remove("WalkID");
             Response.Redirect("User_Walk_Add_Page1.aspx");
         }
 
-        protected void lstPending_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grdPending_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string value = lstPending.SelectedDataKey.Value.ToString();
-
-            string sqlQuery = @"SELECT WalkID FROM Walk WHERE WalkPostcode = '" + value + "'";
-            ConnectionClass conn = new ConnectionClass();
-            conn.retrieveData(sqlQuery);
-
-            string WalkID = "";
-
-            foreach (DataRow dr in conn.SQLTable.Rows)
-            {
-                WalkID = (string)dr[0];
-            }
-
-            Session["WalkID"] = WalkID;
+            Session["WalkID"] = this.grdPending.SelectedRow.Cells[1].ToString();
             Session["userWalk"] = "userWalk";
 
             Response.Redirect("../User_WalkPreview.aspx");
         }
 
-        protected void lstConfirmed_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grdConfirmed_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string value = lstConfirmed.SelectedDataKey.Value.ToString();
-
-            string sqlQuery = @"SELECT WalkID FROM Walk WHERE WalkPostcode = '" + value + "'";
-            ConnectionClass conn = new ConnectionClass();
-            conn.retrieveData(sqlQuery);
-
-            string WalkID = "";
-
-            foreach (DataRow dr in conn.SQLTable.Rows)
-            {
-                WalkID = (string)dr[0];
-            }
-
-            Session["WalkID"] = WalkID;
+            Session["WalkID"] = this.grdConfirmed.SelectedRow.Cells[1].ToString();
             Session["userWalk"] = "userWalk";
 
             Response.Redirect("../User_WalkPreview.aspx");

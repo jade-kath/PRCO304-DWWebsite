@@ -16,18 +16,11 @@
             <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" CssClass="btn-cancel" />
             <asp:Button ID="btnNewOutbreak" runat="server" Text="Report a Dog Illness" OnClick="btnNewOutbreak_Click" />
 
-                <asp:ListView ID="lstOutbreaks" runat="server" OnSelectedIndexChanged="lstOutbreaks_SelectedIndexChanged" DataKeyNames="WalkPostcode">
-                    <ItemTemplate>
-                        <div class="list">
-                            <table>
-                                <tr><td><h3><%#Eval("OutbreakDate")%> - <%#Eval("OutbreakType")%></h3></td></tr>
-                                <tr><td><h4><%#Eval("WalkName")%>, <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h4></td></tr>
-                                <tr><td><p><%#Eval("ODecription")%></p></td></tr>
-                                <tr><td><p><%#Eval("Username")%></p></td></tr>
-                            </table>
-                        </div>
-                    </ItemTemplate>
-                </asp:ListView>
+            <asp:GridView ID="grdRepOB" runat="server" OnSelectedIndexChanged="grdRepOB_SelectedIndexChanged">
+                <Columns>      
+                    <asp:ButtonField Text="View Walk..." CommandName="Select" ItemStyle-Width="100"/>
+                </Columns>
+            </asp:GridView> 
         </div>
     </form>
 </body>

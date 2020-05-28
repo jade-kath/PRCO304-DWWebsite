@@ -14,7 +14,11 @@ namespace DogWalking
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            checkSearch();
+            if (!IsPostBack)
+            {
+                checkSearch();
+            }
+            
         }
 
         private void checkSearch()
@@ -25,7 +29,7 @@ namespace DogWalking
             con.Open();
 
             string Query = @"SELECT COUNT (*) FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" + 
-                            " WHERE Location.Location = '%" + location + "%' OR Walk.Postcode = '%" + location + "%' Walk.WalkName = '%" + location + "%' AND Walk.Published = 'True'";
+                            " WHERE Location.Location LIKE '%" + location + "%' OR Walk.WalkPostcode LIKE '%" + location + "%' OR Walk.WalkName LIKE '%" + location + "%' AND Walk.Published = 'True'";
             SqlCommand cmdQuery = new SqlCommand(Query, con);
             string outputQuery = cmdQuery.ExecuteScalar().ToString();
 
@@ -43,39 +47,52 @@ namespace DogWalking
         {
             string location = Session["searchWalk"].ToString();
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
-                                                    " Walk.Description, Walk.ImagePath FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
-                                                    " JOIN Users ON Walk.UserID = Users.UserID WHERE Location.Location = '%" + location + "%' OR" +
-                                                    " Walk.Postcode = '%" + location + "%' OR Walk.WalkName = '%" + location + "%' AND Walk.Published = 'True'", con);
+            string sqlQuery = @"SELECT Walk.WalkID, Walk.WalkName, Location.Location, Walk.WalkAddress, Walk.WalkPostcode," +
+                               " Walk.Description FROM Walk JOIN Location ON Location.LocationID = Walk.LocationID" +
+                               " JOIN Users ON Walk.UserID = Users.UserID WHERE Location.Location LIKE '%" + location + "%' OR" +
+                               " Walk.Postcode LIKE '%" + location + "%' OR Walk.WalkName LIKE '%" + location + "%' AND Walk.Published = 'True'";
+
+
+            ConnectionClass conn = new ConnectionClass();
+            conn.retrieveData(sqlQuery);
 
             DataTable dt = new DataTable();
-            sda.Fill(dt);
-            lstResults.DataSource = dt;
-            lstResults.DataBind();
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("WalkID", typeof(int)),
+                new DataColumn("WalkName",typeof(string)),
+                new DataColumn("Location", typeof(string)),
+                new DataColumn("WalkAddress", typeof(string)),
+                new DataColumn("WalkPostcode", typeof(string)),
+                new DataColumn("Description", typeof(string))
+            });
+
+            foreach (DataRow dr in conn.SQLTable.Rows)
+            {
+                int WalkID = (int)dr[0];
+                string WalkName = (string)dr[1];
+                string Location = (string)dr[2];
+                string WalkAddress = (string)dr[3];
+                string WalkPostcode = (string)dr[4];
+                string Description = (string)dr[5];
+
+                dt.Rows.Add(WalkID, WalkName, Location, WalkAddress, WalkPostcode, Description);
+            }
+
+            this.grdWalks.DataSource = dt;
+            this.grdWalks.DataBind();
         }
 
         private void checkCreator()
         {
-            string value = lstResults.SelectedDataKey.Value.ToString();
+            Session["WalkID"] = this.grdWalks.SelectedRow.Cells[1].Text;
 
-            string sqlQuery = @"SELECT WalkID FROM Walk WHERE WalkPostcode = '" + value + "'";
-            ConnectionClass conn = new ConnectionClass();
-            conn.retrieveData(sqlQuery);
-
-            string WalkID = "";
-
-            foreach (DataRow dr in conn.SQLTable.Rows)
-            {
-                WalkID = (string)dr[0];
-            }
-
-            Session["WalkID"] = WalkID;
+            string walk = this.grdWalks.SelectedRow.Cells[1].Text;
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connect"].ToString());
             con.Open();
 
-            string Query = @"SELECT COUNT (*) FROM Walk JOIN Users ON Users.UserID = Walk.UserID WHERE Walk.WalkID = '" + WalkID + "' AND Walk.Published = 'True'";
+            string Query = @"SELECT COUNT (*) FROM Walk JOIN Users ON Users.UserID = Walk.UserID WHERE Walk.WalkID = '" + walk + "' AND Walk.Published = 'True'";
             SqlCommand cmdQuery = new SqlCommand(Query, con);
             string outputQuery = cmdQuery.ExecuteScalar().ToString();
 
@@ -98,7 +115,7 @@ namespace DogWalking
             Response.Redirect("searchResults.aspx");
         }
 
-        protected void lstResults_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grdWalks_SelectedIndexChanged1(object sender, EventArgs e)
         {
             checkCreator();
         }

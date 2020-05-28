@@ -14,30 +14,17 @@
 
             <div class="search">
                 <p>Where would you like to go?</p>
-                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSearch">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                             <ContentTemplate>
-                                 <asp:TextBox ID="txtSearchBar" runat="server" placeholder="eg. London, Devon, Central Park"></asp:TextBox>
-                                 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
-                             </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </asp:Panel>
+                <asp:TextBox ID="txtSearchBar" runat="server" placeholder="eg. London, Devon, Central Park"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
             </div>
 
             <div class="randomWalks">
                 <h2>All Walks</h2>
-                <asp:ListView ID="lstAll" runat="server"  DataKeyNames="WalkPostcode" OnSelectedIndexChanged="lstConfirmed_SelectedIndexChanged">
-                    <ItemTemplate>
-                        <div class="list">
-                            <table>
-                                <tr><td><img src="<%#Eval("ImagePath")%>" /></td></tr>
-                                <tr><td><h3><%#Eval("WalkName")%> - <%#Eval("Location")%>, <%#Eval("WalkPostcode")%></h3></td></tr>
-                                <tr><td><h4><%#Eval("Address")%></h4></td></tr>
-                                <tr><td><p><%#Eval("Description")%></p></td></tr>
-                            </table>
-                        </div>
-                    </ItemTemplate>
-                </asp:ListView>
+                <asp:GridView ID="grdWalks" runat="server" OnSelectedIndexChanged="grdWalks_SelectedIndexChanged1" >
+                <Columns>      
+                    <asp:ButtonField Text="More Details..." CommandName="Select" ItemStyle-Width="100"/>
+                </Columns>
+                </asp:GridView>
             </div>
 
 
